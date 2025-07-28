@@ -18,11 +18,37 @@ body{
 }
 /* 속박스 */
 .top-area .part-box{
-    padding-top: 19px;
+    /* padding-top: 19px; */
     /* 상단영역 높이값 동일셋팅! */
     height: 112px;
 }
 /* 로고이미지 */
 .logo{
     width: 100%;
+    margin-top: 19px;
 } 
+
+/* GNB메뉴 */
+
+/* float해제설정 */
+#gnb{
+    max-width: 699px;
+    margin: 0 auto;
+    outline: 1px solid red;
+}
+#gnb::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+#gnb li{
+    float: left;
+    /* 높이값 만큼 줄간격셋팅 */
+    line-height: 112px;
+}
+/* 두번째 li부터 끝까지 왼쪽마진 */
+#gnb li+li{
+    margin-left: 18.8%;
+    /* 마진의 %값의 기준은
+    부모박스의 크기이다! */
+}
