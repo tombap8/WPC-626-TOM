@@ -34,7 +34,7 @@ body{
 #gnb{
     max-width: 699px;
     margin: 0 auto;
-    outline: 1px solid red;
+    /* outline: 1px solid red; */
 }
 #gnb::after{
     content: '';
@@ -51,4 +51,10 @@ body{
     margin-left: 18.8%;
     /* 마진의 %값의 기준은
     부모박스의 크기이다! */
+}
+/* 깃허브 박스 */
+.git-box{
+    text-align: right;
+    font-size: 47px;
+    line-height: 112px;
 }
