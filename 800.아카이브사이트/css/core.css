@@ -3,6 +3,17 @@
 /* 아카이브 사이트 공통셋팅 CSS - core.css */
 
 /* 1. 웹폰트 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* 
+font-family: "Noto Sans KR", sans-serif; 
+font-family: "Noto Sans", sans-serif;
+*/
+
+/* 웹폰트 전체 적용하기 */
+body{
+  font-family: "Noto Sans KR","Noto Sans", sans-serif;
+}
 
 /* 2. 공통 클래스 */
 /* 2-1. 속박스 */
