@@ -175,33 +175,70 @@
             [ font 한번에 셋팅하기! ]
             font : 스타일 두께 크기/줄간격 글자체
             font : 스두크/줄체
-            ->>> font 한번에 쓰기에서 글자체는 필수!
+            ->>> font 한번에 쓰기에서 글자크기와 글자체는 필수!
             ->>> 2개이상 셋팅필수
         */
       /* 모든 li에 오버서 손가락모양 */
-      .part1 li {}
+      .part1 li {
+        cursor: pointer;
+      }
 
       /* .part1 li 의 첫번째 자식 */
-      .part1 li:first-child {}
+      .part1 li:first-child {
+        /* 궁서체, 40px, 빨간색 */
+        font: italic bold 40px/2 궁서;
+        /* font-family: 궁서;
+        font-size: 40px; */
+        color: red;
+      }
       /* .part1 li 의 첫번째 자식 오버시 */
-      .part1 li:first-child:hover {}
+      .part1 li:first-child:hover {
+        font-style: normal;
+        color: purple;
+      }
       
       /* .part1 li 의 두번째 자식 */
-      .part1 li:nth-child(2) {}
+      .part1 li:nth-child(2) {
+        /* 30px 굴림 skyblue */
+        font: 30px 굴림;
+        color: skyblue;
+      }
       /* .part1 li 의 두번째 자식 오버시 */
-      .part1 li:nth-child(2):hover {}
+      .part1 li:nth-child(2):hover {
+        /* 두껍게 fwb */
+        font-weight: bold;
+      }
       /* .part1 li 의 세번째 자식 */
-      .part1 li:nth-child(3) {}
+      .part1 li:nth-child(3) {
+        /* 35px 돋움 darkkhaki */
+        font: 35px 돋움;
+        color: darkkhaki;
+      }
       /* .part1 li 의 세번째 자식 오버시 */
-      .part1 li:nth-child(3):hover {}
+      .part1 li:nth-child(3):hover {
+        /* 단어간격 ws 20px */
+        word-spacing: 20px;
+        /* 자간 ls 10px */
+        letter-spacing: 10px;
+      }
       
       /* .part1 li 의 네번째 자식 */
-      .part1 li:nth-child(4) {}
+      .part1 li:nth-child(4) {
+        /* 42px "맑은 고딕" darkmagenta */
+        font: 42px "맑은 고딕";
+        color: darkmagenta;
+      }
       /* 한글이 있는 b요소만 숨기기 */
-      .part1 li:nth-child(4) b {}
+      .part1 li:nth-child(4) b {
+        display: none;
+      }
       /* 오버시 한자(span)숨기고 한글(b)보이기 */
-      .part1 li:nth-child(4):hover b {}
-      .part1 li:nth-child(4):hover span {}
+      .part1 li:nth-child(4):hover b {
+        display: inline;
+      }
+      .part1 li:nth-child(4):hover span {
+        display: none;
+      }
 
       /* 4번째 li이후 모든 li를 전부 선택하기
             [틸드(~)는 다중형제선택자]
