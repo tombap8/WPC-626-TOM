@@ -109,10 +109,31 @@
       }
 
       /* 포커스 가상클래스 :focus */
-      h2 a:focus {}
+      h2 a:focus {
+        /* 아웃라인 outline은 border와 비슷하지만
+        박스구성요소가 아니고 외곽선만 보여주며
+        주변나 자신에게 아무런 영향을 주지않는다!
+        포커스 표시나 입력창 포커스를 줄때
+        많이 이용된다!
+        outline: 두께 종류 색상 */
+        outline: 10px dotted darkcyan;
+      }
 
       /* 시인이름 */
-      h3 {}
+      h3 {
+        /* 가로크기 */
+        width: 800px;
+        /* 부모박스보다 작은 크기를 가지는
+            블록요소에 적용된다 -> 마.영.오! */
+        margin: 0 auto;
+        /* 내부 인라인요소 오른쪽정렬 */
+        text-align: right;
+
+        /* outline: 1px solid red; */
+        padding: 20px;
+        box-sizing: border-box;
+
+      }
 
       /* 
             요소명.클래스명 / 요소명#아이디명
@@ -124,11 +145,31 @@
 
       /* ul / ol 요소 기본초기화! */
       ul,
-      ol {}
+      ol {
+        /* 3가지 없애기! 3無! */
+        margin: 0; /* m0 */
+        padding: 0; /* p0 */
+        list-style: none; /* lin */
+      }
 
       /* 부모박스 셋팅 */
       ul.part1,
-      div.part2 {}
+      div.part2 {
+        
+        width: 800px;
+        margin: 30px auto;
+        padding: 20px;
+        border: 2px solid #ccc;
+        /* 둥근모서리 */
+        border-radius: 20px;
+        /* 보더,패딩 설정크기 내부로
+            포함시키는 속성은? 
+            box-sizing:border-box 
+            bxb */
+        box-sizing: border-box;
+        /* 글자중앙 */
+        text-align: center;
+      }
 
       /* 
             [ font 한번에 셋팅하기! ]
