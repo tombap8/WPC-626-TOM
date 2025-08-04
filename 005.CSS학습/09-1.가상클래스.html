@@ -78,19 +78,28 @@
       /* a 요소 가상클래스 */
       /* 처음 링크 :link */
       h2 a:link {
+        color: hotpink;
+        /* 밑줄없앰 tdn */
+        text-decoration: none;
       }
       /* 방문후 :visited */
       h2 a:visited {
-        /* color: lime;             */
+        /* color: lime;  
+        -> 방문후 가상요소를 주면
+        a기본 셋팅이 덮어써져서 적용안됨!
+        이유는? :visited가 더 우선순위가 높다! */
       }
       /* 마우스 오버시 :hover */
       h2 a:hover {
-        
+        color: red;
         /* 텍스트 데코레이션에 스타일은
             뒤에 띄어쓰기로 추가해서 쓸 수 있음 */
+            text-decoration: overline wavy;
       }
       /* 마우스를 누르고 있는 상태 :active */
       h2 a:active {
+        color: lightseagreen;
+        text-decoration: underline double red;
       }
 
       /* 요즘은 a요소를 바로 선택하여
