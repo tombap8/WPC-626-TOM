@@ -276,7 +276,23 @@
             :nth-child(odd) odd는 홀수
         */
         /* li짝수번째 */
+        .part1 li:nth-child(even) {
+          /* 그라데이션 주기! */
+          background-image: linear-gradient(
+            to right,
+            lightblue,
+            #ff9ad8
+          );
+        }
           /* li홀수번째 */
+        .part1 li:nth-child(odd) {
+          /* 그라데이션 주기! */
+          background-image: linear-gradient(
+            to left,
+            lightblue,
+            #ff9ad8
+          );
+        }
 
       /* nth-child(3n+1) 가상요소 아이콘 넣기 
             nth-child(n이들어간 수식)
