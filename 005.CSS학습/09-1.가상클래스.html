@@ -239,7 +239,6 @@
       .part1 li:nth-child(4):hover span {
         display: none;
       }
-
       /* 4번째 li이후 모든 li를 전부 선택하기
             [틸드(~)는 다중형제선택자]
             선택요소~요소명
@@ -257,9 +256,19 @@
         */
       
         /* 4번째 li부터 끝까지선택 */
-      
+      .part1 li:nth-child(4) ~ li {
+        /* 글자크기 24px, 글자색 darkgoldenrod */
+        font-size: 24px;
+        color: darkgoldenrod;
+      }
 
-      /* 5번째부터 9번째까지 선택 */
+      /* 7번째부터 9번째까지 선택 */
+      .part1 li:nth-child(6) ~ li:nth-child(-n+9){
+        /* 글자체 궁서 , 34px, hotpink */
+        font-family: 궁서;
+        font-size: 34px;
+        color: hotpink;
+      }
 
       /* 
             짝수/홀수번째 li 그라데이션 넣기
