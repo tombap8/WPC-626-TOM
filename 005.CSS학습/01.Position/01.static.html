@@ -17,6 +17,14 @@
 
         /* 첫번째 박스에 포지션 체크 */
         #s1{
+            position: static;
+            /* static은 안써도 static임! */
+            top: 100px;
+            left: 100px;
+            /* static은 위치이동속성 적용안됨! */
+            margin-top: 100px;
+            margin-left: 100px;
+            /* static은 마진으로 위치이동함! */
             
             /* 
                 [ CSS 포지션이 뭐지? ]
