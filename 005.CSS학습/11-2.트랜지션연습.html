@@ -46,9 +46,31 @@
             width: 150px;
         }
 
+        /* 라벨 디자인 - 버튼형 */
+        .btn-action{
+            /* 위,아래 마진,보더 등 적용위해 */
+            display: inline-block;
+            margin-top: 50px;
+            padding: 20px;
+            border: 2px solid gray;
+            border-radius: 10px;
+            background-color: #ccc;
+        }
+        /* 가상요소로 버튼 글씨 넣기 */
+        .btn-action::before{
+            content: '🚘동작시작!';
+            font-size: 35px;
+        }
+
     </style>
 </head>
 <body>
+    <!-- 체크박스 -->
+     <input type="checkbox" id="chkbx">
+    <!-- 라벨 -->
+     <label for="chkbx" class="btn-action"></label>
+
+
     <!-- 바트심슨 자동차타기 애니박스 -->
      <div class="ani-box">
         <!-- 자동차박스 -->
