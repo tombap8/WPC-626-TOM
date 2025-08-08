@@ -21,14 +21,19 @@
             
             outline: 2px dotted blue;
         }
-        /* 자동차 */
-        #car{
+        /* 자동차박스 */
+        #car-box{
             position: absolute;
             /* 자동차 처음에 나가있음 */
-            left: -70%;
+            left: 0%;
             bottom: 0;
             width: 550px;
+            height: 300px;
             z-index: 1;
+            /* 자동차 배경이미지
+            -> 배경이미지는 css에서 변경가능하기때문에
+            이미지 요소 대신 박스배경을 사용함! */
+            background: url(./images/car.png) no-repeat 0/100%;
         }
         /* 바트박스 */
         #bart-box{
@@ -40,13 +45,17 @@
         #bart-box img{
             width: 150px;
         }
+
     </style>
 </head>
 <body>
     <!-- 바트심슨 자동차타기 애니박스 -->
      <div class="ani-box">
-        <!-- 자동차이미지 -->
-         <img src="./images/car.png" alt="자동차" id="car">
+        <!-- 자동차박스 -->
+         <div id="car-box"></div>
+
+         <!-- <img src="./images/car.png" alt="자동차" id="car"> -->
+
          <!-- 바트심슨 박스 -->
           <div id="bart-box">
             <img src="./images/Bart_Simpson.png" alt="바트심슨">
