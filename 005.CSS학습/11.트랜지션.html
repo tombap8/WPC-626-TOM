@@ -183,6 +183,25 @@
         height: 10px;
         /* 배경색 로얄블루 */
         background-color: royalblue;
+
+        /* 돌아올때 트랜지션 셋팅 */
+        transition: 
+        /* 1.left는 3초간 처음과 끝에 천천히 6초 기다림 */
+        left 3s ease-in-out 6s,
+        /* 2.width는 2초간 끝에 천천히 4초 기다림 */
+        width 2s ease-out 4s,
+        /* 3.height는 1초간 처음에 천천히 3초기다림 */
+        height 1s ease-in 3s,
+
+        /* 4~7이 가장먼저 작동함(대기시간 없음!) */
+        /* 4.배경색은 3초간 등속도로 */
+        background-color 3s linear,
+        /* 5.둥근모서리는 2초간 등속도로 */
+        border-radius 2s linear,
+        /* 6.보더는 1초간 등속도로 */
+        border 1s linear,
+        /* 7.배경이미지는 2초간 등속도로 */
+        background-image 2s linear;
       }
 
       /* 체크박스가 체크되면 그 다음 형제요소를
