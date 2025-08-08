@@ -176,7 +176,32 @@
         속시이지 순으로 셋팅하고 콤마로 구분한다!
     */
       #tr4 span {
-        
+        /* 왼쪽위치 10% */
+        left: 10%;
+        /* 가로,세로크기 10px */
+        width: 10px;
+        height: 10px;
+        /* 배경색 로얄블루 */
+        background-color: royalblue;
+      }
+
+      /* 체크박스가 체크되면 그 다음 형제요소를
+      변경하여 클릭시 변경된 것 같은 효과로 작동
+      시킨다! */
+      #chkbx:checked + span {
+        /* 왼쪽에서 50% */
+        left: 50%;
+        /* 가로 500px, 세로 400px */
+        width: 500px;
+        height: 400px;
+        /* 배경색 핫핑크 */
+        background-color: hotpink;
+        /* 다시 네모난 박스로! */
+        border-radius: 0;
+        /* 보더모양 변경 */
+        border: 10px ridge gray;
+        /* 배경이미지 변경(마지심슨) */
+        background-image: url(./images/Marge_Simpson.png);
       }
       
     </style>
