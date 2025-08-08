@@ -133,9 +133,40 @@
 
       /* #tr3에 트랜지션 설정 */
       #tr3 span {
+        /* left위치 왼쪽 살짝 바깥 */
+        left: -5%;
+        /* 가로세로값 50px */
+        width: 50px;
+        height: 50px;
+        /* 배경색 창백한 바이올렛레드 */
+        background-color: palevioletred;
+
+        /* 오버시 트랜지션이 있을 경우
+        원본의 트랜지션은 돌아올때 적용된다
+        transition: 
+        모두 2초간 작동 0.5초 기다림,
+        top속성만 0.5초간 작동 */
+        transition: 2s .5s,top .5s;
+
       }
       /* 마우스 오버시 트랜지션설정 */
       #tr3:hover span {
+
+        /* 위로 올라감! */
+        top: -200px;
+
+        /* left 값 70%로 이동 */
+        left: 70%;
+        /* 가로,세로크기 400px */
+        width: 400px;
+        height: 400px;
+        /* 배경색 밝은그린 */
+        background-color: lightgreen;
+
+        /* 트랜지션 trs
+        -> top속성만 2초후에 따로 작동설정
+        transition: 속시이지,속시이지,... */
+        transition: 2s, top .5s 2s;
        
       }
 
