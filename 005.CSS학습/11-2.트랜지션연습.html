@@ -27,13 +27,16 @@
         padding-top: 32%;
         /* height: 400px; */
 
+        /* 자식요소 숨기기 */
+        overflow: hidden;
+
         outline: 2px dotted blue;
       }
       /* 자동차박스 */
       #car-box {
         position: absolute;
         /* 자동차 처음에 나가있음 */
-        left: 0%;
+        left: -50%;
         bottom: 25%;
         /* width의 %값은 부모요소의 width에 대한 비다! */
         width: 40%;
@@ -89,6 +92,16 @@
       /* 체크박스는 숨기기 */
       #chkbx {
         display: none;
+      }
+
+      /* 체크박스 체크시 car-box 이동애니
+      -> 체크박스체크시 다음 형제요소들 중 
+      .ani-box의 자식 #car-box 선택 */
+      #chkbx:checked ~ .ani-box #car-box{
+        /* 오른쪽 바깥으로 나감! */
+        left: 100%;
+        /* 트랜지션 trs : 10초간 등속도 */
+        transition: 10s linear;
       }
     </style>
   </head>
