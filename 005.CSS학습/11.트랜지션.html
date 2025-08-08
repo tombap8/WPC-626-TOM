@@ -102,11 +102,18 @@
       /* 트랜지션을 hover가 아닌 원래 요소에 주면
         양방향(오버시포함) 모두 적용된다! */
       #tr1 span {
-        
+        /* 트랜지션 trs */
+        transition: 2s;
+        /* transition: all 2s; */
       }
       /* 오버시 변경 */
       #tr1:hover span {
-        
+        /* 위치이동 */
+        left: 50%;
+        /* 배경색 */
+        background-color: darkorchid;
+        /* 다시 사각형으로! */
+        border-radius: 0;
       }
 
       /* #tr2에 트랜지션 설정하지 않음! */
