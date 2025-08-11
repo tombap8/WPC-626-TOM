@@ -185,7 +185,7 @@
         /* -> %단위 기준은 항상 자기자신의 크기다!!! */
       }
 
-    /********************************************** 
+      /********************************************** 
         5. transform : translate(x축거리,y축거리) - X,Y축이동
         - 단위 : px, % 등
         - 현재 위치로부터 이동
@@ -195,14 +195,14 @@
         - 이동방향: + 오른쪽/아랫쪽, -는 왼쪽/윗쪽
     **********************************************/
 
-    #transform-box5:hover img {
+      #transform-box5:hover img {
         /* x,y축이동 tft */
         /* transform: translate(-100%, -100%); */
         /* -> %단위 기준은 항상 자기자신의 크기다!!! */
 
         /* translate: -100%; -> x축이동 */
         /* translate: 0 -100%; -> y축이동 */
-        translate: -100% -100%;/* -> x,y축 동시이동 */
+        translate: -100% -100%; /* -> x,y축 동시이동 */
 
         /************************************************ 
         원래는 translate는 transform하위 셋팅속성임!
@@ -219,7 +219,7 @@
         opacity: 0.5;
       }
 
-    /************************************** 
+      /************************************** 
         6. rotate(각도deg) - 원형회전
         - 각도의 숫자가 양수이면 시계방향
         음수는 반시계방향
@@ -233,12 +233,12 @@
         - 기본값 : 가로, 세로 center임! 
     **************************************/
 
-    /* 이미지 회전축 변경하기 */
-    #transform-box6 img {
+      /* 이미지 회전축 변경하기 */
+      #transform-box6 img {
         /* transform-origin: right bottom; */
         transform-origin: 20% 20%;
-    }
-    #transform-box6:hover img {
+      }
+      #transform-box6:hover img {
         /* 원형회전 : tfr */
         /* transform: rotate(4587deg); */
 
@@ -265,24 +265,22 @@
             
         ************************************/
 
-
         /* 트랜지션 시간 늘리기 */
         transition-duration: 10s;
-    }
+      }
 
-    /****************************************** 
+      /****************************************** 
         7. skew - x,y축 기울임
         - skewX(각도deg), skewY(각도deg)
         - skew(x축,y축)
         - 각도가 양수/음수에 따라 기울임 방향이 달라짐
     ******************************************/
-#transform-box7:hover img {
-    /* x축 skew  */
-    /* transform: skewX(-30deg); */
-    /* y축 skew  */
-    transform: skewY(30deg);
-}
-
+      #transform-box7:hover img {
+        /* x축 skew  */
+        /* transform: skewX(-30deg); */
+        /* y축 skew  */
+        transform: skewY(30deg);
+      }
     </style>
   </head>
   <body>
