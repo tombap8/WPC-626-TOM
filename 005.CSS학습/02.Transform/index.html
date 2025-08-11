@@ -225,12 +225,26 @@
         음수는 반시계방향
         - 기본회전축은 정중앙
         (변경가능: transform-origin)
+
+        [ 트랜스폼 회전축 변경속성 ]
+        transform-origin: 가로 세로;
+        - 가로값 : left, right, center, 몇px,몇%
+        - 세로값 : top, bottom, center, 몇px,몇%
+        - 기본값 : 가로, 세로 center임! 
     **************************************/
 
+    /* 이미지 회전축 변경하기 */
+    #transform-box6 img {
+        /* transform-origin: right bottom; */
+        transform-origin: 20% 20%;
+    }
     #transform-box6:hover img {
         /* 원형회전 : tfr */
-        transform: rotate(4587deg);
+        /* transform: rotate(4587deg); */
 
+        rotate: 4586deg;
+        /* rotate: x 4586deg; */
+        /* rotate: y 4586deg; */
 
         /************************************ 
             [ rotate 속성 ]
