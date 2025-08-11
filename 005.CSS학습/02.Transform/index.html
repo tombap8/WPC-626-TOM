@@ -53,6 +53,55 @@
         0 -4px darkgreen;
         /* -webkit-text-stroke: 1px red; */
       }
+
+      /* 전체 부모박스 */
+      .main-contents{
+        /* 박스셋팅 */
+        max-width: 1500px;
+        margin: 100px auto;
+        border: 10px solid lime;
+        border-radius: 20px;
+        padding: 20px;
+
+        /* 기본적으로 박스 크기를 잡으면
+        그 크기는 컨텐트영역의 크기임.
+        보더와 패딩은 바깥쪽으로 생김
+        그래서 박스가 커짐!
+        보더, 패딩을 크기셋팅에 포함시키려면
+        box-sizing:border-box 셋팅해야함! */
+        box-sizing: border-box;
+
+        /* 겹쳐지는 부분 배경 흐리게 처리하기
+        -> 백드롭필터! 블러! */
+        backdrop-filter: blur(3px);
+        /* backdrop-filter: sepia(90%); */
+        /* backdrop-filter: invert(70%); */
+        /* backdrop-filter: hue-rotate(120deg); */
+        /* backdrop-filter: grayscale(100%); */
+      }
+      /* 부모박스 가상요소 clear셋팅(float때문에) */
+      .main-contents::after{
+        content: '';
+        display: block;
+        clear: both;
+      }
+      /* 캐릭터 박스 공통 */
+      .main-contents > div{
+        /* 옆으로 흐르게 */
+        float: left;
+        /* 5등분하기 */
+        width: calc(100%/5);
+        /* 아래쪽 마진 */
+        margin-bottom: 50px;
+      }
+      /* 캐릭터 이미지 */
+      .main-contents > div img{
+        width: 200px;
+        height: 200px;
+        /* 원형 */
+        border-radius: 50%;
+
+      }
     </style>
   </head>
   <body>
