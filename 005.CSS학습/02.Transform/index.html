@@ -197,12 +197,29 @@
 
     #transform-box5:hover img {
         /* x,y축이동 tft */
-        transform: translate(-100%, -100%);
+        /* transform: translate(-100%, -100%); */
         /* -> %단위 기준은 항상 자기자신의 크기다!!! */
+
+        /* translate: -100%; -> x축이동 */
+        /* translate: 0 -100%; -> y축이동 */
+        translate: -100% -100%;/* -> x,y축 동시이동 */
+
+        /************************************************ 
+        원래는 translate는 transform하위 셋팅속성임!
+        translate의 사용율이 높아짐에 따라 속성값으로 독립됨!
+
+        [ translate 속성 ]
+        translate: 값 값; -> x,y축 이동설정값
+        translate: 값; -> x축 이동설정값
+        translate: 0 값; -> y축 이동설정값
+        
+        ************************************************/
 
         /* 투명도조정 - opacity속성 */
         opacity: 0.5;
       }
+
+
 
     </style>
   </head>
