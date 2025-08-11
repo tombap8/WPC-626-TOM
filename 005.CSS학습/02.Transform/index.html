@@ -337,10 +337,13 @@
     /* animate를 배우기 전이므로 :hover를 사용! */
     .main-contents{
         /* 오른쪽 바깥에 나가있게 셋팅함! translate사용! */
-        translate: 50%;
+        /* translate: 110%; */
+        /* 트랜지션 trs */
+        transition: .8s ease-out 1s;
     }
+    /* 오버시 등장 */
     body:hover .main-contents{
-
+        translate: 0;
     }
 
 
