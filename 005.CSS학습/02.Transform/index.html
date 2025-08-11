@@ -100,14 +100,62 @@
           margin-top: 20px;
 
       }
-      /* 캐릭터 이미지 */
+      /* 캐릭터 이미지 공통 */
       .main-contents > div img{
         width: 200px;
         height: 200px;
         /* 원형 */
         border-radius: 50%;
 
+        /* 트랜지션 trs */
+        transition: .6s;
+
       }
+
+       /* 
+                [ Transform 효과주기 ]
+                - 선택요소의 크기, 회전, 이동, 기울임
+                 등 변형을 하기위한 속성
+                - 2D, 3D 지원됨
+
+                1. transform : rotateY(각도deg) - Y축회전
+                - deg 는 각도의 단위(도:degree)
+
+                [ 각도 단위 확장 ]
+                (1) deg: 도 단위 (360 deg는 한 바퀴 회전)
+                (2) grad: 그라디언트 (400 grad는 한 바퀴 회전)
+                (3) rad: 라디안 (2π rad는 한 바퀴 회전)
+                (4) turn: 턴 (1 turn은 한 바퀴 회전)
+
+            */
+
+            #transform-box1:hover img{
+                /* y축회전 : tfry */
+                transform: rotateY(180deg);
+
+                /* 동시효과중 필터주기 */
+                filter: grayscale(100%);
+                /* CSS 필터 적용하기
+                    : 필터속성은 흑백,흐림,세피아,명암,
+                    채도 등 출력이미지를 변경하고자 할때
+                    사용하는 속성
+                    (참고)
+                    https://www.w3schools.com/cssref/playit.php?filename=playcss_filter&preval=blur(5px)
+                */
+            }
+
+            /* 
+                2. transfrom : rotateX(각도deg) - X축회전
+                - deg 는 각도의 단위(도:degree)
+            */
+            #transform-box2 img{
+                /* 미리 x축 회전 해놓기 : tfrx */
+                transform: rotateX(180deg);
+                /* 필터블러 */
+                filter: blur(2px);
+            }
+
+
     </style>
   </head>
   <body>
