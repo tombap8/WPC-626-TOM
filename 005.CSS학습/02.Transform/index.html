@@ -17,6 +17,20 @@
             background-image: url(./images/bg-main.jpg);
             /* 2. 반복여부 */
             background-repeat: no-repeat;
+            /* 3. 고정 : 배경이미지 화면고정  */
+            background-attachment: fixed;
+            /* 4. 위치 : 가로(x축) 세로(y축)
+                가로값 - left(기본값), right, center, 수치값
+                세로값 - top, bottom, center(기본값), 수치값
+            */
+            background-position: center top;
+            /* 5. 크기 : 가로(width) 세로(height)
+                - 특이한 값들
+                1) contain -> 배경이미지가 모두보임(비율맞게)
+                2) cover -> 비율에 맞게 대상박스의 빈공간이 없음!
+                3) 모두 채운후 비율없이 만드는 방법 100% 100%
+            */
+            background-size: cover;
 
         }
     </style>
