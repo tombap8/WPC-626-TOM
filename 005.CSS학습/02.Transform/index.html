@@ -91,8 +91,14 @@
         float: left;
         /* 5등분하기 */
         width: calc(100%/5);
-        /* 아래쪽 마진 */
-        margin-bottom: 50px;
+        /* 중앙정렬 tac */
+        text-align: center;
+    }
+    /* 5번째 div 이후 자식 마진탑주기 */
+    .main-contents > div:nth-child(5) ~ div{
+          /* 위쪽 마진 */
+          margin-top: 20px;
+
       }
       /* 캐릭터 이미지 */
       .main-contents > div img{
@@ -108,7 +114,7 @@
     <!-- 1. 제목 -->
     <h1 class="main-title">트랜스폼 연습</h1>
     <!-- 2. 컨텐츠 박스 -->
-    <section class="main-contents">
+    <section class="main-contents my">
       <div id="transform-box1">
         <img src="images/cast01.jpg" alt="캐릭터" />
       </div>
