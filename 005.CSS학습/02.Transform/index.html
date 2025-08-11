@@ -107,22 +107,22 @@
         transition: 0.6s;
       }
 
-      /* 
-                [ Transform 효과주기 ]
-                - 선택요소의 크기, 회전, 이동, 기울임
-                 등 변형을 하기위한 속성
-                - 2D, 3D 지원됨
+    /********************************************** 
+        [ Transform 효과주기 ]
+        - 선택요소의 크기, 회전, 이동, 기울임
+            등 변형을 하기위한 속성
+        - 2D, 3D 지원됨
+      ********************************************
+        1. transform : rotateY(각도deg) - Y축회전
+        - deg 는 각도의 단위(도:degree)
 
-                1. transform : rotateY(각도deg) - Y축회전
-                - deg 는 각도의 단위(도:degree)
+        [ 각도 단위 확장 ]
+        (1) deg: 도 단위 (360 deg는 한 바퀴 회전)
+        (2) grad: 그라디언트 (400 grad는 한 바퀴 회전)
+        (3) rad: 라디안 (2π rad는 한 바퀴 회전)
+        (4) turn: 턴 (1 turn은 한 바퀴 회전)
 
-                [ 각도 단위 확장 ]
-                (1) deg: 도 단위 (360 deg는 한 바퀴 회전)
-                (2) grad: 그라디언트 (400 grad는 한 바퀴 회전)
-                (3) rad: 라디안 (2π rad는 한 바퀴 회전)
-                (4) turn: 턴 (1 turn은 한 바퀴 회전)
-
-            */
+    **********************************************/
 
       #transform-box1:hover img {
         /* y축회전 : tfry */
@@ -131,18 +131,18 @@
         /* 동시효과중 필터주기 */
         filter: grayscale(100%);
         /* CSS 필터 적용하기
-                    : 필터속성은 흑백,흐림,세피아,명암,
-                    채도 등 출력이미지를 변경하고자 할때
-                    사용하는 속성
-                    (참고)
-                    https://www.w3schools.com/cssref/playit.php?filename=playcss_filter&preval=blur(5px)
-                */
+            : 필터속성은 흑백,흐림,세피아,명암,
+            채도 등 출력이미지를 변경하고자 할때
+            사용하는 속성
+            (참고)
+            https://www.w3schools.com/cssref/playit.php?filename=playcss_filter&preval=blur(5px)
+        */
       }
 
-      /* 
-                2. transfrom : rotateX(각도deg) - X축회전
-                - deg 는 각도의 단위(도:degree)
-            */
+    /********************************************** 
+        2. transfrom : rotateX(각도deg) - X축회전
+        - deg 는 각도의 단위(도:degree)
+    **********************************************/
       #transform-box2 img {
         /* 미리 x축 회전 해놓기 : tfrx */
         transform: rotateX(180deg);
@@ -157,17 +157,31 @@
         filter: blur(0px);
       }
 
-      /* 
-                3. transform : translateX(거리) - X축이동
-                - 단위 : px, % 등
-                - 현재 위치로부터 이동
-                - 기준점은 요소의 왼쪽
-                - % 단위를 쓸경우 기준은 요소의 width값
-                - 이동방향: + 오른쪽, -는 왼쪽
-            */
+      /********************************************** 
+        3. transform : translateX(거리) - X축이동
+            - 단위 : px, % 등
+            - 현재 위치로부터 이동
+            - 기준점은 요소의 왼쪽
+            - % 단위를 쓸경우 기준은 요소의 width값
+            - 이동방향: + 오른쪽, -는 왼쪽
+    **********************************************/
       #transform-box3:hover img {
         /* x축이동 tftx */
         transform: translateX(-50%);
+        /* -> %단위 기준은 항상 자기자신의 크기다!!! */
+      }
+
+    /********************************************** 
+        4. transform : translateY(거리) - Y축이동
+        - 단위 : px, % 등
+        - 현재 위치로부터 이동
+        - 기준점은 요소의 윗쪽
+        - % 단위를 쓸경우 기준은 요소의 height값
+        - 이동방향: + 아랫쪽, -는 윗쪽
+    **********************************************/
+    #transform-box4:hover img {
+        /* y축이동 tfty */
+        transform: translateY(200%);
         /* -> %단위 기준은 항상 자기자신의 크기다!!! */
       }
     </style>
