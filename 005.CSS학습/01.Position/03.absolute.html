@@ -77,10 +77,17 @@
 
         background: url(./images/capma.png) no-repeat center/cover;
       }
-      /* 두번째 앱솔루트 박스 */
+      /* 두번째 앱솔루트 박스 
+      -> 위치값을 주면 부모를 찾음
+      -> 싸고 있는 모든 요소가 부모자격이 없으면
+      스크롤 상단 보이는 화면이 부모가 된다!
+      */
       #a2 {
         position: absolute;
         width: 650px;
+        /* 오른쪽 아래 0 위치 부모는? 보이는 화면 */
+        right: 0;
+        bottom: 0;
 
         background: url(./images/superman.png) no-repeat center/cover;
       }
@@ -157,8 +164,7 @@
         width: 100px;
         height: 50px;
         color: #fff;
-        background: url(./images/car.png) 
-        no-repeat center/contain;
+        background: url(./images/car.png) no-repeat center/contain;
       }
 
       /* .a4는 위치이동값을 사용하자! -> 부모찾아 삼만리! */
@@ -204,6 +210,18 @@
           하단 간극이 사라진다!
           (baseline값은 적용안됨!)
       */
+      }
+
+      /* span 을 앱솔루트로 만들경우! */
+      .spabs {
+        /* 포지션 앱솔루트 poa */
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        /* 나의 부모는?  */
+
+        /* 아웃라인 ol */
+        outline: 4px dotted darkmagenta;
       }
     </style>
   </head>
