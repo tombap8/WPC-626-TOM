@@ -181,7 +181,7 @@
 
         /* 보더 */
         border: 10px dotted darkblue;
-      }      
+      }
 
       /* span 을 앱솔루트로 만들경우! */
       .spabs {
@@ -198,7 +198,7 @@
       /* 앱솔루트 판타롱스타킹~~!
       -> 앱솔루트 박스에 width,height를 주지 않아도
       내용물 만큼 자동으로 크기가 생성된다! */
-      .a5{
+      .a5 {
         position: absolute;
         top: 20%;
         right: 10%;
@@ -210,7 +210,7 @@
 
       /* 이미지가 박스에 단독으로 들어갈 경우
       하단에 생기는 공백 없애기 */
-      .a5 img{
+      .a5 img {
         vertical-align: middle;
         /* 인라인요소가 세로정렬 속성인 vertical-align의
         값을 top/middle/bottom 중 어떤값을 사용해도
@@ -222,8 +222,11 @@
       .absolute-images {
         width: 300px;
         height: 400px;
+        /* 보더액자 */
+        border: 50px ridge silver;
       }
-      .absolute-images img{
+      /* 이미지가 앱솔루트! */
+      .absolute-images img {
         /* 앱솔루트 포지션 poa */
         position: absolute;
         /* 젠틀앱솔루트!!! */
@@ -231,8 +234,50 @@
         width: 300px;
         height: 400px;
       }
+      /* 두번째 이미지 투명하게 셋팅 */
+      .absolute-images img:last-child {
+        opacity: 0;
+        /* 트랜지션 trs */
+        transition: 0.3s;
+      }
+      /* 싸고있는 박스에 마우스 오버시 투명도1 */      
+      .absolute-images:hover img:last-child {
+        opacity: 1;
+      }
 
+      /* 앱솔루트 위치값으로 크기만들기 */
+      .car-box{
+        position: absolute;
+        /* 맨위 왼쪽에 위치 */
+        top: 0;
+        left: 0;
+        /* 부모는? 보이는화면! */
 
+        /* 가로크기 - 부모의 25% */
+        width: 25%;
+
+        /* 보더 */
+        border: 4px dashed darkblue;
+        border-radius: 20px;
+      }
+
+      /* 자동차 이미지 */
+      .car-box img{
+        width: 100%;
+        /* 이미지는 한쪽 크기만 주면
+        나머지 방향크기는 자동비율유지함! */
+      }
+
+      /* 자동차 앱솔루트 타이틀박스 */
+      .car-box h3{
+        position: absolute;
+        bottom: 0;
+        /* 부모는? .car-box */
+        border: 1px solid red;
+
+        /* 기본마진없애기 */
+        margin: 0;
+      }
     </style>
   </head>
   <body>
@@ -257,9 +302,16 @@
     </div>
 
     <!-- 앱솔루트끼리는 서로 겹친다! -->
-     <div class="absolute-images">
-      <img src="./images/ab3.jpg" alt="토르">
-      <img src="./images/ab4.jpg" alt="닥스">
+    <div class="absolute-images">
+      <img src="./images/ab3.jpg" alt="토르" />
+      <img src="./images/ab4.jpg" alt="닥스" />
+    </div>
+
+    <!-- 앱솔루트 위치값으로 크기만들기 -->
+     <div class="car-box">
+      <img src="./images/car.png" alt="자동차">
+      <!-- 위치값으로 크기만들 타이틀박스 -->
+       <h3>😎레드 스포츠카!!!🚗</h3>
      </div>
 
     <!-- 부모를 찾는 앱솔루트! -->
