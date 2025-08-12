@@ -360,34 +360,38 @@
       height: 150px;
       border-radius: 50%;
     }
-    /* 첫번째 img자식 - 유정이 원본 */
+    /* 1.첫번째 img자식 - 유정이 원본(돌아올때) */
     #transform-special img:first-child{
       /* 처음에 90도로 숨겨짐 */
       transform: rotateY(90deg);
-      /* 트랜지션 trs */
-      transition: 0.4s;
+      /* 트랜지션 trs : 바로출발, 처음만 천천히 ease-in */
+      transition: .4s ease-in;
     }
-    /* 첫번째 img자식 - 유정이 오버시 */
+    /* 2.첫번째 img자식 - 유정이 오버시 */
     #transform-special:hover img:first-child{
       /* 처음에 90도로 숨겨짐 */
       transform: rotateY(0deg);
-      /* 트랜지션 trs */
-      transition: 0.4s;
+      /* 트랜지션 trs : 
+      보거미돌동안 0.4초 기다려 / 
+      그대로 받아서 끝에 천천히 ease-out */
+      transition: .4s ease-out .4s;
     }
 
-    /* 마지막째 img자식 - 보거미 원본 */
+    /* 3.마지막째 img자식 - 보거미 원본(돌아올때) */
     #transform-special img:last-child{
       /* 처음에 0도로 보임 */
       transform: rotateY(0deg);
-      /* 트랜지션 trs */
-      transition: 0.4s;
+      /* 트랜지션 trs : 
+      돌아올때 유정이 0.4초 기다려 / 
+      그대로 받아서 끝에 천천히 ease-out */
+      transition: .4s ease-out .4s;
     }
-    /* 마지막째 img자식 - 보거미 오버시 */
+    /* 4.마지막째 img자식 - 보거미 오버시 */
     #transform-special:hover img:last-child{
       /* 오버시 90도로 숨겨짐 */
       transform: rotateY(90deg);
-      /* 트랜지션 trs */
-      transition: 0.4s;
+      /* 트랜지션 trs : 바로출발, 처음만 천천히 ease-in */
+      transition: .4s ease-in;
     }
 
 
