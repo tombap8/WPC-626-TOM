@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>나의 트랜스폼 작품!</title>
+    <!-- 트랜스폼 셈플 사이트
+     https://tombap8.github.io/FED-RV-TOM-2024/002.HTML%ED%95%99%EC%8A%B5/05.Transform_PJ/index.html -->
+    <style>
+      /* 전체 배경넣기 */
+      body {
+        /* background: 색이반고윙/크; */
+        /* background: 색 이미지 반복 고정 위치/크기; */
+        /* background: url(./images/bg-main.jpg) no-repeat fixed center top/cover; */
+
+        /* 1. 이미지 */
+        background-image: url(./images/KPOP_Demon_Hunters_Banner.jpg);
+        /* 2. 반복여부 */
+        background-repeat: no-repeat;
+        /* 3. 고정 : 배경이미지 화면고정  */
+        background-attachment: fixed;
+        /* 4. 위치 : 가로(x축) 세로(y축)
+                가로값 - left(기본값), right, center, 수치값
+                세로값 - top, bottom, center(기본값), 수치값
+            */
+        background-position: center top;
+        /* 5. 크기 : 가로(width) 세로(height)
+                - 특이한 값들
+                1) contain -> 배경이미지가 모두보임(비율맞게)
+                2) cover -> 비율에 맞게 대상박스의 빈공간이 없음!
+                3) 모두 채운후 비율없이 만드는 방법 100% 100%
+            */
+        background-size: cover;
+      }
+
+      /* 1. 제목 */
+      .main-title {
+        /* 박스 셋팅 */
+        text-align: center;
+        background-color: #00000072;
+        border-radius: 50px;
+
+        /* 글자 셋팅 */
+        color: #fff;
+        font-size: 50px;
+        line-height: 100px;
+
+        /* 글자 테두리 */
+        text-shadow: 4px 0 darkgreen, -4px 0 darkgreen, 0 4px darkgreen,
+          0 -4px darkgreen;
+        /* -webkit-text-stroke: 1px red; */
+      }
+
+      /* 전체 부모박스 */
+      .main-contents {
+        /* 박스셋팅 */
+        max-width: 1500px;
+        margin: 100px auto;
+        border: 10px solid lime;
+        border-radius: 20px;
+        padding: 20px;
+
+        /* 기본적으로 박스 크기를 잡으면
+        그 크기는 컨텐트영역의 크기임.
+        보더와 패딩은 바깥쪽으로 생김
+        그래서 박스가 커짐!
+        보더, 패딩을 크기셋팅에 포함시키려면
+        box-sizing:border-box 셋팅해야함! */
+        box-sizing: border-box;
+
+        /* 겹쳐지는 부분 배경 흐리게 처리하기
+        -> 백드롭필터! 블러! */
+        backdrop-filter: blur(3px);
+        /* backdrop-filter: sepia(90%); */
+        /* backdrop-filter: invert(70%); */
+        /* backdrop-filter: hue-rotate(120deg); */
+        /* backdrop-filter: grayscale(100%); */
+      }
+      /* 부모박스 가상요소 clear셋팅(float때문에) */
+      .main-contents::after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+      /* 캐릭터 박스 공통 */
+      .main-contents > div {
+        /* 부모자격주기 (span타이틀의 부모) */
+        position: relative;
+        /* 옆으로 흐르게 */
+        float: left;
+        /* 5등분하기 */
+        width: calc(100% / 5);
+        /* 중앙정렬 tac */
+        text-align: center;
+      }
+      /* span 타이틀 */
+      .main-contents > div span {
+        position: absolute;
+        bottom: 0;
+        /* 위치값으로 크기주기! */
+        left: 0;
+        right: 0;
+
+        /* 글자셋팅 */
+        text-align: center;
+        font-weight: bold;
+        color: #fff;
+        -webkit-text-stroke: .2px #000;
+        font-size: 24px;
+
+        /* 처음에 투명 opa */
+        opacity: 0;
+
+        /* 트랜지션 trs */
+        transition: 0.3s .6s;
+      }
+
+      .main-contents > div:hover span{
+        opacity: 1;
+      }
+
+      /* 애니메이션 이동박스 : .ani-box */
+      .ani-box{
+        transition: 0.6s;
+
+      }
+
+
+
+
+
+      /* 5번째 div 이후 자식 마진탑주기 */
+      .main-contents > div:nth-child(5) ~ div {
+        /* 위쪽 마진 */
+        margin-top: 20px;
+      }
+      /* 캐릭터 이미지 공통 */
+      .main-contents > div img {
+        width: 200px;
+        height: 200px;
+        /* 원형 */
+        border-radius: 50%;
+
+        /* 트랜지션 trs */
+        transition: 0.6s;
+      }
+
+      
+
+      #transform-box1:hover .ani-box {
+        translate: 200%;
+        position: relative;
+        z-index: 1;
+      }
+
+      
+      #transform-box2:hover .ani-box {
+        translate: 100%;
+        position: relative;
+        z-index: 1;
+      }
+      #transform-box2:hover .ani-box img {
+        border-radius: 0;
+      }
+
+
+
+      
+
+    /* 인트로 등장 애니메이션 설정하기 */
+    /* animate를 배우기 전이므로 :hover를 사용! */
+    .main-contents{
+        /* 오른쪽 바깥에 나가있게 셋팅함! translate사용! */
+        translate: 110%;
+        /* 트랜지션 trs */
+        transition: .8s ease-out 1s;
+    }
+    /* 오버시 등장 */
+    body:hover .main-contents{
+        translate: 0;
+    }
+
+    /* 뒤집어 애니 박스 */
+    #transform-special {
+      position: absolute;
+      top: 35px;
+      left: 15px;
+      /* 부모는? 보이는화면! */
+    }
+    /* 이미지가 겹치게 앱솔루트 셋팅 */
+    #transform-special img{
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+    /* 1.첫번째 img자식 - 유정이 원본(돌아올때) */
+    #transform-special img:first-child{
+      /* 처음에 90도로 숨겨짐 */
+      transform: rotateY(90deg);
+      /* 트랜지션 trs : 바로출발, 처음만 천천히 ease-in */
+      transition: .4s ease-in;
+    }
+    /* 2.첫번째 img자식 - 유정이 오버시 */
+    #transform-special:hover img:first-child{
+      /* 처음에 90도로 숨겨짐 */
+      transform: rotateY(0deg);
+      /* 트랜지션 trs : 
+      보거미돌동안 0.4초 기다려 / 
+      그대로 받아서 끝에 천천히 ease-out */
+      transition: .4s ease-out .4s;
+    }
+
+    /* 3.마지막째 img자식 - 보거미 원본(돌아올때) */
+    #transform-special img:last-child{
+      /* 처음에 0도로 보임 */
+      transform: rotateY(0deg);
+      /* 트랜지션 trs : 
+      돌아올때 유정이 0.4초 기다려 / 
+      그대로 받아서 끝에 천천히 ease-out */
+      transition: .4s ease-out .4s;
+    }
+    /* 4.마지막째 img자식 - 보거미 오버시 */
+    #transform-special:hover img:last-child{
+      /* 오버시 90도로 숨겨짐 */
+      transform: rotateY(90deg);
+      /* 트랜지션 trs : 바로출발, 처음만 천천히 ease-in */
+      transition: .4s ease-in;
+    }
+
+
+
+
+    </style>
+  </head>
+  <body>
+    <!-- 1. 제목 -->
+    <h1 class="main-title">KPop Demon Hunters</h1>
+
+    <!-- 2. 뒤집어애니박스 -->
+     <div id="transform-special">
+        <img src="images/hunter_over.png" alt="캐릭터" />
+        <img src="images/hunter_orginal.png" alt="캐릭터" />
+      </div>
+
+    <!-- 3. 컨텐츠 박스 -->
+    <section class="main-contents my">
+      <div id="transform-box1">
+        <div class="ani-box">
+          <img src="images/h1.png" alt="캐릭터" />
+          <span>헌터스1</span>
+        </div>
+      </div>
+      <div id="transform-box2">
+        <div class="ani-box">
+          <img src="images/h2.png" alt="캐릭터" />
+          <span>헌터스2</span>
+        </div>
+      </div>
+      <div id="transform-box3">
+        <div class="ani-box">
+          <img src="images/h3.png" alt="캐릭터" />
+          <span>헌터스3</span>
+        </div>
+      </div>
+      <div id="transform-box4">
+        <img src="images/tiger.png" alt="캐릭터" />
+      </div>
+      <div id="transform-box5">
+        <img src="images/m1.png" alt="캐릭터" />
+      </div>
+      <div id="transform-box6">
+        <img src="images/tiger2.png" alt="캐릭터" />
+      </div>
+      <div id="transform-box7">
+        <img src="images/m2.png" alt="캐릭터" />
+      </div>
+      <div id="transform-box8">
+        <img src="images/tiger3.png" alt="캐릭터" />
+      </div>
+      <div id="transform-box9">
+        <img src="images/m3.png" alt="캐릭터" />
+      </div>
+      <div id="transform-box10">
+        <img src="images/tiger4.png" alt="캐릭터" />
+      </div>
+    </section>
+  </body>
+</html>
