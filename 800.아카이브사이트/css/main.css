@@ -150,7 +150,8 @@ a.my-cha-link {
 .sub-part-title::before{
   content: '';
   display: block;
-  /* 하단마진28px */
+  /* 하단마진28px
+  margin: 위 양쪽 아래 */
   margin: 0 auto 28px;
 
   max-width: 865px;
@@ -159,5 +160,24 @@ a.my-cha-link {
 }
 
 /********** 2-2-2.링크박스 **********/
+.link-box{
+  /* 가로크기는 레이아웃은 아니지만
+  12그리드 크기를 기준해서 준다! */
+  width: calc(100%/12*10);
+  /* 마영오! - 블록요소 가로중앙 */
+  margin: 0 auto;
+  /* 둥근모서리 20 : bdrs20 */
+  border-radius: 20px;
+  /* 배경색 흰색 반투명(80%)
+  rgba형식에서 a는 알파값으로 투명도이며 0.8이면
+  80%를 의미함!
+    예전형식:
+    rgba(숫자,숫자,숫자,알파값)
+    새로운형식:
+    rgba(숫자 숫자 숫자 / 알파값)
+  */
+  /* background-color: rgba(255, 255, 255, 0.8); */
+  background-color: rgba(255 255 255 / 0.8);
+}
 /* 왼쪽박스 */
 /* 오른쪽박스 */
