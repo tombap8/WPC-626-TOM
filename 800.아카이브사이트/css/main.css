@@ -231,7 +231,7 @@ core.css의 clb클래스로 처리함! */
   line-height: 37px;
 }
 /* 가상요소로 애니메이션 밑줄만들기 */
-.link-box a::after{
+.link-box a::before{
   content: '';
   display: block;
   /* 처음에 가로크기0 (돌아올때) */
@@ -239,13 +239,14 @@ core.css의 clb클래스로 처리함! */
   /* 마진값으로 돌아올때 오른쪽으로 나가는것 처럼 보이기 */
   margin-left: 100%;
   /* 마진값의 %는 부모박스(a요소)의 가로크기다! */
-  height: 2px;
-  background-color: red;
+  height: 15px;
+  /* background-color: red; */
+  border-bottom: 2px solid #000;
   /* 트랜지션 trs */
   transition: 0.3s linear;
 }
 /* a에 오버시 가상요소 밑줄 글씨만큼 늘어나기! */
-.link-box a:hover::after{
+.link-box a:hover::before{
   width: 100%;
   /* 왼쪽마진값은 오버시 0이 되여야하고
   애니메이션 처리하지 말아야함! 따라서
