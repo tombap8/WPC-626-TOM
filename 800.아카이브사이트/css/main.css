@@ -165,6 +165,7 @@ a.my-cha-link {
   color: #222;
   font-size: 30px;
   text-align: center;
+  padding-bottom: 20px;
   border-bottom: 1px solid #000;
 }
 
@@ -251,7 +252,7 @@ core.css의 clb클래스로 처리함! */
   /* background-color: red; */
   border-bottom: 2px solid #000;
   /* 트랜지션 trs */
-  transition: 1.5s linear;
+  transition: .8s linear;
 
   /* gif애니메이션 이미지 배경으로 넣기 */
   background: url(../images/train.gif) no-repeat right/auto 100%;
@@ -267,5 +268,5 @@ core.css의 clb클래스로 처리함! */
   애니메이션 처리하지 말아야함! 따라서
   transition 속성값을 width로 써서 처리한다! */
   margin-left: 0;
-  transition: width 1.5s linear;
+  transition: width .8s linear;
 }
