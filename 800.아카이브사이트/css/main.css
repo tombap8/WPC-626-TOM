@@ -186,6 +186,9 @@ a.my-cha-link {
   float: left;
   /* 절반 크기셋팅 */
   width: 50%;
+  /* 최소높이값 설정 */
+  min-height: 540px;
+
   /* 패딩
   ->값을 %로 잡을 경우 기준은 부모박스의 width다! 
   (이 기준은 margin도 동일함!) */
@@ -200,4 +203,20 @@ core.css의 clb클래스로 처리함! */
 
 
 /* 왼쪽박스 */
+.left-part{
+  /* 부모자격 - 가상요소 after 앱솔루트자식의 부모 */
+  position: relative;
+}
+/* 가상요소 중앙구분선 넣기! */
+.left-part::after{
+  content: '';
+  position: absolute;
+  /* 앱솔루트는 자동block! */
+  top: 15%;
+  right: 0;
+  /* 부모는? .left-part */
+  width: 1px;
+  height: 70%;
+  background-color: gray;
+}
 /* 오른쪽박스 */
