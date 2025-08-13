@@ -219,4 +219,24 @@ core.css의 clb클래스로 처리함! */
   height: 70%;
   background-color: gray;
 }
-/* 오른쪽박스 */
+/* 링크박스 a요소 */
+.link-box a{
+  /* 가상요소 자식이 block이므로 최소한 
+  display를 inline-block로 해야 자신의 크기만큼
+  크기를 가지게 된다! 왜? inline내부의 block은
+  inline부모를 무시하고 바깥박스를 기준하여
+  끝까지 width를 차지한다! */
+  display: inline-block;
+  font-size: 24px;
+  line-height: 37px;
+}
+/* 가상요소로 애니메이션 밑줄만들기 */
+.link-box a::after{
+  content: '';
+  display: block;
+  /* 처음에 가로크기0 */
+  width: 0;
+  height: 2px;
+  background-color: red;
+}
+/* a에 오버시 가상요소 밑줄 글씨만큼 늘어나기! */
