@@ -130,3 +130,32 @@ a.my-cha-link {
     비율 맞춰서 빈틈없이 보이게 하기! */
   object-fit: cover;
 }
+
+/********** 2-2. 트레이닝 프로젝트 파트 **********/
+/* 공통 PJ박스 직계 속박스 div */
+.pj-box > div {
+  padding-top: 18px;
+}
+/********** 2-2-1.제목박스 **********/
+.sub-part-title{
+  /* 박스설정 */
+  padding: 28px 0;
+  text-align: center;
+
+  /* 글자설정 */
+  font-size: 36px;
+}
+
+/* 구분선은 타이틀박스의 가상요소로 구현함 */
+.sub-part-title::before{
+  content: '';
+  display: block;
+  margin: 0 auto;
+  max-width: 865px;
+  height: 1px;
+  background-color: #ccc;
+}
+
+/********** 2-2-2.링크박스 **********/
+/* 왼쪽박스 */
+/* 오른쪽박스 */
