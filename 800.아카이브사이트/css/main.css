@@ -239,11 +239,18 @@ core.css의 clb클래스로 처리함! */
   /* 마진값으로 돌아올때 오른쪽으로 나가는것 처럼 보이기 */
   margin-left: 100%;
   /* 마진값의 %는 부모박스(a요소)의 가로크기다! */
-  height: 15px;
+  height: 30px;
   /* background-color: red; */
   border-bottom: 2px solid #000;
   /* 트랜지션 trs */
-  transition: 0.3s linear;
+  transition: 1.5s linear;
+
+  /* gif애니메이션 이미지 배경으로 넣기 */
+  background: url(../images/train.gif) no-repeat right/auto 100%;
+  /* 이미지 x축 뒤집기(scale값을 -1줌)
+  -> transform: scaleX(-1) 
+  참고) Y축 뒤집기는 transform: scaleY(-1) */
+  transform: scaleX(-1);
 }
 /* a에 오버시 가상요소 밑줄 글씨만큼 늘어나기! */
 .link-box a:hover::before{
@@ -252,5 +259,5 @@ core.css의 clb클래스로 처리함! */
   애니메이션 처리하지 말아야함! 따라서
   transition 속성값을 width로 써서 처리한다! */
   margin-left: 0;
-  transition: width 0.3s linear;
+  transition: width 1.5s linear;
 }
