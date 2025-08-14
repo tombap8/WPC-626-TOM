@@ -191,13 +191,20 @@
         border: 10px dotted darkblue;
       }
 
-      /* span 을 앱솔루트로 만들경우! */
-      .spabs {
-        /* 포지션 앱솔루트 poa */
-        position: absolute;
-        bottom: 0;
+      /* span 을 픽스드로 만들경우! */
+      .span-fixed {
+        /* 포지션 픽스드 pof */
+        position: fixed;
+        bottom: 50%;
         right: 0;
-        /* 나의 부모는? .s8 */
+        /* 나의 부모는? 보이는화면(빛이나오는화면) */
+        z-index: 1;
+
+        font-size: 40px;
+        font-weight: bold;
+        color: #fff;
+        padding: 20px;
+        background-color: magenta;
 
         /* 아웃라인 ol */
         outline: 4px dotted darkmagenta;
@@ -346,8 +353,8 @@
 
             <div class="abs a4" title="나는 부모찾아 올라간다!">a4</div>
 
-            <span class="spabs" title="자동블록전환!">
-              나는 span앱솔루트다!
+            <span class="span-fixed" title="자동블록전환!">
+              나는 span 픽스드다!
             </span>
           </div>
         </div>
