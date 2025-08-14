@@ -96,7 +96,6 @@
         background: url(./images/ab5.jpg) no-repeat center/cover;
       }
 
-      
       /* 두번째 픽스드 박스 */
       #f2 {
         position: fixed;
@@ -122,7 +121,6 @@
         left: 0;
         width: 100%;
         z-index: 9999;
-
 
         text-align: center;
         margin: 0;
@@ -214,17 +212,30 @@
       .poster-fixed {
         position: fixed;
         top: 20%;
-        right: 10%;
+        right: 0;
         /* 부모는? 픽스드 보이는화면! */
+
+        /* 오른쪽에 박스를 붙여놓고 translate로
+        내크기만큼 오른쪽방향(x축)으로 이동! */
+        translate: 100%;
 
         /* 맨위로! */
         z-index: 9999999;
 
         /* 보더 */
         border: 10px ridge goldenrod;
+
+        /* 트랜지션 trs */
+        transition: 0.4s ease-out;
       }
+
+      /* 포스터박스 오버시 translate로 보이기 */
+      .poster-fixed:hover {
+        translate: 0;
+      }
+
       /* 포스터보기 타이틀 */
-      .poster-fixed h3{
+      .poster-fixed h3 {
         /* 앱솔루트 포지션 */
         position: absolute;
         /* 위치값 사용시 부모는? .poster-fixed */
@@ -285,13 +296,13 @@
         /* 트랜지션 trs */
         transition: 0.3s;
       }
-      /* 싸고있는 박스에 마우스 오버시 투명도1 */      
+      /* 싸고있는 박스에 마우스 오버시 투명도1 */
       .absolute-images:hover img:last-child {
         opacity: 1;
       }
 
       /* 앱솔루트 위치값으로 크기만들기 */
-      .car-box{
+      .car-box {
         position: absolute;
         /* 맨위 왼쪽에 위치 */
         top: 0;
@@ -307,14 +318,14 @@
       }
 
       /* 자동차 이미지 */
-      .car-box img{
+      .car-box img {
         width: 100%;
         /* 이미지는 한쪽 크기만 주면
         나머지 방향크기는 자동비율유지함! */
       }
 
       /* 자동차 앱솔루트 타이틀박스 */
-      .car-box h3{
+      .car-box h3 {
         position: absolute;
         /* 위치값으로 부모가로크기를 채우게함!
         동적크기 생성! */
@@ -355,7 +366,7 @@
     <div class="poster-fixed" title="픽스드로 포스터 미리보기">
       <img src="./images/ab0.jpg" alt="포스터" />
       <!-- 포스터보기 타이틀 박스 -->
-       <h3>포스터보기</h3>
+      <h3>포스터보기</h3>
     </div>
 
     <!-- 앱솔루트끼리는 서로 겹친다! -->
@@ -365,11 +376,11 @@
     </div>
 
     <!-- 앱솔루트 위치값으로 크기만들기 -->
-     <div class="car-box">
-      <img src="./images/car.png" alt="자동차">
+    <div class="car-box">
+      <img src="./images/car.png" alt="자동차" />
       <!-- 위치값으로 크기만들 타이틀박스 -->
-       <h3>😎레드 스포츠카!!!🚗</h3>
-     </div>
+      <h3>😎레드 스포츠카!!!🚗</h3>
+    </div>
 
     <!-- 부모를 찾는 앱솔루트! -->
     <div class="bx2 s5">
