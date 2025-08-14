@@ -217,13 +217,24 @@
         right: 10%;
         /* 부모는? 픽스드 보이는화면! */
 
-        /* 아웃라인 */
-        outline: 10px ridge goldenrod;
+        /* 보더 */
+        border: 10px ridge goldenrod;
+      }
+      /* 포스터보기 타이틀 */
+      .poster-fixed h3{
+        /* 앱솔루트 포지션 */
+        position: absolute;
+        /* 위치값 사용시 부모는? .poster-fixed */
+        top: 0;
+        right: 100%;
+
+        /* 기본마진 없앰 */
+        margin: 0;
       }
 
       /* 이미지가 박스에 단독으로 들어갈 경우
       하단에 생기는 공백 없애기 */
-      .a5 img {
+      .poster-fixed img {
         vertical-align: middle;
         /* 인라인요소가 세로정렬 속성인 vertical-align의
         값을 top/middle/bottom 중 어떤값을 사용해도
@@ -319,9 +330,11 @@
     <!-- 두번째 앱솔루트 박스 -->
     <div class="bx" id="a2">a2</div>
 
-    <!-- 앱솔루트 판타롱스타킹~~! -->
-    <div class="a5" title="앱솔루트 판타롱스타킹~~!">
+    <!-- 픽스드로 포스터 미리보기 -->
+    <div class="poster-fixed" title="픽스드로 포스터 미리보기">
       <img src="./images/ab0.jpg" alt="포스터" />
+      <!-- 포스터보기 타이틀 박스 -->
+       <h3>포스터보기</h3>
     </div>
 
     <!-- 앱솔루트끼리는 서로 겹친다! -->
