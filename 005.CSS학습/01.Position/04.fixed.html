@@ -195,7 +195,7 @@
       .span-fixed {
         /* 포지션 픽스드 pof */
         position: fixed;
-        bottom: 50%;
+        bottom: 35%;
         right: 0;
         /* 나의 부모는? 보이는화면(빛이나오는화면) */
         z-index: 1;
@@ -210,14 +210,12 @@
         outline: 4px dotted darkmagenta;
       }
 
-      /* 앱솔루트 판타롱스타킹~~!
-      -> 앱솔루트 박스에 width,height를 주지 않아도
-      내용물 만큼 자동으로 크기가 생성된다! */
-      .a5 {
-        position: absolute;
+      /* 포스터 미리보기 : 픽스드 포지션 이용!!! */
+      .poster-fixed {
+        position: fixed;
         top: 20%;
         right: 10%;
-        /* 부모는? 보이는화면! */
+        /* 부모는? 픽스드 보이는화면! */
 
         /* 아웃라인 */
         outline: 10px ridge goldenrod;
