@@ -58,8 +58,8 @@
 .marge{
     position: absolute;
     bottom: -211px;
-    right: -231px;
+    right: -300px;/* -231px; */
     width: 424px;
     transform-origin: bottom;
-    rotate: -18deg;
+    rotate: 0deg;/* -18deg; */
 }
