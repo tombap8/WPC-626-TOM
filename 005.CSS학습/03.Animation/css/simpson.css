@@ -14,6 +14,14 @@
 
     /* 배경이미지 */
     background: url(../images/house.png) no-repeat;
+
+    /* 문짝(.door)을 원근 입체로 보이게 하기위해
+    부모요소인 .house에 원근 설정을 한다!
+        perspective: 수치값;
+        -> 수치값의 의미는 기준축으로 부터 소실점까지의 거리!
+        -> 이 값이 어떤 기준수치값 보다 작으면 원근이 커진다!
+    */
+    perspective: 480px;
 }
 
 /* 임시로 숨기기 */
@@ -36,4 +44,9 @@
     top: 286px;
     left: 350px;
     /* 부모는? .house */
+
+    /* 문 회전축 오른쪽끝으로 변경 */
+    transform-origin: right;
+    /* 문 y축회전 테스트 */
+    /* rotate: y 130deg; */
 }
