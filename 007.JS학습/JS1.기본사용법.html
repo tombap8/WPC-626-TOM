@@ -2,13 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
-    <title>
-      JS1. 자바스크립트 기본 + DOM선택법
-    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS1. 자바스크립트 기본 + DOM선택법</title>
 
     <style>
       html,
@@ -22,10 +17,50 @@
         overflow: hidden;
       }
 
+      .pbox {
+        position: absolute;
+        top: 0;
+        left: 0;
+        /* 부모는? window(보이는화면) */
+        margin: 0;
+        padding: 0;
+
+        width: 500px;
+        height: 500px;
+        padding-top: 200px;
+
+        /* 글자 */
+        line-height: 50px;
+        font-size: 30px;
+        text-align: center;
+        /* 줄바꿈방지 */
+        white-space: nowrap;
+
+        border: 4px solid purple;
+        /* 보더박스:보더,패딩포함 */
+        box-sizing: border-box;
+      }
     </style>
   </head>
   <body>
     <!-- 드라마 소개박스 -->
-     
+    <p 
+    class="pbox" 
+    title="클릭하시면 김비서가 나옵니다!"
+    onclick="
+    // 이 구역은 JS코드구역임!
+    // 여기는 JS문법만 적용됨!
+    // JS한줄주석
+    // 경고창 띄우기
+    alert('김비서! 어서나와!!!');
+    // JS는 전체 HTML의 지도를 가지고 있음
+    // 그 지도명은 document다!
+    document.getElementById('name').innerHTML='ㅎㅎ';
+    
+    "
+    >
+      나는 요즘 매일 생각한다! <br />
+      도대체 <span id="name"></span>
+    </p>
   </body>
 </html>
