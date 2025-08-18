@@ -24,7 +24,9 @@
 /* 1. 심슨 */
 .simpson{
     position: absolute;
-    top: 0;
-    left: 0;
-    /* 부모는?  */
+    top: 10px;
+    left: 10px;
+    /* 부모는? .house */
+
+    width: 200px;
 }
