@@ -55,14 +55,14 @@
     left: 351px;
     width: 31px;
   }
-  20% {
+  5% {
     top: 307px;
     left: 356px;
     width: 33px;
     /* 문짝보다위 */
     z-index: 1;
   }
-  40% {
+  10% {
     top: 313px;
     left: 376px;
     width: 39px;
@@ -70,7 +70,7 @@
     /* 문짝보다위 */
     z-index: 1;
   }
-  60% {
+  20% {
     top: 322px;
     left: 385px;
     width: 48px;
@@ -78,7 +78,7 @@
     /* 문짝보다위 */
     z-index: 1;
   }
-  70% {    
+  40% {    
     top: 336px;
     left: 368px;
     width: 58px;
@@ -86,7 +86,7 @@
     /* 문짝보다위 */
     z-index: 1;
   }
-  80% {    
+  60% {    
     top: 338px;
     left: 357px;
     width: 76px;
@@ -94,7 +94,7 @@
     /* 문짝보다위 */
     z-index: 1;
   }
-  90% {    
+  70% {    
     top: 343px;
     left: 333px;
     width: 101px;
@@ -102,7 +102,7 @@
     /* 문짝보다위 */
     z-index: 1;
   }
-  95% {   
+  80% {   
     top: 319px;
     left: 310px;
     width: 130px;
@@ -111,9 +111,9 @@
     z-index: 1;
   }
   100% {   
-    top: 261px;
-    left: 289px;
-    width: 180px;
+    top: 155px;
+    left: 223px;
+    width: 351px;
     rotate: 0deg;
     /* 문짝보다위 */
     z-index: 1;

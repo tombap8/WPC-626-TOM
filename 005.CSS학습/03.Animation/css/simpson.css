@@ -22,10 +22,13 @@
         -> 이 값이 어떤 기준수치값 보다 작으면 원근이 커진다!
     */
     perspective: 480px;
+
+    /* 넘치는 자식요소 숨기기 */
+    overflow: hidden;
 }
 
 /* 임시로 숨기기 */
-.door ~ * {
+.marge ~ * {
     display: none;
 }
 
@@ -49,4 +52,14 @@
     transform-origin: right;
     /* 문 y축회전 테스트 */
     /* rotate: y 130deg; */
+}
+
+/* 3. 마지심슨 */
+.marge{
+    position: absolute;
+    bottom: -211px;
+    right: -231px;
+    width: 424px;
+    transform-origin: bottom;
+    rotate: -18deg;
 }
