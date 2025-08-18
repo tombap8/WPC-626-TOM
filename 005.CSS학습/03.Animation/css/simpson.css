@@ -24,9 +24,16 @@
 /* 1. 심슨 */
 .simpson{
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 305px;
+    left: 351px;
     /* 부모는? .house */
+    width: 31px;
+}
 
-    width: 200px;
+/* 2. 문짝 */
+.door{
+    position: absolute;
+    top: 286px;
+    left: 350px;
+    /* 부모는? .house */
 }

@@ -1,3 +1,18 @@
 @charset "utf-8";
 
 /* 심슨 가족 애니메이션 코드 : simpson_ani.css */
+
+/* 
+    [ 트랜스폼 사용법 ]
+    ((y축회전))
+    transform: rotateY(각도deg)
+    -> 같은셋팅 
+    rotate: y 각도deg
+*/
+
+/* 1. 문열기 애니 키프레임 */
+@keyframes door-ani {
+    0%{
+        rotate: y 0deg;
+    }
+}
