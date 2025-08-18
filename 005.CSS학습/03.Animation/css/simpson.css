@@ -28,7 +28,7 @@
 }
 
 /* 임시로 숨기기 */
-.marge ~ * {
+.lisa ~ * {
     display: none;
 }
 
@@ -62,4 +62,12 @@
     width: 424px;
     transform-origin: bottom;
     rotate: 0deg;/* -18deg; */
+}
+/* 4. 리사심슨 */
+.lisa{
+    position: absolute;
+    top: 113px;
+    left: -236px;/* -37px; */
+    width: 173px;
+    rotate: 90deg;
 }
