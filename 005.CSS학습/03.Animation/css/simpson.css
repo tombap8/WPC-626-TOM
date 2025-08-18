@@ -2,3 +2,29 @@
 /* 심슨 가족 인사 애니메이션 CSS - simpson.css */
 
 @import url('https://fonts.googleapis.com/css2?family=Black+And+White+Picture&display=swap');
+
+/* 전체박스 */
+.house{
+    position: relative;
+    /* 부모자격 - 하위 앱솔루트 요소들 */
+    width: 800px;
+    height: 441px;
+
+    margin: 0 auto;
+
+    /* 배경이미지 */
+    background: url(../images/house.png) no-repeat;
+}
+
+/* 임시로 숨기기 */
+.door ~ * {
+    display: none;
+}
+
+/* 1. 심슨 */
+.simpson{
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* 부모는?  */
+}
