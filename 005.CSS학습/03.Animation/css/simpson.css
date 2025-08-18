@@ -41,8 +41,8 @@
 /* 2. 문짝 */
 .door{
     position: absolute;
-    top: 286px;
-    left: 350px;
+    top: 284px;
+    left: 356px;
     /* 부모는? .house */
 
     /* 문 회전축 오른쪽끝으로 변경 */

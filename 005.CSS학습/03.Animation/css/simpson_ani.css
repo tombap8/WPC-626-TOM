@@ -13,7 +13,17 @@
 /* 1-1. 문짝에 애니메이션 호출적용! */
 .door{
     /* 애니메이션 - animation:이시이지반방마 */
-    animation: door-ani 2s ease-in-out 1s;
+    animation: door-ani 2s ease-in-out 4s;
+
+    /* animation: door-ani 1s ease-in-out 1s 3 alternate forwards; */
+    /* 
+        alternate는 from->to 경로 애니를
+        반대방향도 진행해주는 옵션값임
+
+        forwards는 애니가 끝나면 처음값으로
+        돌아가는 기본값(backwards)이 아닌
+        끝나는 값으로 유지하게 하는 옵션값임
+    */
 }
 /* 1-2. 문열기 애니 키프레임 */
 @keyframes door-ani {
