@@ -182,7 +182,11 @@
 /* 6-1. 바트심슨 애니메이션 설정하기 */
 .bart {
   /* 애니메이션 - animation: 이시이지반방마 */
-  animation: bart-ani .7s ease-out 7s forwards;
+  animation: 
+  /* 바트등장 */
+  bart-ani .7s ease-out 7s forwards,
+  /* 바트떨어짐 */
+  bart-falling-ani .5s ease-in 12s forwards;
 }
 /* 6-2-1. 바트심슨 키프레임 : 등장 애니 */
 @keyframes bart-ani {
