@@ -77,6 +77,9 @@
     font:스두크/줄체->크체 필수! */
     font: 20px/1.7 Verdana;
 
+    /* 처음에 투명하게 처리 op0 */
+    opacity: 0;
+
 }
 /* 말풍선 삼각형 가상요소로 만들기 */
 .words::before{
@@ -86,9 +89,9 @@
     right: 0;
 
     /* 트랜스폼으로 위치이동 및 회전 */
-    translate: -50px -10px;
+    translate: -51px 31px;
     /* translate: x축이동 y축이동 */
-    rotate: -15deg;
+    rotate: -22deg;
     /* rotate: 각도deg */
 
     /* 보더로 삼각형모양 만들기
@@ -97,7 +100,30 @@
     -> 양쪽보더는 동일하고 투명색설정 */
     width: 0;
     height: 0;
-    border-top: 20px solid red;
+    border-top: 42px solid #738aff;
+    border-right: 20px solid transparent;
+    border-left: 20px solid transparent;
+}
+/* 삼각형 안쪽 흰색처리 */
+.words::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    /* 트랜스폼으로 위치이동 및 회전 */
+    translate: -59px 11px;
+    /* translate: x축이동 y축이동 */
+    rotate: -22deg;
+    /* rotate: 각도deg */
+
+    /* 보더로 삼각형모양 만들기
+    -> 가로,세로는 모두 0
+    -> 위또는 아래 보더 주기
+    -> 양쪽보더는 동일하고 투명색설정 */
+    width: 0;
+    height: 0;
+    border-top: 49px solid white;
     border-right: 20px solid transparent;
     border-left: 20px solid transparent;
 }
