@@ -204,5 +204,10 @@
 /* 6-2-3. 바트심슨 키프레임 : 다시올라오는 애니 */
 @keyframes bart-up-ani {
   to {
+    top: 306px;
+    right: 118px;
+    z-index: 1;
+    rotate: 0deg;
+    scale: 1.3;
   }
 }
