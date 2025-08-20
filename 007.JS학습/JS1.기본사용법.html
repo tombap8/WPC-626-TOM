@@ -47,7 +47,14 @@
     <p 
     class="pbox" 
     title="클릭하시면 김비서가 나옵니다!"
+    
     onclick="
+    // onclick 이벤트속성은 JS와 연결되는
+    // 기본속성이다!
+    // 이벤트 속성 이름은 아래와 같이 구성된다!
+    // -> on+이벤트명 예) onclick, onmouseover,...
+    // 이벤트 속성은 모든 html요소에 줄 수 있다!
+
     // 이 구역은 JS코드구역임!
     // 여기는 JS문법만 적용됨!
     // JS한줄주석
@@ -55,12 +62,28 @@
     alert('김비서! 어서나와!!!');
     // JS는 전체 HTML의 지도를 가지고 있음
     // 그 지도명은 document다!
-    document.getElementById('name').innerHTML='ㅎㅎ';
+    document
+    // 가져온 요소들 중 id명으로된 요소를 선택한다!
+    // -> getElementById(아이디명)
+    // document하위 요소선택시 점(.)을 찍는다!
+    // -> get 가져와! Element 요소를! By Id 아이디로!
+    .getElementById('name')
+    // 하위로 내려갈때 점(.)
+    // innerHTML = 코드
+    // JS 에서 이퀄은 이퀄 오른쪽의 값이 이퀄 왼쪽으로
+    // 들어감을 의미한다!
+    // innerHTML은
+    // inner 안쪽에 HTML 태그를 넣는속성
+    // 오른쪽값을 감싸줄때 백틱(`)으로 싸고
+    // 내부 속성값은 홑따옴표를 사용하여 
+    // 가장 바깥쪽의 쌍따옴표와 충돌을 막는다!
+    .innerHTML=`<img src='./images/kim.png' alt='김비서가 왜그럴까?'></p>`;
     
     "
     >
       나는 요즘 매일 생각한다! <br />
       도대체 <span id="name"></span>
+      
     </p>
   </body>
 </html>
