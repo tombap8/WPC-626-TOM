@@ -28,9 +28,9 @@
 }
 
 /* 임시로 숨기기 */
-.maggie ~ * {
+/* .maggie ~ * {
     display: none;
-}
+} */
 
 /* 1. 심슨 */
 .simpson{
@@ -152,4 +152,14 @@
     bottom: -230px;/* -55px; */
     left: 77px;
     width: 165px;
+}
+/* 6. 바트심슨 */
+.bart{
+    position: absolute;
+    top: -100px;
+    right: 10px;
+    width: 165px;
+
+    /* 거꾸로 돌리기 */
+    rotate: 180deg;
 }
