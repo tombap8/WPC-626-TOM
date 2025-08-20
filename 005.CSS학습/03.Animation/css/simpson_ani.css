@@ -193,6 +193,8 @@
 /* 6-2-2. 바트심슨 키프레임 : 떨어지는 애니 */
 @keyframes bart-falling-ani {
   to {
+    top: 458px;
+    rotate: -36deg;
   }
 }
 /* 6-2-3. 바트심슨 키프레임 : 다시올라오는 애니 */
