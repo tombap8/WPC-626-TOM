@@ -163,8 +163,12 @@
 .maggie {
   /* 애니메이션 - animation: 이시이지반방마 */
   animation: 
-    /* 등장애니 */ maggie-ani 0.8s ease-out 6.5s forwards,
-    /* 업다운애니 */ maggie-updown-ani 0.5s ease-in-out 7.3s infinite alternate;
+    /* 등장애니 */ 
+    maggie-ani 0.8s ease-out 6.5s forwards,
+    /* 업다운애니 */ 
+    maggie-updown-ani 0.5s ease-in-out 7.3s infinite alternate,
+    /* 왔다갔다애니 */ 
+    maggie-comego-ani 8s ease-in-out 17s infinite alternate;
 }
 /* 5-2-1. 메기심슨 애니 키프레임 : 등장애니 */
 @keyframes maggie-ani {
@@ -176,6 +180,12 @@
 @keyframes maggie-updown-ani {
   to {
     translate: 0 5%;
+  }
+}
+/* 5-2-3. 메기심슨 애니 키프레임 : 왔다갔다 애니 */
+@keyframes maggie-comego-ani {
+  to {
+    left: 633px;
   }
 }
 
