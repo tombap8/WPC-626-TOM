@@ -186,7 +186,9 @@
   /* 바트등장 */
   bart-ani .7s ease-out 7s forwards,
   /* 바트떨어짐 */
-  bart-falling-ani .5s ease-in 12s forwards;
+  bart-falling-ani .5s ease-in 12s forwards,
+  /* 바트올라옴 */
+  bart-up-ani 1s ease-in 17s forwards;
 }
 /* 6-2-1. 바트심슨 키프레임 : 등장 애니 */
 @keyframes bart-ani {
