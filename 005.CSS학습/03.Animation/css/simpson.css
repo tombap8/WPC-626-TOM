@@ -79,7 +79,28 @@
 
 }
 /* 말풍선 삼각형 가상요소로 만들기 */
+.words::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
 
+    /* 트랜스폼으로 위치이동 및 회전 */
+    translate: -50px -10px;
+    /* translate: x축이동 y축이동 */
+    rotate: -15deg;
+    /* rotate: 각도deg */
+
+    /* 보더로 삼각형모양 만들기
+    -> 가로,세로는 모두 0
+    -> 위또는 아래 보더 주기
+    -> 양쪽보더는 동일하고 투명색설정 */
+    width: 0;
+    height: 0;
+    border-top: 20px solid red;
+    border-right: 20px solid transparent;
+    border-left: 20px solid transparent;
+}
 
 /* 3. 마지심슨 */
 .marge{
