@@ -54,6 +54,27 @@
     /* rotate: y 130deg; */
 }
 
+/* 말풍선 */
+.words {
+    /* 앱솔루트 poa */
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    /* 부모는? .house */
+
+    /* 박스설정 */
+    background-color: #fff;
+    padding: 35px;
+    border-radius: 50%;
+    border: 10px solid #738aff;
+    text-align: center;
+
+    /* 글자설정 
+    font:스두크/줄체->크체 필수! */
+    font: 20px/1.7 Verdana;
+
+}
+
 /* 3. 마지심슨 */
 .marge{
     position: absolute;
