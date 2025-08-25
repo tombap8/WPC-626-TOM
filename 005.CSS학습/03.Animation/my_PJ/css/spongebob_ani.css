@@ -42,13 +42,13 @@
 }
 
 /* 2-1.스폰지밥 애니호출 설정 */
-.simpson {
+.spongebob {
   /* 애니메이션 - animation: 이시이지반방마 */
-  animation: simpson-ani 5s 0.5s forwards;
+  animation: spongebob-ani 5s 0.5s forwards;
 }
 
 /* 2-2. 스폰지밥 걸어나오기 키프레임 */
-@keyframes simpson-ani {
+@keyframes spongebob-ani {
   0% {
     top: 305px;
     left: 381px;
@@ -131,13 +131,13 @@
   }
 }
 
-/* 3-1. 마지스폰지밥 애니메이션 호출설정 */
-.marge {
+/* 3-1. 징징이 애니메이션 호출설정 */
+.gingging {
   /* 애니메이션 - animation: 이시이지반방마 */
-  animation: marge-ani 0.8s ease-out 5.5s forwards;
+  animation: gingging-ani 0.8s ease-out 5.5s forwards;
 }
-/* 3-2. 마지스폰지밥 애니 키프레임 */
-@keyframes marge-ani {
+/* 3-2. 징징이 애니 키프레임 */
+@keyframes gingging-ani {
   /* from 혹은 0% 설정이 원본셋팅과 같다면
     생략할 수 있다! */
   /* to 혹은 100% 셋팅만 설정 */

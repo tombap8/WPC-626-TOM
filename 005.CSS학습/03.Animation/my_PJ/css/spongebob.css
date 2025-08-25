@@ -1,5 +1,5 @@
 @charset "utf-8";
-/* 심슨 가족 인사 애니메이션 CSS - simpson.css */
+/* 심슨 가족 인사 애니메이션 CSS - spongebob.css */
 
 @import url('https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap');
 
@@ -25,6 +25,7 @@ body{
     color: aquamarine;
     white-space: nowrap;
     font-weight: normal;
+    margin: 0;
 
     -webkit-text-stroke: 2px salmon;
 }
@@ -63,7 +64,7 @@ body{
 } */
 
 /* 1. 스폰지밥 */
-.simpson{
+.spongebob{
     position: absolute;
     top: 305px;
     left: 381px;
@@ -161,8 +162,8 @@ body{
     border-left: 20px solid transparent;
 }
 
-/* 3. 마지심슨 */
-.marge{
+/* 3. 징징이 */
+.gingging{
     position: absolute;
     bottom: -211px;
     right: -300px;/* -231px; */
