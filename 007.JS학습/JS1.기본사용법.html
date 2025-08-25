@@ -79,7 +79,7 @@
       /* 키프레임 - 회전하는 키프레임 */
       @keyframes 돌아애니 {
         to{
-          rotate: 1trun;
+          rotate: 1turn;
           /* rotate: 360deg; */
         }
       }
@@ -197,6 +197,9 @@
   ///////////////////////////
  </script>
 
+ <!-- 외부JS파일 불러오기 : 익스터널 방식 JS
+  외부JS파일의 확장자는 .js다! -->
+<script src="./js/JS1.기본사용법.js"></script>
   </head>
   <body>
     <!-- 드라마 소개박스 -->
@@ -269,7 +272,7 @@
 
     <!-- 원모양박스 -->
     <div class="박스야">
-      <div class="원이야"></div>
+      <div class="원이야" onclick="돌아랏()"></div>
       <div class="원이야"></div>
       <div class="원이야"></div>
     </div>
