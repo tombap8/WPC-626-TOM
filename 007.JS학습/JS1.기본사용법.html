@@ -69,6 +69,20 @@
         background-image: url(./images/apt3.jpg);
         background-position: center;
       }
+
+      /* 원이야 클래스에 돌아 클래스를 넣으면 돌게한다! */
+      .원이야.돌아{
+        /* 애니메이션 - animation:이시이지반방마 */
+        animation: 돌아애니 2s linear infinite;
+      }
+
+      /* 키프레임 - 회전하는 키프레임 */
+      @keyframes 돌아애니 {
+        to{
+          rotate: 1trun;
+          /* rotate: 360deg; */
+        }
+      }
     </style>
 
 <!-- 자바스크립트 코딩구역! -->
