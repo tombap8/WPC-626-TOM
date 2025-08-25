@@ -40,6 +40,35 @@
         /* 보더박스:보더,패딩포함 */
         box-sizing: border-box;
       }
+
+      /* 원모양 박스 만들기 */
+      .원이야{
+        position: absolute;
+        top: 0;
+        right: 0;
+        /* 부모는? 보이는 상단화면 */
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        /* 배경공통 */
+        background-repeat: no-repeat;
+        background-size: cover;
+        /* 보더박스 */
+        box-sizing: border-box;
+      }
+      /* 원모양 개별셋팅 */
+      .원이야:nth-child(1){
+        right: 400px;
+        background-image: url(./images/apt1.jpg);
+      }
+      .원이야:nth-child(2){
+        right: 200px;
+        background-image: url(./images/apt2.jpg);
+      }
+      .원이야:nth-child(3){
+        background-image: url(./images/apt3.jpg);
+        background-position: center;
+      }
     </style>
 
 <!-- 자바스크립트 코딩구역! -->
@@ -48,7 +77,11 @@
 
   // 함수 만들기 ////////
   // 함수형식 -> function 함수명(){코드구역}
+  // -> 함수는 명령어코드가 있는 실행 메모리공간!
+  // -> 이 함수를 호출하기 위한 주소가 함수이름이다!
   function 김비서나와라(주머니){
+    // 주머니 - 전달변수 : 함수호출시 보낸값을 담는
+    // 값의 메모리 공간이름!
 
     // 1. 함수호출확인!
     // console.log('나왔다!오바!'+주머니);
@@ -125,6 +158,9 @@
 
     // 2-12. 요청 클래스 요소에 css 한번에 넣기
     // -> cssText속성 : css설정값을 한번에 넣는 속성
+    // -> 한번에 설정하면 기존값도 지워짐!
+    // -> 한번에 완전히 변경이 필요한 경우 사용함!
+    // -> 값을 하나만 넣어도 기존값이 지워짐!
     요청.style.cssText = `
       position: absolute;
       top: 0;
@@ -216,5 +252,12 @@
       <!-- 김비서에 전달된 요청찍기 -->
       <b class="요청"></b>
     </p>
+
+    <!-- 원모양박스 -->
+    <div class="박스야">
+      <div class="원이야"></div>
+      <div class="원이야"></div>
+      <div class="원이야"></div>
+    </div>
   </body>
 </html>
