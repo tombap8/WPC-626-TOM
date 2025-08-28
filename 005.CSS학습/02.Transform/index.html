@@ -32,7 +32,8 @@
             */
         background-size: cover;
 
-        
+        /* 자식요소 가로방향 스크롤 숨기기 */
+        overflow-x: hidden;
       }
 
       /* 1. 제목 */
@@ -336,16 +337,27 @@
 
 
     /* 인트로 등장 애니메이션 설정하기 */
-    /* animate를 배우기 전이므로 :hover를 사용! */
+    /* animation를 배우기 전이므로 :hover를 사용! */
     .main-contents{
         /* 오른쪽 바깥에 나가있게 셋팅함! translate사용! */
-        translate: 110%;
+        translate: 150%;
         /* 트랜지션 trs */
-        transition: .8s ease-out 1s;
+        /* transition: .8s ease-out 1s; */
+
+        /* 애니메이션이 있는 경우 트랜지션 불필요! */
+        /* animation: 이시이지반방마 */
+        animation: first-ani .8s ease-out 1s forwards;
     }
     /* 오버시 등장 */
-    body:hover .main-contents{
+    /* body:hover .main-contents{
         translate: 0;
+    } */
+
+    /* 첫등장 키프레임 */
+    @keyframes first-ani {
+      to{
+        translate: 0;
+      }
     }
 
     /* 뒤집어 애니 박스 */
