@@ -49,20 +49,29 @@ function 멈춰랏(나야나) {
     기능 : 위치값 이동 및 트랜지션, 동영상태그넣기
     사용태그 : iframe - 동영상불러오는 태그
 *************************************************/
-function 움직여랏(나야나) {
+function 움직여랏(나야나, 이동값, 동영상아이디) {
   // 나야나 - 이벤트발생요소 전달변수
+  // 이동값 - right속성값에서 뺄숫자값에 곱할숫자
+  // -> 1,2,3
+  // 동영상아이디 - iframe에서 사용할 유튜브 동영상id
 
   // 1. 함수호출확인 및 전달변수값 확인! /////
-  console.log("당장움직여!!!!", 나야나);
+  console.log(
+    "당장움직여!!!!", 
+    나야나, 이동값
+  );
 
   // 2. CSS 속성값 변경하기 ////////////////
-  나야나.style.right = "calc(100% - 200px)";
+  // -> 문자열 사이에 변수넣기 -> "문자열"+변수+"문자열"
+  나야나.style.right = "calc(100% - 200px * "+이동값+")";
   나야나.style.top = "calc(100% - 200px)";
   나야나.style.transition = "right 2s,top 1s 2s";
 
   // 3. 내부에 html넣기 : 동영상 iframe /////////////
+  // 백틱(`)문자열 내부에 변수를 사용할 경우
+  // ${변수} 형식을 사용한다!
   나야나.innerHTML = `<iframe
-        src='https://www.youtube.com/embed/MBdVXkSdhwU?autoplay=1&mute=1'  allow='autoplay'></iframe>`;
+        src='https://www.youtube.com/embed/${동영상아이디}?autoplay=1&mute=1'  allow='autoplay'></iframe>`;
 
   // 4. 내부의 아이프레임 CSS넣기 ///////////
   // getElementsByTagName(태그명)
