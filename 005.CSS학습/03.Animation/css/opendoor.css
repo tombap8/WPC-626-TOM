@@ -146,3 +146,20 @@ body{
     background-color: blue;
     border-radius: 50%;
 }
+
+/* 엘사박스 */
+.elsa-box{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    /* 부모는? .frame */
+    width: 350px;
+    height: 580px;
+}
+/* 엘사 */
+.elsa{
+    position: absolute;
+    right: -50px;
+    bottom: 0;
+    /* 부모는? .elsa-box */
+}
