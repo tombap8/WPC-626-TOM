@@ -14,9 +14,9 @@ h1 {
 }
 
 /* 공사중 표시 */
-body * {
+/* body * {
   outline: 2px dashed red;
-}
+} */
 
 body {
   height: 100vh;
@@ -113,6 +113,7 @@ body {
         (2) 멈춤 상태값 : paused
     */
   animation-play-state: paused;
+  z-index: 2;
 }
 /* 문의 최상위 부모에 마우스 오버시 애니메이션 재생하기 */
 .cont:hover .door {
@@ -170,12 +171,28 @@ body {
   transform-origin: bottom;
 
   /* 애니메이션 호출 */
-  animation: elsa-ani 2s ease-in-out 2s infinite alternate;
+  animation: elsa-ani 1s ease-in-out 1s infinite alternate;
+
+  /* 처음에 멈춰있음 */
+  animation-play-state: paused;
 }
+/* 문의 최상위 부모에 마우스 오버시 애니메이션 재생하기 */
+.cont:hover .elsa {
+  animation-play-state: running;
+}
+
 /* 엘사 애니 키프레임 */
 @keyframes elsa-ani {
   to {
     right: -150px;
     rotate: -6deg;
   }
+}
+
+.olaf{
+    position: absolute;
+    top: 15%;
+    right: 5%;
+    scale: .1;
+    transform-origin: top;
 }
