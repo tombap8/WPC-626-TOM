@@ -73,7 +73,18 @@ body{
         -> 두 값 중에 하나만 쓸 수 있고 복합일 경우
         2가지를 같이 셋팅함!
     ***********************************************/
+
+    /* 애니메이션 호출 */
+    animation: bg-ani 5s ease-in-out infinite alternate;
 }
+
+/* 문프레임 배경 애니 키프레임 */
+@keyframes bg-ani {
+    to{
+        background-size: auto 120%;
+    }
+}
+
 /* 문짝 */
 .door{
     position: relative;
@@ -83,15 +94,36 @@ body{
     background-color: #c90;
     
     /* y축 회전 */
-    rotate: y 39deg;
+    rotate: y 0deg;
     /* 축변경 : 왼쪽 */
     transform-origin: left;
 
     /* 애니메이션 호출 - animation: 이시이지반방마 */
-    animation: door-ani 2s ease-in-out infinite;
+    animation: 
+    /* (1) 문 처음열기 1초간 처음과끝 천천히 한번만실행 끝상태유지 */
+    first-open-ani 1s ease-in-out 1s forwards,
+    /* (2) 문 여닫기애니 2초간 처음과끝 천천히 1초기다림 영원히 반대방향애니 셋팅 */
+    door-ani 2s ease-in-out 2s infinite alternate;
+
+    /* 애니메이션 플레이상태 설정하여 멈추기
+        animation-play-state: 
+        (1) 재생 상태값 : running
+        (2) 멈춤 상태값 : paused
+    */
+    animation-play-state: paused;
+}
+/* 문의 최상위 부모에 마우스 오버시 애니메이션 재생하기 */
+.cont:hover .door{
+    animation-play-state: running;
 }
 
-/* 문애니 키프레임 */
+/* 문애니 처음열기 키프레임 */
+@keyframes first-open-ani {
+    to{
+        rotate: y 90deg;
+    }
+}
+/* 문애니 반복여닫기 키프레임 */
 @keyframes door-ani {
     from{
         rotate: y 90deg;
