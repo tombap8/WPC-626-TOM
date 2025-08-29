@@ -12,12 +12,63 @@ html,body,h1{
 }
 
 /* 공사중 표시 */
-/* body * {
+body * {
     outline: 2px dashed red;
-} */
+}
 
 body{
     height: 100vh;
     overflow: hidden;
     background-color: #9c0;
+}
+
+/* 타이틀 */
+.tit{
+    font-family: 'Comfortaa';
+    font-size: 42px;
+    margin: 20px auto;
+    text-align: center;
+    text-shadow: 2px 2px 2px #0000004b;
+    color: #fff;
+}
+/* 전체 랩핑박스 */
+.wrap{
+    padding: 50px 0;
+}
+/* 전체문부모 */
+.cont{
+    width: 400px;
+    height: 600px;
+    margin: 0 auto;
+    background-color: #900;
+}
+/* 문프레임 */
+.frame{
+    position: relative;
+    top: 18px;
+    width: 350px;
+    height: 580px;
+    margin: 0 auto; 
+    background: url(../images/seashore.jpg) no-repeat center/auto 100%;
+}
+/* 문짝 */
+.door{
+    position: relative;
+    /* 부모자격 - 문고리 */
+    width: 350px;
+    height: 580px;
+    background-color: #c90;
+}
+/* 문고리 */
+.handle{
+    position: absolute;
+    top: 50%;
+    /* y축중앙이동 */
+    translate: 0 -50%;
+    right: 10px;
+    /* 부모는? .door */
+    width: 50px;
+    height: 50px;
+    background-color: blue;
+    border-radius: 50%;
 }
