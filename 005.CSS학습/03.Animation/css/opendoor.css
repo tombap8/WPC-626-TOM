@@ -50,6 +50,29 @@ body{
     height: 580px;
     margin: 0 auto; 
     background: url(../images/seashore.jpg) no-repeat center/auto 100%;
+
+     /*********************************** 
+        [ 3D 원근설정 ]
+        1. 셋팅위치:
+        3D원근 설정을 할 대상의 부모요소
+        2. 설정방법:
+        perspective: 수치
+        -> 수치는 px단위 또는 구체적인
+        상대단위(em,rem,vw,vh등)로 설정.
+        -> 사용자가 보고 있는 화면과 수직축 사이의 거리
+        -> 이값이 커지면 원근각도가 완만해짐
+    ***********************************/
+    perspective: 1000px;
+
+    perspective-origin: 50% 50%;
+     /*********************************************** 
+        [ 뷰포인트(관찰자위치) 변경옵션 ]
+        perpective-origin : 가로 세로;
+        - 가로축: left, center, right, px, % 등 단위
+        - 세로축: top, center, bottom, px, % 등 단위
+        -> 두 값 중에 하나만 쓸 수 있고 복합일 경우
+        2가지를 같이 셋팅함!
+    ***********************************************/
 }
 /* 문짝 */
 .door{
@@ -58,7 +81,26 @@ body{
     width: 350px;
     height: 580px;
     background-color: #c90;
+    
+    /* y축 회전 */
+    rotate: y 39deg;
+    /* 축변경 : 왼쪽 */
+    transform-origin: left;
+
+    /* 애니메이션 호출 - animation: 이시이지반방마 */
+    animation: door-ani 2s ease-in-out infinite;
 }
+
+/* 문애니 키프레임 */
+@keyframes door-ani {
+    from{
+        rotate: y 90deg;
+    }
+    to{
+        rotate: y -70deg;
+    }
+}
+
 /* 문고리 */
 .handle{
     position: absolute;
