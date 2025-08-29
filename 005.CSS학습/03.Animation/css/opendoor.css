@@ -188,11 +188,3 @@ body {
     rotate: -6deg;
   }
 }
-
-.olaf{
-    position: absolute;
-    top: 15%;
-    right: 5%;
-    scale: .1;
-    transform-origin: top;
-}
