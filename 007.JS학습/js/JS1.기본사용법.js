@@ -107,6 +107,8 @@ function 마무리해(나야나){
   나야나.style.transition = 
   '3s ease-in-out 2s,top 2s ease-out';
 
+  // 추가 글자 넣기
+
 
 
 
