@@ -116,6 +116,7 @@ function 마무리해(나야나){
 
   // 글자관련 CSS 추가하기 ///
   나야나.style.fontSize = '50px';
+  나야나.style.fontWeight = 'bold';
   나야나.style.color = 'aquamarine';
   나야나.style.textShadow = '0 0 5px #000';
   나야나.style.lineHeight = '100vh';
