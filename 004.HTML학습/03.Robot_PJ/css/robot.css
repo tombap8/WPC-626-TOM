@@ -80,4 +80,19 @@ body * {
     background: url(../images/mouth.png) no-repeat center / cover;
 }
 
+/* 귀공통 */
+.ear{
+    top: 120px;
+    width: 70px;
+    height: 100px;
+}
+/* 왼귀 */
+.ear1{
+    left: 10px;
+}
+/* 오른귀 */
+.ear2{
+    right: 10px;
+}
+
 /************* 4. 하단영역 *************/
