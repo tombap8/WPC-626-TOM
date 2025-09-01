@@ -83,6 +83,25 @@
           /* rotate: 360deg; */
         }
       }
+    
+      .넌뭐냐{
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        text-align: center;
+        /* 글자 세로중앙 */
+        line-height: 200px;
+        /* 줄바꿈 방지! */
+        white-space: nowrap;
+        background: #bbd3b3
+        url(./images/prog.jpg)
+        no-repeat center/auto 100%;
+      }
+    
+    
     </style>
 
 <!-- 자바스크립트 코딩구역! -->
@@ -288,5 +307,10 @@
       oncontextmenu="움직여랏(this,3,'oZhbp6pnHaQ')"
       ></div>
     </div>
+
+    <!-- 사각형으로 변할 전체 마무리 원박스 -->
+     <div class="넌뭐냐"
+     title="클릭하면마무리됩니다!"
+     onclick="마무리해(this)"></div>
   </body>
 </html>
