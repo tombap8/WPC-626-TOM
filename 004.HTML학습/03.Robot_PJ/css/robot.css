@@ -82,17 +82,37 @@ body * {
 
 /* 귀공통 */
 .ear{
-    top: 120px;
-    width: 70px;
-    height: 100px;
+    top: 92px;
+    width: 60px;
+    height: 85px;
 }
 /* 왼귀 */
 .ear1{
-    left: 10px;
+    left: -60px;
+    border-radius: 30px 0 0 30px;
 }
 /* 오른귀 */
 .ear2{
-    right: 10px;
+    right: -60px;
+    border-radius: 0 30px 30px 0;
 }
+
+/* 2-1-2. 로봇몸통 */
+.robot-body{
+    position: relative;
+    /* 부모자격 */
+    width: 180px;
+    height: 320px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+/* 목 */
+/* 왼팔 */
+/* 오른팔 */
+/* 왼어깨 */
+/* 오른어깨 */
+/* 왼다리 */
+/* 오른다리 */
+/* TV */
 
 /************* 4. 하단영역 *************/
