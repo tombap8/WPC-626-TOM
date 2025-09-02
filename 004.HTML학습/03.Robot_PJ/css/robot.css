@@ -34,6 +34,17 @@ body * {
   /* 무대중앙에 마.영.오! */
   margin: 0 auto;
 }
+/* 로봇가발 가상요소로 만들기 */
+.robot-head::after{
+    content: '';
+    position: absolute;
+    top: -30%;
+    left: -36%;
+    width: 172%;
+    height: 155%;
+    background: url(../images/hair2.png) no-repeat 0/100% 100%;
+}
+
 /* 자식요소 모두 앱솔루트 만들기 */
 .robot-head > div {
   position: absolute;
@@ -167,13 +178,14 @@ body * {
   width: 50px;
   height: 210px;
 }
+
 /* 왼팔 */
 .arm1 {
-  left: -50px;
+  left: -67px;
 }
 /* 오른팔 */
 .arm2 {
-  right: -50px;
+  right: -67px;
 }
 /* 팔하단 span */
 .arm span {
@@ -198,7 +210,7 @@ body * {
 /* 오른손 변경 */
 .arm2 span::after{
     background-image: url(../images/hand_right.png);
-    translate: -42%;
+    translate: -57%;
 }
 
 /* 어깨공통 */
@@ -209,28 +221,28 @@ body * {
 }
 /* 왼어깨 */
 .shdr1 {
-  left: -70px;
+  left: -87px;
   border-radius: 40px 12px 4px 4px;
 }
 /* 오른어깨 */
 .shdr2 {
-  right: -70px;
+  right: -87px;
   border-radius: 12px 40px 4px 4px;
 }
 
 /* 다리공통 */
 .leg {
   top: 100%;
-  width: 60px;
+  width: 69px;
   height: 220px;
 }
 /* 왼다리 */
 .leg1 {
-  left: 0;
+  left: 6px;
 }
 /* 오른다리 */
 .leg2 {
-  right: 0;
+  right: 6px;
 }
 /* 다리하단 span */
 .leg span {
