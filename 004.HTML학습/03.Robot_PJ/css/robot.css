@@ -117,16 +117,37 @@ body * {
 }
 
 /* 로봇가슴 가상요소로 만들기 */
-.robot-body::before{
-    content: '';
-    position: absolute;
-    top: -5%;
-    left: -10%;
-    width: 120%;
-    height: 40%;
-    background-image: linear-gradient(to bottom, lightgreen, lightpink);
+.robot-body::before {
+  content: "";
+  position: absolute;
+  top: -5%;
+  left: -25%;
+  width: 150%;
+  height: 59%;
+  z-index: 1;
+  clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+  background-image: linear-gradient(to bottom, lightgreen, lightpink);
 }
 /* 로봇골반 가상요소로 만들기 */
+.robot-body::after {
+  content: "";
+  position: absolute;
+  bottom: -12%;
+  left: -10%;
+  width: 120%;
+  height: 37%;
+  z-index: 1;
+  clip-path: polygon(
+    0% 20%,
+    10% 0%,
+    90% 0%,
+    100% 20%,
+    90% 70%,
+    50% 100%,
+    10% 70%
+  );
+  background-image: linear-gradient(to top, lightseagreen, aqua);
+}
 
 /* 몸통 직계자식요소 모두 앱솔루트! */
 .robot-body > div {
@@ -155,26 +176,25 @@ body * {
   right: -50px;
 }
 /* 팔하단 span */
-.arm span{
-    position: absolute;
-    top: 100%;
-    left: 10%;
-    width: 80%;
-    height: 60%;    
-    border-radius: 10px;
+.arm span {
+  position: absolute;
+  top: 100%;
+  left: 10%;
+  width: 80%;
+  height: 60%;
+  border-radius: 10px;
 }
 /* 로봇손 가상요소 */
-.arm span::after{
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    translate: -42%;
-    width: 66px;
-    height: 107px;
-    background: url(../images/hand_left.png) no-repeat 0/100%;
+.arm span::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  translate: -42%;
+  width: 66px;
+  height: 107px;
+  background: url(../images/hand_left.png) no-repeat 0/100%;
 }
-
 
 /* 어깨공통 */
 .shdr {
@@ -208,12 +228,12 @@ body * {
   right: 0;
 }
 /* 다리하단 span */
-.leg span{
-    position: absolute;
-    top: 100%;
-    left: 10%;
-    width: 80%;
-    height: 100%;
+.leg span {
+  position: absolute;
+  top: 100%;
+  left: 10%;
+  width: 80%;
+  height: 100%;
 }
 
 /* TV */
@@ -221,6 +241,9 @@ body * {
   top: 20%;
   left: 50%;
   translate: -50%;
+  z-index: 2;
+  /* 가상요소보다위 */
+  
   width: 120px;
   height: 80px;
   background: url(../images/tv.jpg) no-repeat 0/100%;
