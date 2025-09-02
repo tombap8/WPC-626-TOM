@@ -52,19 +52,24 @@ body * {
 
 /* 왼눈 */
 .eye1 {
-  left: 50px;
+  left: 50%;
+  translate: -120%;
   background-image: url(../images/e1.jpg);
 }
 /* 오른눈 */
 .eye2 {
-  right: 50px;
+  right: 50%;
+  translate: 120%;
   background-image: url(../images/e2.jpg);
 }
 
 /* 코 */
 .nose {
   top: 98px;
-  left: 102px;
+  left: 50%;
+  translate: -50%;
+  /* 가로중앙셋팅 */
+  
   width: 46px;
   height: 67px;
   border-radius: 20px;
@@ -73,7 +78,10 @@ body * {
 /* 입 */
 .mouth {
   bottom: 21px;
-  left: 85px;
+  left: 50%;
+  translate: -50%;
+  /* 가로중앙셋팅 */
+
   width: 80px;
   height: 46px;
   background: url(../images/mouth.png) no-repeat center / cover;
@@ -162,7 +170,7 @@ body * {
 }
 /* TV */
 .tv{
-    top: 20px;
+    top: 20%;
     left: 50%;
     translate: -50%;
     width: 120px;
