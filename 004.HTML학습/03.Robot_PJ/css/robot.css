@@ -115,6 +115,19 @@ body * {
   margin: 0 auto;
   margin-top: 50px;
 }
+
+/* 로봇가슴 가상요소로 만들기 */
+.robot-body::before{
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -10%;
+    width: 120%;
+    height: 40%;
+    background-image: linear-gradient(to bottom, lightgreen, lightpink);
+}
+/* 로봇골반 가상요소로 만들기 */
+
 /* 몸통 직계자식요소 모두 앱솔루트! */
 .robot-body > div {
   position: absolute;
