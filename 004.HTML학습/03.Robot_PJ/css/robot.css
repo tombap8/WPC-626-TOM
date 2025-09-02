@@ -131,7 +131,7 @@ body * {
 .arm {
   top: 0;
   width: 50px;
-  height: 250px;
+  height: 210px;
 }
 /* 왼팔 */
 .arm1 {
@@ -141,6 +141,28 @@ body * {
 .arm2 {
   right: -50px;
 }
+/* 팔하단 span */
+.arm span{
+    position: absolute;
+    top: 100%;
+    left: 10%;
+    width: 80%;
+    height: 60%;    
+    border-radius: 10px;
+}
+/* 로봇손 가상요소 */
+.arm span::after{
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    translate: -42%;
+    width: 66px;
+    height: 107px;
+    background: url(../images/hand_left.png) no-repeat 0/100%;
+}
+
+
 /* 어깨공통 */
 .shdr {
   top: -10px;
@@ -162,7 +184,7 @@ body * {
 .leg {
   top: 100%;
   width: 60px;
-  height: 280px;
+  height: 220px;
 }
 /* 왼다리 */
 .leg1 {
@@ -172,6 +194,15 @@ body * {
 .leg2 {
   right: 0;
 }
+/* 다리하단 span */
+.leg span{
+    position: absolute;
+    top: 100%;
+    left: 10%;
+    width: 80%;
+    height: 100%;
+}
+
 /* TV */
 .tv {
   top: 20%;
