@@ -131,8 +131,20 @@ body * {
 .arm2{
     right: -50px;
 }
+/* 어깨공통 */
+.shdr{
+    top: -10px;
+    width: 80px;
+    height: 80px;
+}
 /* 왼어깨 */
+.shdr1{
+    left: -70px;
+}
 /* 오른어깨 */
+.shdr2{
+    right: -70px;
+}
 
 /* 다리공통 */
 .leg{
@@ -149,5 +161,13 @@ body * {
     right: 0;
 }
 /* TV */
+.tv{
+    top: 20px;
+    left: 50%;
+    translate: -50%;
+    width: 120px;
+    height: 80px;
+    background: url(../images/tv.jpg) no-repeat 0/100%;
+}
 
 /************* 4. 하단영역 *************/
