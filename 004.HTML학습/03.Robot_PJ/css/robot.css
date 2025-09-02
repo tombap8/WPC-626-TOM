@@ -178,8 +178,12 @@ body * {
   width: 50px;
   height: 210px;
 }
-/* 팔관절 가상요소로 만들기 */
-.arm::before, .arm::after{
+/* 팔다리관절 가상요소로 만들기 */
+.arm::before, 
+.arm::after,
+.leg::before, 
+.leg::after
+{
     content: '';
     position: absolute;
     top: 90%;
@@ -192,6 +196,15 @@ body * {
     /* 사이즈에 보더까지 포함 */
     box-sizing: border-box;
     background-image: linear-gradient(to bottom, #ccc,gray);
+}
+/* 팔다리관절 가상요소 after변경 */
+.arm::after, .leg::after{
+    /* 배경색 그라데이션 방향반대 */
+    background-image: linear-gradient(to top, #ccc,gray);
+    /* 보더없앰 */
+    border: none;
+    /* 크기 축소 : x축 0.8, y축 0.5 */
+    scale: .8 .5;
 }
 
 /* 왼팔 */
