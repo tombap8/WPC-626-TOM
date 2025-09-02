@@ -27,8 +27,10 @@ body * {
 .robot-head {
   position: relative;
   /* 부모자격 - 자식앱솔루트의 부모! */
-  width: 250px;
+
+  width: 221px;
   height: 250px;
+  border-radius: 80px 80px 106px 106px;
   /* 무대중앙에 마.영.오! */
   margin: 0 auto;
 }
@@ -69,7 +71,7 @@ body * {
   left: 50%;
   translate: -50%;
   /* 가로중앙셋팅 */
-  
+
   width: 46px;
   height: 67px;
   border-radius: 20px;
@@ -118,64 +120,66 @@ body * {
   position: absolute;
 }
 /* 목 */
-.neck{
-    top: -50px;
-    left: 50%;
-    translate: -50%;
-    width: 50px;
-    height: 50px;
+.neck {
+  top: -50px;
+  left: 50%;
+  translate: -50%;
+  width: 50px;
+  height: 50px;
 }
 /* 팔공통 */
-.arm{
-    top: 0;
-    width: 50px;
-    height: 250px;
+.arm {
+  top: 0;
+  width: 50px;
+  height: 250px;
 }
 /* 왼팔 */
-.arm1{
-    left: -50px;
+.arm1 {
+  left: -50px;
 }
 /* 오른팔 */
-.arm2{
-    right: -50px;
+.arm2 {
+  right: -50px;
 }
 /* 어깨공통 */
-.shdr{
-    top: -10px;
-    width: 80px;
-    height: 80px;
+.shdr {
+  top: -10px;
+  width: 80px;
+  height: 80px;
 }
 /* 왼어깨 */
-.shdr1{
-    left: -70px;
+.shdr1 {
+  left: -70px;
+  border-radius: 40px 12px 4px 4px;
 }
 /* 오른어깨 */
-.shdr2{
-    right: -70px;
+.shdr2 {
+  right: -70px;
+  border-radius: 12px 40px 4px 4px;
 }
 
 /* 다리공통 */
-.leg{
-    top: 100%;
-    width: 60px;
-    height: 280px;
+.leg {
+  top: 100%;
+  width: 60px;
+  height: 280px;
 }
 /* 왼다리 */
-.leg1{
-    left: 0;
+.leg1 {
+  left: 0;
 }
 /* 오른다리 */
-.leg2{
-    right: 0;
+.leg2 {
+  right: 0;
 }
 /* TV */
-.tv{
-    top: 20%;
-    left: 50%;
-    translate: -50%;
-    width: 120px;
-    height: 80px;
-    background: url(../images/tv.jpg) no-repeat 0/100%;
+.tv {
+  top: 20%;
+  left: 50%;
+  translate: -50%;
+  width: 120px;
+  height: 80px;
+  background: url(../images/tv.jpg) no-repeat 0/100%;
 }
 
 /************* 4. 하단영역 *************/
