@@ -32,26 +32,32 @@ body {
 
 /* float해제설정 */
 #gnb {
+  /* 플렉스 박스 */
+  display: flex;
+  /* 진행방향 정렬 : 사이간격일정 */
+  justify-content: space-between;
+
   max-width: 699px;
   margin: 0 auto;
   /* outline: 1px solid red; */
 }
-#gnb::after {
+/* #gnb::after {
   content: "";
   display: block;
   clear: both;
-}
+} */
 #gnb li {
-  float: left;
+  /* float: left; -> 안씀 */
   /* 높이값 만큼 줄간격셋팅 */
   line-height: 112px;
 }
-/* 두번째 li부터 끝까지 왼쪽마진 */
-#gnb li + li {
-  margin-left: 18.8%;
+/* 두번째 li부터 끝까지 왼쪽마진 -> 플렉스는 불필요! */
+/* #gnb li + li { */
+  /* margin-left: 18.8%; */
   /* 마진의 %값의 기준은
     부모박스의 크기이다! */
-}
+/* } */
+
 /* 깃허브 박스 */
 .git-box {
   text-align: right;
@@ -71,15 +77,15 @@ a.my-cha-link {
   vertical-align: -22px;
 }
 /* 처음에 마지막째 이미지는 안보이게함 */
-.my-cha-link img:last-child{
+.my-cha-link img:last-child {
   display: none;
 }
 /* 마우스 오버시 첫번째 이미지 안보이게함 */
-.my-cha-link:hover img:first-child{
+.my-cha-link:hover img:first-child {
   display: none;
 }
 /* 마우스 오버시 마지막째 이미지 보이게함 */
-.my-cha-link:hover img:last-child{
+.my-cha-link:hover img:last-child {
   display: inline;
 }
 
@@ -138,7 +144,7 @@ a.my-cha-link {
   padding: 18px 0;
 }
 /********** 2-2-1.제목박스 **********/
-.sub-part-title{
+.sub-part-title {
   /* 박스설정 */
   padding-bottom: 28px;
   text-align: center;
@@ -148,8 +154,8 @@ a.my-cha-link {
 }
 
 /* 구분선은 타이틀박스의 가상요소로 구현함 */
-.sub-part-title::before{
-  content: '';
+.sub-part-title::before {
+  content: "";
   display: block;
   /* 하단마진28px
   margin: 위 양쪽 아래 */
@@ -161,7 +167,7 @@ a.my-cha-link {
 }
 
 /* 파트제목 */
-.part-title{
+.part-title {
   color: #222;
   font-size: 30px;
   text-align: center;
@@ -170,10 +176,13 @@ a.my-cha-link {
 }
 
 /********** 2-2-2.링크박스 **********/
-.link-box{
+.link-box {
+  /* 플렉스 박스 */
+  display: flex;
+
   /* 가로크기는 레이아웃은 아니지만
   12그리드 크기를 기준해서 준다! */
-  width: calc(100%/12*10);
+  width: calc(100% / 12 * 10);
   /* 마영오! - 블록요소 가로중앙 */
   margin: 0 auto;
   /* 둥근모서리 20 : bdrs20 */
@@ -190,9 +199,10 @@ a.my-cha-link {
   background-color: rgba(255 255 255 / 0.8);
 }
 /* 플롯팅 설정하기 */
-.link-box>div{
+.link-box > div {
   /* 옆으로 흐르게 */
-  float: left;
+  /* float: left; -> 안씀! */
+
   /* 절반 크기셋팅 */
   width: 50%;
   /* 최소높이값 설정 */
@@ -209,16 +219,14 @@ a.my-cha-link {
 /* 플롯팅 해제 clear는 
 core.css의 clb클래스로 처리함! */
 
-
-
 /* 왼쪽박스 */
-.left-part{
+.left-part {
   /* 부모자격 - 가상요소 after 앱솔루트자식의 부모 */
   position: relative;
 }
 /* 가상요소 중앙구분선 넣기! */
-.left-part::after{
-  content: '';
+.left-part::after {
+  content: "";
   position: absolute;
   /* 앱솔루트는 자동block! */
   top: 15%;
@@ -229,7 +237,7 @@ core.css의 clb클래스로 처리함! */
   background-color: gray;
 }
 /* 링크박스 a요소 */
-.link-box a{
+.link-box a {
   /* 가상요소 자식이 block이므로 최소한 
   display를 inline-block로 해야 자신의 크기만큼
   크기를 가지게 된다! 왜? inline내부의 block은
@@ -240,8 +248,8 @@ core.css의 clb클래스로 처리함! */
   line-height: 37px;
 }
 /* 가상요소로 애니메이션 밑줄만들기 */
-.link-box a::before{
-  content: '';
+.link-box a::before {
+  content: "";
   display: block;
   /* 처음에 가로크기0 (돌아올때) */
   width: 0;
@@ -252,7 +260,7 @@ core.css의 clb클래스로 처리함! */
   /* background-color: red; */
   border-bottom: 2px solid #000;
   /* 트랜지션 trs */
-  transition: .8s linear;
+  transition: 0.8s linear;
 
   /* gif애니메이션 이미지 배경으로 넣기 */
   background: url(../images/train.gif) no-repeat right/auto 100%;
@@ -262,11 +270,11 @@ core.css의 clb클래스로 처리함! */
   transform: scaleX(-1);
 }
 /* a에 오버시 가상요소 밑줄 글씨만큼 늘어나기! */
-.link-box a:hover::before{
+.link-box a:hover::before {
   width: 100%;
   /* 왼쪽마진값은 오버시 0이 되여야하고
   애니메이션 처리하지 말아야함! 따라서
   transition 속성값을 width로 써서 처리한다! */
   margin-left: 0;
-  transition: width .8s linear;
+  transition: width 0.8s linear;
 }
