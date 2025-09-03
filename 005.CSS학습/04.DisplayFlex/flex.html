@@ -215,32 +215,32 @@
       .t2 {
         top: 250px;
         /* 플렉스 박스 : df */
-        
+        display: flex;
         /* 진행방향정렬 : jcspb */
-        
+        justify-content: space-between;
         /* 진행방향수직정렬 : aib */
-        
+        align-items: baseline;
         /* baseline은 글자 하단라인을 기준한다! */
       }
       /* 줄간격 조정 */
       .t2 li:nth-child(2) {
-        
+        line-height: 80px;
       }
       .t2 li:nth-child(4) {
-        
+        line-height: 30px;
       }
 
       /* 타이틀 3 */
       .t3 {
         top: 400px;
         /* 플렉스박스 */
-        
+        display: flex;
         /* 진행방향수직정렬 : aic */
-        
+        align-items: center;
       }
       /* 4번째 li부터 오른쪽 끝으로 보내기 */
       .t3 li:nth-child(4) {
-        
+        margin-left: auto;
         /* 선택요소의 떨어뜨리려는
         방향으로 마진을 auto처리하면
         flex박스 오른쪽 끝으로 이동시켜준다! */
@@ -410,13 +410,13 @@
     </ol>
 
     <!-- 타이틀박스 3 -->
-    <!-- <ol class="tit t3">
+    <ol class="tit t3">
       <li>W</li>
       <li>O</li>
       <li>R</li>
       <li>L</li>
       <li>D</li>
-    </ol> -->
+    </ol>
 
     <!-- 타이틀박스 4 -->
     <!-- <ol class="tit t4">
