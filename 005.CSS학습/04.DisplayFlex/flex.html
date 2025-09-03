@@ -255,9 +255,9 @@
         height: 500px;
 
         /* 플렉스 박스 */
-        
+        display: flex;
         /* 플렉스 진행방향 : fxdc */
-        
+        flex-direction: column;
         /* 
             [ flex-direction 속성 ]
             - 진행방향과 순서를 정함
@@ -269,13 +269,13 @@
         */
 
         /* 진행방향수직정렬 : aic */
-        
+        align-items: center;
         /* 진행방향정렬은? jcc */
         /* justify-content: center; */
       }
       /* 수직방향일때 3번째 li부터 끝으로 보내기 */
       .t4 li:nth-child(3) {
-        
+        margin-top: auto;
         /* 윗쪽마진 auto면 끝으로 감! */
       }
       /* 타이틀박스 5 */
@@ -419,13 +419,13 @@
     </ol>
 
     <!-- 타이틀박스 4 -->
-    <!-- <ol class="tit t4">
+    <ol class="tit t4">
       <li>W</li>
       <li>O</li>
       <li>R</li>
       <li>L</li>
       <li>D</li>
-    </ol> -->
+    </ol>
 
     <!-- 타이틀박스 5 -->
     <!-- <ol class="tit t5">
