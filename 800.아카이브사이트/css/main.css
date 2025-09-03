@@ -29,18 +29,18 @@ body {
 }
 
 /* GNB메뉴 */
-
-/* float해제설정 */
 #gnb {
   /* 플렉스 박스 */
   display: flex;
   /* 진행방향 정렬 : 사이간격일정 */
   justify-content: space-between;
-
+  
   max-width: 699px;
   margin: 0 auto;
   /* outline: 1px solid red; */
 }
+
+/* float해제설정 -> 불필요! */
 /* #gnb::after {
   content: "";
   display: block;
