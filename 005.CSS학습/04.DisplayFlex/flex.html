@@ -353,28 +353,29 @@
         /* 트랜스폼 트랜스레이트 해제 */
         translate: none;
         /* 플렉스박스 */
-        
+        display: flex;
         /* 플렉스 랩핑박스
         -> 자식요소에 flex-shrink:0 
         하지 않아도 자동처리됨! */
-        
+        flex-wrap: wrap;
         /* 진행방향 정렬 균등간격 : jcspe */
-        
+        justify-content: space-evenly;
         /* 진행방향수직정렬(여러줄) 중앙 : acc */
-        
+        align-content: center;
       }
 
       /* 줄바꿈 클래스 셋팅 */
       .t7 li.brk{
         /* width: 100%; */
-        
+        flex-basis: 100%;
         /* flex-basis는 width와 동일하지만
         flex에서만 사용가능한 가로크기속성 */
 
         /* 기존디자인 변경 */
-        
+        height: 0;
+        border: none;
         /* 사이간격조정 */
-        
+        margin-top: 40px;
       }
     </style>
   </head>
@@ -458,7 +459,7 @@
     </ol>
 
     <!-- 타이틀박스 7 -->
-    <!-- <ol class="tit t7">
+    <ol class="tit t7">
       <li>L</li>
       <li>O</li>
       <li>T</li>
@@ -472,6 +473,6 @@
       <li>R</li>
       <li>L</li>
       <li>D</li>
-    </ol> -->
+    </ol>
   </body>
 </html>
