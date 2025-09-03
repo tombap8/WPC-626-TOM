@@ -88,14 +88,14 @@
         /* 보이는 화면채우기 */
       }
       /* 등분할 flex적용박스 */
-      .flex-box {
+      ul.flex-box {
         /* 플렉스 디스플레이 : df */
         display: flex;
         /* 자식요소의 기준높이 설정 */
         height: 100%;
       }
 
-      .flex-box li {
+      ul.flex-box li {
         /* 자식요소 플렉스 설정 : fx1 */
         flex: 1;
         /* 가로,세로 크기 설정 불필요!
@@ -173,7 +173,7 @@
       /* 타이틀1 */
       .t1 {
         /* 플렉스 디스플레이 */
-        
+        display: flex;
         /* 
         [ justify-content 속성 ]
 
@@ -191,7 +191,7 @@
         6) space-evenly : 
             아이템요소 양쪽과 사이간격 일정
         */
-
+        justify-content: space-evenly;
         
         /* 
         [ align-items 속성 ]
@@ -208,6 +208,7 @@
             글자기준선(baseline)을 기준으로 정렬함!
             (글자의 line-height를 변경해서 적용해봄!)
         */
+        align-items: center;
       }
 
       /* 타이틀 2 */
@@ -391,22 +392,22 @@
     </div>
 
     <!-- 타이틀박스 1 -->
-    <!-- <ol class="tit t1">
+    <ol class="tit t1">
       <li>L</li>
       <li>O</li>
       <li>T</li>
       <li>T</li>
       <li>E</li>
-    </ol> -->
+    </ol>
 
     <!-- 타이틀박스 2 -->
-    <!-- <ol class="tit t2">
+    <ol class="tit t2">
       <li>W</li>
       <li>O</li>
       <li>R</li>
       <li>L</li>
       <li>D</li>
-    </ol> -->
+    </ol>
 
     <!-- 타이틀박스 3 -->
     <!-- <ol class="tit t3">
