@@ -23,6 +23,12 @@ body * {
   padding-top: 150px;
 }
 
+/* 로봇박스 */
+.robot-box{
+  /* 하단 로봇 다리부분 여백만들기 */
+  padding-bottom: 600px;
+}
+
 /* 로봇머리 */
 .robot-head {
   position: relative;
