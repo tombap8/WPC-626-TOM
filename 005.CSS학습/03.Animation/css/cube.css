@@ -24,7 +24,7 @@ body {
     translate: -50% -50%;
     width: 300px;
     height: 300px;
-    outline: 1px solid red;
+    /* outline: 1px solid red; */
 
     /* 입체가 잘보이도록 살짝회전 x축 10도, y축 30도
     transform: rotateX(x축각도) rotateY(y축각도) */
@@ -52,7 +52,7 @@ body {
     /* 반투명 */
     opacity: 0.8;
 
-    border: 2px dashed blue;
+    border: 1px solid gray;
     /* 보더박스는 패딩,보더 내부포함 */
     box-sizing: border-box;
 }
