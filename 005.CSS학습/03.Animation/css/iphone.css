@@ -60,7 +60,12 @@ body {
 }
 /* 2. 뒷면 */
 .iphone span:nth-child(2) {
-  /* background-image: url(../images/ip02.png); */
+  background-image: url(../images/ip02.png);
+
+  /* z축으로 10px 뒤로 이동하기 */
+  translate: 0 0 -10px;
+  /* 뒷면에서 바로 보여야하므로 y축 180도회전 */
+  rotate: y 180deg;
 }
 /* 3. 오른쪽면 */
 .iphone span:nth-child(3) {
