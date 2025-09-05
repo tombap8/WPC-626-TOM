@@ -14,6 +14,7 @@ body {
      rgb(255, 190, 247)
      );
   height: 100vh;
+  cursor: url("../images/cursor.png"), auto;
 }
 
 /* 큐브박스 */
