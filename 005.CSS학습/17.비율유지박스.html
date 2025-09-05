@@ -82,6 +82,7 @@
       .bx3::before {
         content: "";
         display: block;
+        /* 마치 div를 만든것과 같아짐! */
         
         /* 
             [ 비율을 만들어 보자! 비례식법 ]
@@ -90,8 +91,9 @@
                 = 56.25
 
             => 식은 계산하지 말고 calc()로 계산식 그대로씀!
-
         */
+        /* 여기서는 4:3비율로 만들어보자! */
+        padding-top: calc(3*100% / 4);
       }
 
       /* 4.비율유지박스 시스템화 */
@@ -103,7 +105,9 @@
       .rbx::before {
         content: "";
         display: block;
-        
+        /* 16:9 
+        calc(100% / 가로비율 * 세로비율)*/
+        padding-top: calc(100% / 16 * 9);
         /* 
             [ 비율을 만들어 보자! calc()사용법 ]
 
@@ -152,6 +156,11 @@
 
       /* 5.비율유지박스 :aspect-ratio 속성사용 */
       .arbx {
+        /* 자식앱솔루트의 부모자격 */
+        position: relative;
+
+        /* 이미지크기와 동일한 비율 만들기 */
+        aspect-ratio: 1170 / 614;
         /* 
         [ aspect-ratio 속성 사용하기 ]
         aspect-ratio: 가로비 / 세로비;
@@ -197,7 +206,7 @@
 
     <h2>3. 비율유지박스</h2>
     <div class="bx bx3">
-      <div class="test"></div>
+      <!-- <div class="test"></div> -->
     </div>
 
     <h2>4.비율유지박스 시스템화</h2>
