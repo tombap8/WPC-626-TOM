@@ -25,4 +25,57 @@ body {
     width: 300px;
     height: 300px;
     outline: 1px solid red;
+
+    /* 입체가 잘보이도록 살짝회전 x축 10도, y축 30도
+    transform: rotateX(x축각도) rotateY(y축각도) */
+    transform: rotateX(10deg) rotateY(30deg);
+
+    /******************************************* 
+        [ 입체로 설정하기 ]
+        - 입체로 설절할 요소의 부모박스에
+        아래와 같이 설정해준다!
+        (부모는 싸고 있는 요소)
+        transform-style 속성값은 아래 2가지
+        1. flat (기본값) : 2D
+        2. preserve-3d : 3D -> 이 값으로 설정함!
+    *******************************************/
+    transform-style: preserve-3d;
 }
+
+/* 큐브 각면 공통 */
+.cube span{
+    position: absolute;
+    /* 앱솔루트는 자동블록 */
+    width: 100%;
+    height: 100%;
+
+    /* 반투명 */
+    opacity: 0.8;
+
+    border: 2px dashed blue;
+    /* 보더박스는 패딩,보더 내부포함 */
+    box-sizing: border-box;
+}
+
+/* 첫번째 큐브 앞면 */
+.cube span:nth-child(1){
+    /* 화면방향(z축)으로 이동하기 */
+    transform: translateZ(150px);
+
+
+    /* 배경이미지 */
+    background: url(../images/seoulCity.jpg) no-repeat center/cover;
+}
+/* 두번째 큐브 오른쪽면 */
+.cube span:nth-child(2){
+    /* Y축회전 +  화면방향(z축)으로 이동하기
+    적용순서에 따라 결과가 달라진다! 회전부터해라!*/
+    transform: rotateY(90deg) translateZ(150px);
+
+    /* 배경이미지 */
+    background: url(../images/newyorkCity.jpg) no-repeat center/cover;
+}
+
+
+
+
