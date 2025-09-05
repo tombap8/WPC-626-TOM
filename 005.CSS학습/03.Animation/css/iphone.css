@@ -68,6 +68,11 @@ body {
 
   /* 가로크기 재설정 */
   width: 20px;
+
+  /* 오른쪽 끝으로 위치이동 */
+  right: -10px;
+  /* y축 90도 회전 */
+  rotate: y 90deg;
 }
 /* 4. 왼쪽면 */
 .iphone span:nth-child(4) {
@@ -75,6 +80,11 @@ body {
 
   /* 가로크기 재설정 */
   width: 20px;
+
+  /* 왼쪽 끝으로 위치이동 */
+  left: -10px;
+  /* y축 -90도 회전 */
+  rotate: y -90deg;
 }
 /* 5. 아랫면 */
 .iphone span:nth-child(5) {
