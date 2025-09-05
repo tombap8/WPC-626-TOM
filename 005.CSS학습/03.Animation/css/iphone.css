@@ -56,7 +56,10 @@ body {
 
 /* 1. 앞면 */
 .iphone span:nth-child(1) {
-  /* background-image: url(../images/ip01.png); */
+  background-image: url(../images/ip01.png);
+
+  /* z축으로 10px 앞으로 이동하기 */
+  translate: 0 0 10px;
 }
 /* 2. 뒷면 */
 .iphone span:nth-child(2) {
