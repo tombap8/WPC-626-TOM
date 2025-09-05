@@ -116,6 +116,10 @@ body {
 .rotate-cube{
     animation: cube-ani 3s infinite linear;
 }
+/* 애니적용 클래스요소에 오버시 애니멈춤 */
+.rotate-cube:hover{
+    animation-play-state: paused;
+}
 
 /* 큐브 회전 키프레임 */
 @keyframes cube-ani{
