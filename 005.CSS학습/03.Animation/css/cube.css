@@ -93,6 +93,15 @@ body {
     /* 배경이미지 */
     background: url(../images/cityMain.jpg) no-repeat center/cover;
 }
+/* 다섯번째 큐브 위쪽면 */
+.cube span:nth-child(5){
+    /* X축회전 +  화면방향(z축)으로 이동하기
+    적용순서에 따라 결과가 달라진다! 회전부터해라!*/
+    transform: rotateX(-90deg) translateZ(150px);
+
+    /* 배경이미지 */
+    background: url(../images/citys.jpg) no-repeat center/cover;
+}
 
 
 
