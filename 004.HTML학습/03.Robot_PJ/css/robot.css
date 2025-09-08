@@ -6,9 +6,13 @@
 @import url(./reset.css);
 
 /* rem단위를 위한 html 글자크기 셋팅 */
-html{
+html {
   font-size: 10px;
   /* 1rem = 10px */
+  
+  /* 스크롤 위치 이동시 부드럽게 애니메이션 이동설정
+  -> 이 설정은 전체 페이지이동일 경우 html에 셋팅함! */
+    scroll-behavior: smooth;
 }
 
 /* 전체 배경넣기 */
@@ -24,7 +28,7 @@ body {
 
 /************* 1. 상단영역 *************/
 /* 1-1.로고 */
-h1.logo{
+h1.logo {
   position: fixed;
   /* 정중앙계산시 50%에서 
   기존 가로,세로값의 절반을 뺀다! */
@@ -33,31 +37,29 @@ h1.logo{
   top: 5vw;
   left: 5vw;
   /* max는 두값중 큰값을 출력함(결과적으로 최소값설정) */
-  width: max(20vw,100px);
-  height: max(20vw,100px);
+  width: max(20vw, 100px);
+  height: max(20vw, 100px);
   border-radius: 50%;
   z-index: 999;
   background: pink url(../images/robot_03.png) no-repeat center/auto 100%;
-  box-shadow: 
-  inset 0 0 20px 5px #000,
-  0 0 20px 5px aqua;
+  box-shadow: inset 0 0 20px 5px #000, 0 0 20px 5px aqua;
 
   /* 글자설정 */
   text-align: center;
   line-height: 20vw;
-  font-family: 'Orbitron';
+  font-family: "Orbitron";
   font-size: 4.5vw;
   color: lightgreen;
   text-shadow: 0 0 10px #000;
 }
 
 /* 1-2.탑이동버튼 */
-.btn-top{
+.btn-top {
   position: fixed;
   bottom: 3vw;
   right: 3vw;
-  width: max(5vw,50px);
-  height: max(5vw,50px);
+  width: max(5vw, 50px);
+  height: max(5vw, 50px);
   border-radius: 50%;
   border: 5px outset #fff;
   background-color: #ccc;
@@ -66,24 +68,24 @@ h1.logo{
 }
 
 /* a요소 확장 */
-.btn-top a{
+.btn-top a {
   display: block;
   width: 100%;
   height: 100%;
-  
+
   /* 글자셋팅 */
   color: blue;
   text-decoration: none;
-  font: max(1.4vw,15px)/max(5vw,50px) 'Black Ops One';
+  font: max(1.4vw, 15px) / max(5vw, 50px) "Black Ops One";
   /* font: 스두크/줄체; */
 }
 /* 오버시 설정 */
-.btn-top:hover{
+.btn-top:hover {
   background-color: #ff0;
   /* outset 나온버튼, inset 들어간 버튼 */
   border-style: inset;
 }
-.btn-top:hover a{
+.btn-top:hover a {
   color: #f00;
 }
 /************* 2. 메인영역 *************/
@@ -92,7 +94,7 @@ h1.logo{
 }
 
 /* 2-1-0. 로봇 말풍선 */
-.link-title{
+.link-title {
   position: absolute;
   top: -7vw;
   left: 50%;
@@ -101,25 +103,25 @@ h1.logo{
   /* 로봇쪽에서 커지게 하기위해
   트랜스폼 기준 변경(왼쪽아래) */
   transform-origin: left bottom;
-  width: max(40vw,300px);
-  height: max(20vw,150px);
+  width: max(40vw, 300px);
+  height: max(20vw, 150px);
   border-radius: 50%;
   background-color: #fff;
   text-align: center;
-  line-height: max(20vw,150px);
+  line-height: max(20vw, 150px);
   text-decoration: none;
   color: orangered;
-  font-size: max(5vw,40px);
+  font-size: max(5vw, 40px);
   border: 10px dashed orangered;
   box-sizing: border-box;
   /* 스케일조정 및 z-index */
-  scale: .6;
+  scale: 0.6;
   z-index: 1;
 }
 
 /* 가상요소로 삼각형 만들기 */
-.link-title::after{
-  content: '';
+.link-title::after {
+  content: "";
   position: absolute;
   top: 62.7%;
   left: -9%;
@@ -135,10 +137,9 @@ h1.logo{
   border-right: 1.5vw solid transparent;
 }
 /* 로봇 말풍선 오버시 */
-.link-title:hover{
+.link-title:hover {
   color: #fff;
-  background-image: 
-  radial-gradient(circle,red 10%,blue 30%,yellow);
+  background-image: radial-gradient(circle, red 10%, blue 30%, yellow);
 }
 
 /* 
@@ -173,9 +174,8 @@ h1.logo{
     - 가로위치, 세로위치 (중심점) - 단위는 px / %
 */
 
-
 /* 로봇박스 */
-.robot-box{
+.robot-box {
   /* 하단 로봇 다리부분 여백만들기 */
   padding-bottom: 600px;
 }
@@ -371,6 +371,38 @@ h1.logo{
 /* 오른팔 */
 .arm2 {
   right: -67px;
+  /* 기준축변경 : 가로 세로 */
+  transform-origin: 66% 10%;
+  rotate: 0deg;
+  /* 애니메이션 호출 */
+  animation: 
+  hand-wave-ani1 0.5s ease-in-out 2s forwards,
+  hand-wave-ani2 .4s ease-in-out 2.5s infinite alternate;
+}
+/* 처음 오른팔 올리기 */
+@keyframes hand-wave-ani1 {
+  to{
+    rotate: -135deg;
+  }
+}
+/* 계속 팔 흔들기 */
+@keyframes hand-wave-ani2 {
+  to{
+    rotate: -140deg;
+  }
+}
+/* 오른팔 하단 */
+.arm2 span{
+  /* 기준축변경 : 가로 */
+  transform-origin: top;
+  rotate: 0deg;
+  /* 애니메이션 */
+  animation: arm-small-wave-ani 0.4s ease-in-out 2.5s infinite alternate;
+}
+@keyframes arm-small-wave-ani {
+  to{
+    rotate: -30deg;
+  }  
 }
 /* 팔하단 span */
 .arm span {
@@ -503,9 +535,8 @@ h1.logo{
   border: none;
 }
 
-
 /* 2-2. 설명박스 */
-.text-box{
+.text-box {
   max-width: 800px;
   margin: 0 auto;
   color: #fff;
@@ -513,9 +544,7 @@ h1.logo{
   border-radius: 20px;
   padding: 15px 30px;
   /* 박스 2중 글로우효과(그림자로줌) */
-  box-shadow: 
-  inset 0 0 20px blue,
-  inset 0 0 50px 10px cyan;
+  box-shadow: inset 0 0 20px blue, inset 0 0 50px 10px cyan;
 
   /* 백드롭 블러효과주기 */
   backdrop-filter: blur(6px);
@@ -541,13 +570,13 @@ h1.logo{
 }
 
 /* 2-2-1. 제목 */
-.text-box h2{
+.text-box h2 {
   /* 스티키 포지션 */
   position: sticky;
   top: 10px;
   /* top값이 고정위치값임! */
 
-  font-family: 'Chakra Petch', sans-serif;
+  font-family: "Chakra Petch", sans-serif;
   font-size: 35px;
   text-align: center;
   background-color: #ffffff8d;
@@ -558,8 +587,8 @@ h1.logo{
   font-weight: normal;
 }
 /* 2-2-2. 출처 */
-.text-box small{
-  font-family: 'Chakra Petch', sans-serif;
+.text-box small {
+  font-family: "Chakra Petch", sans-serif;
   font-size: 12px;
   text-shadow: 1px 1px 1px #00000077;
   color: #ff0;
@@ -571,8 +600,8 @@ h1.logo{
 }
 
 /* 2-2-3.내용단락 */
-.text-box p{
-  font-family: 'Barlow', sans-serif;
+.text-box p {
+  font-family: "Barlow", sans-serif;
   font-size: 17px;
   /* 줄간격 */
   line-height: 1.7;
@@ -603,19 +632,17 @@ h1.logo{
 
   /* 첫줄 들여쓰기 : text-indent (ti) */
   text-indent: 40px;
-
 }
 /* 가상요소 첫글자 적용하기 */
-.text-box p::first-letter{
+.text-box p::first-letter {
   font-size: 30px;
   font-weight: bold;
   color: hotpink;
 }
 
-
 /************* 4. 하단영역 *************/
 /* 3-1. 회사정보 */
-#bottom-area{
+#bottom-area {
   position: relative;
   /* z-index적용위해 포지션줌! */
   z-index: 5;
@@ -624,7 +651,7 @@ h1.logo{
 
   color: #fff;
   /* 글자크기 : 30px, 글자체 'Black Ops One' */
-  font: 3rem 'Black Ops One';
+  font: 3rem "Black Ops One";
   /* 글자그림자 */
   text-shadow: 2px 2px 2px #000;
   /* 글자중앙 */
@@ -637,5 +664,4 @@ h1.logo{
     rgba(0,0,0,0.5)
   */
   background-color: rgb(0 0 0 / 0.5);
-
 }
