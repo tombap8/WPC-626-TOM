@@ -17,4 +17,11 @@ function 점수보여줘() {
     // 1. 함수호출확인
     console.log("내점수보여줘 함수야!");
 
+    // 2. 대상선정
+    // 2-1. 점수입력박스
+    var 내점수 = document.getElementById("jumsu");
+    // 입력창 input의 값은 value 속성으로 읽음!
+
+    console.log("내점수:", 내점수.value);
+
 } // 점수보여줘 함수 ////
