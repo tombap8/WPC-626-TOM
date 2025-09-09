@@ -22,6 +22,15 @@ function 점수보여줘() {
     var 내점수 = document.getElementById("jumsu");
     // 입력창 input의 값은 value 속성으로 읽음!
 
-    console.log("내점수:", 내점수.value);
+    // 2-2. 출력박스
+    var 출력박스 = document.querySelector('.jexp');
+    // querySelector() 메서드는 선택자(클래스,아이디,태그) 모두 가능함! 하나만 선택하여 가져온다!
+    // querySelectorAll() 메서드는 선택자 모두 가능하며, 여러개를 선택하여 가져온다! -> 순번필요! -> item(순번) 사용!
+
+    console.log(
+        "내점수:", 내점수.value, 
+        '출력박스:', 출력박스);
+
+
 
 } // 점수보여줘 함수 ////
