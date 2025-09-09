@@ -115,6 +115,7 @@
         id="jumsu"
         placeholder="점수를 입력하세요!"
         maxlength="3"
+        onkeypress="if(event.keyCode===13) 점수보여줘()"
       />
       <!-- 
         [ onkeypress 이벤트 속성 ]
@@ -123,7 +124,7 @@
         조건식 : event.keyCode === 13
         -> 키보드의 키코드가 13번이냐? 엔터키 눌렀냐?
         -> 엔터키의 키코드는 13번이다!
-        -> true이면 showJumsu() 라는 함수를 호출해라!
+        -> true이면 점수보여줘() 라는 함수를 호출해라!
         -> event 브라우저 내장객체 : 이벤트관련 객체
         -> event.keyCode는 키코드
         -> event.key는 키이름
