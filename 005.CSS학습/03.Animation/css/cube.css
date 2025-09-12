@@ -27,6 +27,11 @@ body {
   ***************************************/
   /* cursor: url("../images/cursor.png") 128 128, auto; */
   cursor: url("../images/cursor.png"), auto;
+
+  
+  /* 회전하는 큐브를 더 입체적으로 
+  보이게 하기위해 원근설정하기 */
+  perspective: 50vh;
 }
 
 /* 큐브박스 */
