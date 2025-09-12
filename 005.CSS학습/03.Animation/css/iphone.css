@@ -134,11 +134,14 @@ body {
 }
 
 /* 흘러가는 글자 박스 */
-.flow-box{
-  
+.flow-box{  
+  /* 박스 포지션 */
+  position: fixed;
+  top: 2vh;
 }
 /* 글자박스 */
 .text-box{
+
   /* 플렉스박스 : ul과 ul도 옆으로 흐르게함 */
   display: flex;
 
@@ -150,6 +153,19 @@ body {
   /* 애니메이션을 반대방향으로 보내려면 reverse! */
   /* animation: flow-ani 5s linear infinite reverse; */
 }
+
+/* 두번째 박스 */
+.flow-box.box2{
+  /* 위치를 하단으로 이동 */
+  bottom: 2vh;
+}
+/* 두번째 박스의 글자박스 */
+.box2 .text-box{
+  /* 반대방향으로 보내려면 reverse!
+  animation-direction 속성만 덮어쓴다! */
+  animation-direction: reverse;
+}
+
 /* 글자박스 ul */
 .text-box ul{
   /* 플렉스박스 */
@@ -190,6 +206,14 @@ body {
   color: transparent;
   /* 아래와 같이 글자색 투명 설정해도 유효함 */
   /* -webkit-text-fill-color: transparent; */
+
+  /* 글자그림자를 text-shadow로 넣으면
+  그라데이션 색 넣기 글자이므로 그림자가
+  앞으로보임(이유는 글자색이 투명해서!)
+  그래서 filter속성의 drop-shadow를
+  사용하면 된다! filter효과는 요소 전체에
+  종합적인 효과를 주는 속성이다! */
+  filter: drop-shadow(2px 4px 3px rgb(0 0 0 / .5));
 
 }
 
