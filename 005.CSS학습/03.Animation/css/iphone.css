@@ -18,36 +18,35 @@ body {
 
   /* 회전하는 아이폰을 더 입체적으로 
   보이게 하기위해 원근설정하기 */
-  perspective: 50vh;
+  perspective: 100vh;
 }
 
 /* 아이폰박스 */
 .iphone {
   position: absolute;
   /* 박스 정중앙 보내기 */
-  top: calc(50% - 400px / 2);
-  left: calc(50% - 200px / 2);
-  /* calc() CSS계산함수
-    - 더하기, 빼기 사용시 기호앞뒤공백 필수 */
-  width: 200px;
-  height: 400px;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  /* width: 200px; -> 가로크기 설정하지 않음! */
+
+  /* 높이값이 보이는 화면의 60%크기이고
+  가로 세로비가 1:2 */
+  aspect-ratio: 1/2;
+  height: 60vh;
 
   /* 입체적용설정 */
   transform-style: preserve-3d;
 
   /* 회전적용 : x축 10도, y축 30도 */
   transform: rotateX(10deg) rotateY(30deg);
-
   /* outline: 1px solid red; */
-
-  /* 스케일로 사이즈 키우기 */
-  scale: 2;
 }
 /* 아이폰 각면 공통 */
 .iphone span {
   position: absolute;
-  width: 200px;
-  height: 400px;
+  width: 100%;
+  height: 100%;
 
   /* 배경공통 */
   background-repeat: no-repeat;
