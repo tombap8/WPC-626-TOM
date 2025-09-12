@@ -144,6 +144,11 @@ body {
 
   /* 보이는 화면만큼 가로폭 */
   width: 100vw;
+
+  /* 애니메이션 호출 : 이시이지반방마 */
+  animation: flow-ani 5s linear infinite;
+  /* 애니메이션을 반대방향으로 보내려면 reverse! */
+  /* animation: flow-ani 5s linear infinite reverse; */
 }
 /* 글자박스 ul */
 .text-box ul{
@@ -165,10 +170,33 @@ body {
 }
 /* 글자박스 ul li */
 .text-box ul li{
-  width: calc(100vw/4);
-  outline: 2px dashed red;
+  /* 가로크기 4등분 */
+  /* width: calc(100vw/4); */
+
+  /* 가로크기 계산보다 flex:1 셋팅이 
+  더 플렉스스러운 셋팅임! */
+  flex: 1;
   text-align: center;
   font-family: 'Anton', sans-serif;
   font-size: 4vw;
+  /* outline: 2px dashed red; */
 
+  /* 글자에 그라데이션 넣기 : 3가지 셋팅필수! */
+  /* (1) 배경색 그라데이션 넣기(또는 이미지) */
+  background-image: linear-gradient(to right, darkorange, darkgreen);
+  /* (2) 배경 클리핑 값 text로 설정 */
+  background-clip: text;
+  /* (3) 글자색 투명으로 설정 */
+  color: transparent;
+  /* 아래와 같이 글자색 투명 설정해도 유효함 */
+  /* -webkit-text-fill-color: transparent; */
+
+}
+
+/* 글자이동 애니메이션 키프레임 : .text-box에서 호출! */
+@keyframes flow-ani {
+  to{
+    /* x축으로 내크기의 절반만큼 왼쪽으로 이동함! */
+    translate: -50%;
+  }
 }
