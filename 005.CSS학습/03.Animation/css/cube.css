@@ -159,5 +159,25 @@ body {
 */
 
 
+/* 큐브의 바닥 그림자박스 */
+.shadow {
+  position: absolute;
+  bottom: 0; /* 바닥에 위치 */
+  left: 50%;
+  translate: -50% 0;
+  width: 300px;
+  height: 300px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 20%;
+  transform: rotateX(90deg) scale(1.2, 0.6); /* 납작하게 눌림 */
+  filter: blur(25px);
+  animation: shadow-ani 3s linear infinite;
+}
 
+/* 큐브 바닥 그림자 키프레임 */
+@keyframes shadow-ani {
+  0% { transform: rotateX(90deg) scale(1.5, 0.6) rotateZ(0); }
+  50%   { transform: rotateX(90deg) scale(1.8, 0.4) rotateZ(180deg); }
+  100%   { transform: rotateX(90deg) scale(1.5, 0.6) rotateZ(360deg); }
+}
 

@@ -14,7 +14,9 @@
     <!-- <button class="btngo">돌아!</button> -->
 
     <!-- 큐브 : 정육면체 -->
-    <div class="cube rotate-cube">
+    <div class="cube rotate-cube" onmouseover="
+    document.querySelector('.shadow').style.animationPlayState='paused';
+    " onmouseout="document.querySelector('.shadow').style.animationPlayState='running';">
         <span></span>
         <span></span>
         <span></span>
@@ -22,5 +24,8 @@
         <span></span>
         <span></span>
     </div>
+
+    <!-- 큐브 그림자 연출용 박스 -->
+    <div class="shadow"></div>
 </body>
 </html>
