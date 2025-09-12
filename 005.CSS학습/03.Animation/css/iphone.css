@@ -157,6 +157,7 @@ body {
 /* 두번째 박스 */
 .flow-box.box2{
   /* 위치를 하단으로 이동 */
+  top: auto;
   bottom: 2vh;
 }
 /* 두번째 박스의 글자박스 */
@@ -224,3 +225,15 @@ body {
     translate: -50%;
   }
 }
+
+/* 아이폰 미리보기 중앙흘러가는 박스 */
+.preview-box{
+  position: fixed;
+  top: 50%;
+  left: 0;
+  translate: 0 -50%;
+  text-align: center;
+
+  /* 플렉스박스 */
+}
+/*  */
