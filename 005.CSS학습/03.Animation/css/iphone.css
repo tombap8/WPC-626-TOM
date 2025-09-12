@@ -132,3 +132,43 @@ body {
     transform: rotateX(-350deg) rotateY(390deg);
   }
 }
+
+/* 흘러가는 글자 박스 */
+.flow-box{
+  
+}
+/* 글자박스 */
+.text-box{
+  /* 플렉스박스 : ul과 ul도 옆으로 흐르게함 */
+  display: flex;
+
+  /* 보이는 화면만큼 가로폭 */
+  width: 100vw;
+}
+/* 글자박스 ul */
+.text-box ul{
+  /* 플렉스박스 */
+  display: flex;
+  /* 부모박스채우기 
+  -> flex-shrink값을 0이여야만 적용됨!!! */
+  width: 100%;
+  /* 부모에 맞춰서 줄어드는 flex자식속성인
+  flex-shrink 기본값이 1이므로 내가 원하는
+  크기를 설정하려면 이 속성값을 0으로 해야
+  자동으로 줄어드는 속성을 없앨 수 있다! */
+  flex-shrink: 0;
+
+  /* 초기화 */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/* 글자박스 ul li */
+.text-box ul li{
+  width: calc(100vw/4);
+  outline: 2px dashed red;
+  text-align: center;
+  font-family: 'Anton', sans-serif;
+  font-size: 4vw;
+
+}
