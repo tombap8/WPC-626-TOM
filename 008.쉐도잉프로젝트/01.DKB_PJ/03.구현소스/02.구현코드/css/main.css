@@ -62,6 +62,10 @@ body * {
     gap: 3.2rem;
 
 }
+/* 상위 메뉴 li오버시 a요소 글자 빨간색 */
+.gnb-menu > ul > li:hover > a{
+    color: #f00;
+}
 
 /* 서브메뉴 */
 .sub-menu {
@@ -81,7 +85,7 @@ body * {
     transition: .4s ease-out;
 }
 /* 부모 li에 마우스 오버시 .sub-menu 높이값 변경하기 */
-.gnb-menu li:hover .sub-menu{
+.gnb-menu > ul > li:hover .sub-menu{
     max-height: 400px;
     /* 최대 높이값을 컨텐츠 높이값 보다 좀 더 크게 잡으면
     오버시 높이값이 내용만큼만 커지게 된다! */
@@ -106,11 +110,36 @@ body * {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    height: 100px;
+    /* height: 100px; */
 
     /* 글자크기 */
     font-size: 1.6rem;
 }
+
+/* 서브리스트 li */
+.sub-list li {
+    /* 가로크기 제한 */
+    width: calc(100% / 5);
+
+    /* 한줄짜리 말줄임표시 3가지 셋팅! */
+    /* 1.줄바꿈 방지 */
+    white-space: nowrap;
+    /* 2.넘치는 자식 숨기기 */
+    overflow: hidden;
+    /* 3.넘치는 글자 말줄임표시 */
+    text-overflow: ellipsis;
+}
+
+/* 서브리스트의 ul별로 높이값 셋팅 */
+/* 두줄 클래스 */
+.two-line{
+    height: 8rem;
+}
+/* 세줄 클래스 */
+.three-line{
+    height: 13.8rem;
+}
+
 
 /***************** 1.5. 드라마파트메뉴 *****************/
 /***************** 2. 메인영역 *****************/
