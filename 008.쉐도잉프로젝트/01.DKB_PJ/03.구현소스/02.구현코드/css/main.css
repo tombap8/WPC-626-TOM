@@ -8,9 +8,9 @@
 @import url(./grid_12_flex.css);
 
 /* 공사중 표시 */
-body * {
+/* body * {
     outline: 2px dashed #ccc;
-}
+} */
 
 /***************** 메인 CSS *****************/
 /***************** 1. 상단영역 *****************/
@@ -28,10 +28,103 @@ body * {
     justify-content: space-between;
 }
 /* 로고박스 */
-.logo-box{    
+.logo-box{  
+    position: relative;
+    /* 큐브로고의 부모자격 */  
     width: 126px;
-    text-align: center;
-    padding: 10px 0;
+    height: 100%;
+    z-index: 1;
+}
+
+/* 변수 셋팅하기 */
+:root {
+  /* 큐브로고사이즈 지정 */
+  --cube-size: 50px;
+}
+
+
+/* 큐브로고박스 */
+.cube-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: var(--cube-size);
+  height: var(--cube-size);
+  /* outline: 1px solid red; */
+
+  /* 로고의 원래 회전각도 셋팅 */   
+    transform: rotateX(-45deg) rotateY(45deg);
+  transform-style: preserve-3d;
+}
+
+/* 큐브 각면 공통 */
+.cube-logo span {
+  position: absolute;
+  /* 앱솔루트는 자동블록 */
+  width: 100%;
+  height: 100%;  
+}
+
+/* 첫번째 큐브 앞면 : N글자 하단 */
+.cube-logo span:nth-child(1) {
+  transform: translateZ(calc(var(--cube-size) / 2));
+
+  /* 배경이미지 */
+  background: url(../images/logo/tvn_logo_n2.png) no-repeat center/cover;
+}
+
+/* 두번째 큐브 오른쪽면 : N글자 하단 */
+.cube-logo span:nth-child(2) {
+  transform: rotateY(90deg) rotate(180deg) translateZ(calc(var(--cube-size) / 2));
+
+  /* 배경이미지 */
+  background: url(../images/logo/tvn_logo_n2.png) no-repeat center/cover;
+}
+/* 세번째 큐브 뒷쪽면 */
+.cube-logo span:nth-child(3) {
+  transform: rotateY(180deg) translateZ(calc(var(--cube-size) / 2));
+
+  /* 배경이미지 */
+  background: url(../images/logo/tvn_logo_tv.png) no-repeat center/cover;
+
+  /* 글자 반대로 뒤집기 */
+  rotate: 180deg;
+}
+/* 네번째 큐브 왼쪽면 : tv글자 */
+.cube-logo span:nth-child(4) {
+  transform: rotateY(-90deg) translateZ(calc(var(--cube-size) / 2));
+
+  /* 배경이미지 */
+  background: url(../images/logo/tvn_logo_tv.png) no-repeat center/cover;
+}
+/* 다섯번째 큐브 위쪽면 : N글자 상단 */
+.cube-logo span:nth-child(5) {
+  transform: rotateX(90deg) translateZ(calc(var(--cube-size) / 2));
+
+  /* 배경이미지 */
+  background: url(../images/logo/tvn_logo_n1.png) no-repeat center/cover;
+}
+/* 여섯번째 큐브 아래쪽면 : N글자 상단 */
+.cube-logo span:nth-child(6) {
+  transform: rotateX(-90deg) rotate(-90deg) translateZ(calc(var(--cube-size) / 2));
+
+  /* 배경이미지 */
+  background: url(
+  ../images/logo/tvn_logo_n1.png) no-repeat center/cover;
+}
+
+/* 애니적용 클래스 - animation:이시이지반방마 */
+.rotate-cube {
+  animation: cube-logo-ani 1.5s ease-in-out 2 alternate;
+}
+
+/* 큐브로고 회전 키프레임 */
+@keyframes cube-logo-ani {
+  to {
+    transform: 
+    rotateX(calc(360deg - 45deg)) rotateY(calc(360deg + 45deg));
+  }
 }
 
 /* 메뉴박스 */
