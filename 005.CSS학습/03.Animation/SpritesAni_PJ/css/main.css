@@ -256,8 +256,8 @@ body {
 /* 나의애니 */
 .spani5 {
   position: absolute;
-  top: 1vh;
-  left: 10vw;
+  top: .2vh;
+  left: 7vw;
   width: calc(2048px / 4);
   /* 한장면의 가로크기를 계산해서 넣음 */
   height: calc(512px / 2);
