@@ -277,7 +277,9 @@ body {
   /* 한장면의 세로크기를 계산해서 넣음 */
   background: url(../images/chita_ani.png) no-repeat;
   /* 애니메이션: 이시이지반방마 */
-  animation: spani5X 0.4s steps(4) infinite, spani5Y 0.8s steps(2) infinite;
+  animation: 
+  spani5X 0.4s steps(4) infinite, 
+  spani5Y 0.8s steps(2) infinite;
 }
 
 /* 나의애니 키프레임 X축 */
