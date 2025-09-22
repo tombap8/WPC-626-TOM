@@ -40,16 +40,14 @@ h1.logo {
   position: relative;
   /* 부모자격 */
   height: 100%;
-  
 
   /* background-image: radial-gradient(#00000054, transparent 71%, transparent); -> 확정된 그라데이션
   이미지 비트맵으로 출력하기 때문에 애니메이션 불가! */
-
 }
 
 /* 가상요소 박스 그림자 */
 h1.logo::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -60,12 +58,11 @@ h1.logo::before {
   /* 원형 */
   border-radius: 50%;
   /* 축소 */
-  scale: .5;
+  scale: 0.5;
 
   /* 애니메이션호출 */
-  animation: logo-shadow-ani .6s ease-in-out infinite alternate;
+  animation: logo-shadow-ani 0.6s ease-in-out infinite alternate;
 }
-
 
 /* 로고그림자효과 키프레임 */
 @keyframes logo-shadow-ani {
@@ -308,7 +305,7 @@ h1.logo::before {
 }
 
 /***************** 2-2. 캐릭터영역 *****************/
-.cat-part  {
+.cat-part {
   position: relative;
   /* 형제 배너박스보다 밑에 깔리므로
   포지션을 줘서 나중에 오는 박스가 위로 오게함! */
@@ -407,6 +404,72 @@ h1.logo::before {
   line-height: 1.6;
   /* 양쪽정렬 justify */
   text-align: justify;
+}
+/************* 2-2.5. 드라마파트메뉴 : 스티키메뉴 ***************/
+#spart-menu {
+  /* 스티키 포지션 - 상단스크롤 걸림! */
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 999;
+}
+/* 인박스 높이값 초기화 */
+.spart-menu.inbox {
+  height: auto;
+}
+.spart-menu ul {
+  /* 플렉스박스 */
+  display: flex;
+  padding: 12px 0;
+  transition: 0.4s ease-out;
+}
+/* 도깨비메뉴 상위메뉴a */
+.spart-menu ul > li > a {
+  color: #999;
+  font-size: 1.8rem;
+  display: block;
+  padding: 9px 24px;
+  /* 줄바꿈방지 */
+  white-space: nowrap;
+}
+/* 도깨비메뉴 상위li 오버시 a */
+.spart-menu ul > li:hover > a {
+  color: #222;
+}
+/* 하위메뉴가 있는 li만 하위 표시하기 */
+.spart-menu ul > li.be-sub > a::after {
+  content: "∨";
+  display: inline-block;
+  transform: scale(0.5, 0.3);
+  margin-left: 3px;
+}
+/* 현재 선택된 메뉴 li.on 클래스 */
+.spart-menu ul > li.on > a {
+  background-color: red;
+  color: #fff;
+  border-radius: 30px;
+}
+
+/* 도깨비 서브메뉴 */
+.spart-sub-menu {
+  position: absolute;
+  border: 1px solid red;
+  border-radius: 20px;
+  width: 180px;
+  background-color: #fff;
+
+  /* 처음에 숨김 */
+  display: none;
+}
+/* 상위li에 마우스 오버시 서브 보이기 */
+.spart-menu ul > li:hover .spart-sub-menu {
+  display: block;
+}
+/* 도깨비 서브메뉴 a */
+.spart-sub-menu a {
+  display: block;
+  padding: 10px 15px;
+  font-size: 1.8rem;
 }
 /***************** 2-3. 드라마소개영역 *****************/
 .intro-part {
