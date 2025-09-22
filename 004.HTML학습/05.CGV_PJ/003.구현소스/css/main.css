@@ -93,8 +93,10 @@ body {
     /* 트랜지션 */
     transition: rotate .3s ease-out;
 }
-/* li에 오버시 변경 */
-.poster-menu-box li:hover{
+/* li에 오버시 변경
++ 동시에 클래스 on일때 적용 */
+.poster-menu-box li:hover,
+.poster-menu-box li.on{
   /* 일어남! */
   rotate: x 0deg;
   /* 외곽선 */
@@ -133,8 +135,10 @@ body {
 
 }
 
-/* 영화정보박스 li:hover */
-.poster-menu-box li:hover .movie-info{
+/* 영화정보박스 li:hover
++ li.on일때도 적용! */
+.poster-menu-box li:hover .movie-info,
+.poster-menu-box li.on .movie-info{
   top: 0;
 }
 
