@@ -93,6 +93,51 @@ body{
     transform: scale(1.5) rotate(-15deg);
 }
 
+/* 3. 영화관문 */
+.door{
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    text-align: center;
+
+    /* 원근설정 */
+    perspective: 100vh;
+
+}
+.door img{
+    /* 부모박스가 특정%보다 작아지면 
+    %로 이미지 가로크기 적용! */
+    max-width: 40%;
+
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 왼쪽문 */
+.left{
+    transform-origin: left;
+    rotate: y 0deg;
+}
+/* 오른쪽문 */
+.right{
+    transform-origin: right;
+    rotate: y 0deg;
+}
+
+/* 클래스 on 셋팅시 애니메이션 설정하기 */
+body #enter ,
+body #myvid {
+    transition: opacity 1s ease-in-out;
+}
+body.on #enter ,
+body.on #myvid {
+    opacity: 0;
+}
+
 
 
 
