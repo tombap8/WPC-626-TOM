@@ -24,5 +24,19 @@ $('.ab2').click(()=>{
     $slide.css({
         translate: (-100*seq)+'%',
         transition: '.5s'
-    });
-});
+    }); /// css ///
+}); /// click ///
+
+// 클릭이벤트 설정하기 ///
+$('.ab1').click(()=>{
+    // 슬라이드 순번 전역변수 1감소
+    seq--;
+    // 0이 한계이므로 처리
+    if(seq<0) seq=4;    
+    
+    // 슬라이드의 translate값을 변경함!
+    $slide.css({
+        translate: (-100*seq)+'%',
+        transition: '.5s'
+    }); /// css ///
+}); /// click ///
