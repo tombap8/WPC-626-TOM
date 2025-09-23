@@ -9,10 +9,20 @@ const $slide = $('.slide');
 
 // 2. 구현하기
 // 2-1. 오른쪽 이동버튼 클릭시 기능구현
+
+// 슬라이드 순번 전역변수
+let seq = 0;
+
+// 클릭이벤트 설정하기 ///
 $('.ab2').click(()=>{
+    // 슬라이드 순번 전역변수 1증가
+    seq++;
+    // 4가 한계이므로 처리
+    if(seq>4) seq=0;    
+    
     // 슬라이드의 translate값을 변경함!
     $slide.css({
-        translate: '-100%',
+        translate: (-100*seq)+'%',
         transition: '.5s'
     });
 });
