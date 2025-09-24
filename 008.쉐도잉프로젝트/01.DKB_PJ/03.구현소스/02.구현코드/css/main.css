@@ -587,10 +587,46 @@ h1.logo::before {
 }
 /* 미리보기 컨텐츠 리스트 li */
 .preview-area li {
-  width: calc((100% - 1.5%*3) / 4);
+  width: calc((100% - 1.5% * 3) / 4);
   /* 가로크기는 4등분(단, 갭3개의 값을 뺀다!) */
-  aspect-ratio: 1;
+
+  aspect-ratio: 320/270;
   box-shadow: 0 0 10px #ccc;
+  /* 보더박스 */
+  box-sizing: border-box;
+  padding: 24px 20px;
+
+  /* 커서 손가락 */
+  cursor: pointer;
+
+  /* 투명도 0.6 */
+  opacity: 0.6;
+
+}
+/* li오버시 투명도 복원 */
+.preview-area li:hover {
+  opacity: 1;
+}
+
+/* 미리보기 타이틀 */
+.preview-area li h3 {
+  font-size: 2rem;
+  margin-bottom: 14px;
+}
+/* 미리보기 내용 */
+.preview-area li p {
+  font-size: 1.5rem;
+  line-height: 1.9;
+  color: #555;
+  height: 77%;
+
+  /* 여러줄 말줄임처리 */
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* 여러줄 처리 줄수 */
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
 }
 /***************** 2-5. 현장포토영역 *****************/
 .real-part {
