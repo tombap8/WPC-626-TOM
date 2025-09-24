@@ -577,8 +577,20 @@ h1.logo::before {
 }
 
 /***************** 2-4. 미리보기영역 *****************/
-.view-part {
-  height: 660px;
+.preview-area {
+  min-height: 660px;
+}
+
+/* 미리보기 컨텐츠 리스트 ul */
+.preview-area ul.cont-box {
+  gap: 2vh 1.5%;
+}
+/* 미리보기 컨텐츠 리스트 li */
+.preview-area li {
+  width: calc((100% - 1.5%*3) / 4);
+  /* 가로크기는 4등분(단, 갭3개의 값을 뺀다!) */
+  aspect-ratio: 1;
+  box-shadow: 0 0 10px #ccc;
 }
 /***************** 2-5. 현장포토영역 *****************/
 .real-part {
