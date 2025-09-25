@@ -196,6 +196,12 @@ h1.logo::before {
   color: #f00;
 }
 
+/* 서브표시 화살표 */
+.gnb-menu i {
+    font-size: 1rem;
+    vertical-align: 0.3rem;
+}
+
 /* 서브메뉴 */
 .sub-menu {
   position: absolute;
