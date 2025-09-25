@@ -16,7 +16,10 @@
 /***************** 1. 상단영역 *****************/
 /* 상단영역 최상위 부모박스 */
 #top-area {
+  /* 부모자격! */
   position: relative;
+  /* 하단보더 */
+  border-bottom: 1px solid #ccc;
   /* 상단영역이 항상위! */
   z-index: 9999;
 }
@@ -196,10 +199,14 @@ h1.logo::before {
 /* 서브메뉴 */
 .sub-menu {
   position: absolute;
+  /* left값과 width값%는 부모를 찾는다! */
   left: 0;
   width: 100%;
   box-sizing: border-box;
-  background-color: #fff;
+
+  /* 배경색은 속박스인 패딩박스에 준다! */
+  /* background-color: #fff;-> 삭제! */
+
   /* 서브메뉴를 숨기기위해 넘치는 자식 숨기기설정 */
   overflow: hidden;
   /* 높이값을 0으로 하면 자식요소가 숨겨짐!
@@ -221,6 +228,10 @@ h1.logo::before {
 -> 자식요소 숨기기 부모박스엔 패딩을 줄 수 없다! */
 .padding-box {
   padding: 5vw;
+  /* li에서 25px떨어져서 하단 보더가 보이게함 */
+  margin-top: 25px;
+  /* 배경색은 여기에~!!! */
+  background-color: white;
 }
 
 /* 타이틀 바 */
@@ -640,11 +651,33 @@ h1.logo::before {
 }
 /***************** 2-5. 현장포토영역 *****************/
 .real-part {
-  height: 906px;
+  /* height: 906px; */
 }
 /* 영역 서브제목 아이콘 가상요소로 앞에 넣기 */
 .real-part .stit::before {
   background-image: url(../images/icons/icon2.png);
+}
+/* 현장포토 그리드박스 */
+.live-box ul {
+  display: grid;
+  /* 4개 컬럼 동일비율 셋팅 */
+  grid-template-columns: repeat(4, 1fr);
+  /* 사이간격 */
+  gap: min(20px, 1.2vw);
+}
+/* 현장포토 리스트 */
+.live-box li {
+  cursor: pointer;
+}
+/* 이미지 */
+.live-box img {
+  border-radius: 6px;
+  width: 100%;
+}
+/* 이미지 타이틀 */
+.live-box figcaption {
+  font-size: 2rem;
+  padding-top: 1.4rem;
 }
 /***************** 2-6. 대표포스터영역 *****************/
 .poster-part {
