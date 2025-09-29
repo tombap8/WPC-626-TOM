@@ -48,7 +48,7 @@
 
 5. CSS 학습
   (1) 2D Sola System
-  (2) Display : Grid 3
+  (2) 3D Sola System
 
 ───────────────────────────────────────
 
