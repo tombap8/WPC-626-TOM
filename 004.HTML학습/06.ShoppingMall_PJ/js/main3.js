@@ -25,6 +25,9 @@
 const $slide = $(".slide");
 // 보통 제이쿼리 선택할당은 변수명 앞에 $로 시작
 
+// 블릿 대상 선정
+const $indic = $(".indic li");
+
 // 슬라이드 개수를 직접 넣지 말고
 // JS가 알아서 개수를 파악하게 한다!
 const SLIDE_NUM = $slide.find("li").length;
@@ -65,6 +68,12 @@ $(".abtn").click((e) => {
 
   // 다음순번 슬라이드 클래스 on 넣기
   $slide.find("li").eq(seq).addClass("on");
+
+  // 블릿 현재 순번 li에 클래스 on넣기, 나머지는 제거
+  $indic.eq(seq).addClass('on').siblings().removeClass('on');
+  // eq(순번) -> 순번요소 선택 메서드
+  // siblings() -> 형제요소 선택 메서드
+  // removeClass(클래스명) -> 클래스 제거 메서드
 }); /// click ///
 
 // 클릭이벤트 설정하기 ///

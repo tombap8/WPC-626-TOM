@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Mix-Blend-Mode 데모</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: black;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px aqua;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .blend-box {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 0px 20px aqua;
+            transition: transform 0.3s ease;
+        }
+
+        .blend-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .blend-title {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        .blend-demo {
+            position: relative;
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        }
+
+        .blend-circle {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .circle-1 {
+            background: #ff6b6b;
+            transform: translate(-80%, -50%);
+        }
+
+        .circle-2 {
+            background: #4ecdc4;
+            transform: translate(-20%, -50%);
+        }
+
+        /* 각 blend mode 적용 */
+        .multiply .blend-circle { mix-blend-mode: multiply; }
+        .screen .blend-circle { mix-blend-mode: screen; }
+        .overlay .blend-circle { mix-blend-mode: overlay; }
+        .darken .blend-circle { mix-blend-mode: darken; }
+        .lighten .blend-circle { mix-blend-mode: lighten; }
+        .color-dodge .blend-circle { mix-blend-mode: color-dodge; }
+        .color-burn .blend-circle { mix-blend-mode: color-burn; }
+        .hard-light .blend-circle { mix-blend-mode: hard-light; }
+        .soft-light .blend-circle { mix-blend-mode: soft-light; }
+        .difference .blend-circle { mix-blend-mode: difference; }
+        .exclusion .blend-circle { mix-blend-mode: exclusion; }
+        .hue .blend-circle { mix-blend-mode: hue; }
+
+        /* 텍스트 블렌드 예시 */
+        .text-demo {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400"><rect fill="%23ff6b6b" width="400" height="400"/><rect fill="%234ecdc4" x="400" width="400" height="400"/></svg>');
+            background-size: cover;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .text-demo h2 {
+            font-size: 4em;
+            font-weight: bold;
+            color: white;
+            mix-blend-mode: difference;
+            margin: 0;
+        }
+
+        .interactive-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px aqua;
+            margin-top: 40px;
+        }
+
+        .interactive-section h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        select {
+            padding: 10px 20px;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            background: white;
+        }
+
+        .interactive-demo {
+            position: relative;
+            height: 300px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .movable-shape {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: #ffeb3b;
+            border-radius: 50%;
+            cursor: move;
+            top: 75px;
+            left: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>[ CSS Mix-Blend-Mode 값 비교하기 ]</h1>
+
+        <div class="grid">
+            <div class="blend-box">
+                <div class="blend-title">multiply</div>
+                <div class="blend-demo multiply">
+                    <div class="blend-circle circle-1"></div>
+                    <div class="blend-circle circle-2"></div>
+                </div>
+            </div>
+
+            <div class="blend-box">
+                <div class="blend-title">screen</div>
+                <div class="blend-demo screen">
+                    <div class="blend-circle circle-1"></div>
+                    <div class="blend-circle circle-2"></div>
+                </div>
+            </div>
+
+            <div class="blend-box">
+                <div class="blend-title">overlay</div>
+                <div class="blend-demo overlay">
+                    <div class="blend-circle circle-1"></div>
+                    <div class="blend-circle circle-2"></div>
+                </div>
+            </div>
+
+            <div class="blend-box">
+                <div class="blend-title">darken</div>
+                <div class="blend-demo darken">
+                    <div class="blend-circle circle-1"></div>
+                    <div class="blend-circle circle-2"></div>
+                </div>
+            </div>
+
+            <div class="blend-box">
+                <div class="blend-title">lighten</div>
+                <div class="blend-demo lighten">
+                    <div class="blend-circle circle-1"></div>
+                    <div class="blend-circle circle-2"></div>
+                </div>
+            </div>
+
+            <div class="blend-box">
+                <div class="blend-title">color-dodge</div>
+                <div class="blend-demo color-dodge">
+                    <div class="blend-circle circle-1"></div>
+                    <div class="blend-circle circle-2"></div>
+                </div>
+            </div>
+
+            <div class="blend-box">
+                <div class="blend-title">color-burn</div>
+                <div class="blend-demo color-burn">
+                    <div class="blend-circle circle-1"></div>
+                    <div class="blend-circle circle-2"></div>
+                </div>
+            </div>
+
+            <div class="blend-box">
+                <div class="blend-title">hard-light</div>
+                <div class="blend-demo hard-light">
+                    <div class="blend-circle circle-1"></div>
+                    <div class="blend-circle circle-2"></div>
+                </div>
+            </div>
+
+            <div class="blend-box">
+                <div class="blend-title">soft-light</div>
+                <div class="blend-demo soft-light">
+                    <div class="blend-circle circle-1"></div>
+                    <div class="blend-circle circle-2"></div>
+                </div>
+            </div>
+
+            <div class="blend-box">
+                <div class="blend-title">difference</div>
+                <div class="blend-demo difference">
+                    <div class="blend-circle circle-1"></div>
+                    <div class="blend-circle circle-2"></div>
+                </div>
+            </div>
+
+            <div class="blend-box">
+                <div class="blend-title">exclusion</div>
+                <div class="blend-demo exclusion">
+                    <div class="blend-circle circle-1"></div>
+                    <div class="blend-circle circle-2"></div>
+                </div>
+            </div>
+
+            <div class="blend-box">
+                <div class="blend-title">hue</div>
+                <div class="blend-demo hue">
+                    <div class="blend-circle circle-1"></div>
+                    <div class="blend-circle circle-2"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="interactive-section">
+            <h2>★ 인터랙티브 블렌드 모드 테스트</h2>
+            <div class="controls">
+                <select id="blendMode">
+                    <option value="normal">normal</option>
+                    <option value="multiply">multiply</option>
+                    <option value="screen">screen</option>
+                    <option value="overlay">overlay</option>
+                    <option value="darken">darken</option>
+                    <option value="lighten">lighten</option>
+                    <option value="color-dodge">color-dodge</option>
+                    <option value="color-burn">color-burn</option>
+                    <option value="hard-light">hard-light</option>
+                    <option value="soft-light">soft-light</option>
+                    <option value="difference">difference</option>
+                    <option value="exclusion">exclusion</option>
+                    <option value="hue">hue</option>
+                </select>
+            </div>
+            <div class="interactive-demo">
+                <div class="movable-shape" id="shape"></div>
+            </div>
+        </div>
+
+        <div class="blend-box" style="margin-top: 30px;">
+            <div class="blend-title">텍스트 블렌드 효과</div>
+            <div class="text-demo">
+                <h2>BLEND</h2>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const shape = document.getElementById('shape');
+        const blendModeSelect = document.getElementById('blendMode');
+        
+        blendModeSelect.addEventListener('change', (e) => {
+            shape.style.mixBlendMode = e.target.value;
+        });
+
+        let isDragging = false;
+        let currentX;
+        let currentY;
+        let initialX;
+        let initialY;
+
+        shape.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            initialX = e.clientX - shape.offsetLeft;
+            initialY = e.clientY - shape.offsetTop;
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                shape.style.left = currentX + 'px';
+                shape.style.top = currentY + 'px';
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+    </script>
+</body>
+</html>
