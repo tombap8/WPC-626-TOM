@@ -370,6 +370,8 @@
                 <a href="#">메인</a>
               </li>
               <li class="be-sub">
+                <!-- a링크의 href속성값으로 실제 박스 아이디명을 쓰면
+                 클릭시 그 위치로 이동한다! -->
                 <a href="#intro-part">프로그램 소개</a>
                 <!-- 서브메뉴 -->
                 <div class="spart-sub-menu">
@@ -387,10 +389,10 @@
                 </div>
               </li>
               <li>
-                <a href="#preview-part">미리보기</a>
+                <a href="#preview-area">미리보기</a>
               </li>
               <li>
-                <a href="#clip-area">동영상</a>
+                <a href="#video-part">동영상</a>
               </li>
               <li class="be-sub">
                 <a href="#live-photo-area">사진첩</a>
@@ -398,10 +400,10 @@
                 <div class="spart-sub-menu">
                   <ol>
                     <li>
-                      <a href="#live-photo-area">현장 포토</a>
+                      <a href="#real-part">현장 포토</a>
                     </li>
                     <li>
-                      <a href="#poster-area">대표 포스터</a>
+                      <a href="#poster-part">대표 포스터</a>
                     </li>
                   </ol>
                 </div>
@@ -414,7 +416,7 @@
         </div>
 
         <!-- 2-3. 드라마소개영역 -->
-        <section class="intro-part inbox">
+        <section id="intro-part" class="intro-part inbox">
           <h2 class="temp-tit blind">2-3. 드라마소개영역</h2>
           <div class="cont-box">
             <!-- 3-1.드라마 요약정보 파트 -->
@@ -482,7 +484,7 @@
         </section>
 
         <!-- 2-4. 미리보기영역 -->
-        <section class="preview-area inbox">
+        <section id="preview-area" class="preview-area inbox">
           <h2 class="stit">미리보기</h2>
           <div>
             <ul class="cont-box">
@@ -574,7 +576,7 @@
         </section>
 
         <!-- 2-5. 현장포토영역 -->
-        <section class="real-part inbox">
+        <section id="real-part" class="real-part inbox">
           <h2 class="stit">현장포토</h2>
           <div class="cont-box">
             <div class="col-12 live-box">
@@ -664,7 +666,7 @@
         </section>
 
         <!-- 2-6. 대표포스터영역 -->
-        <section class="poster-part inbox">
+        <section id="poster-part" class="poster-part inbox">
           <h2 class="stit">대표포스터</h2>
           <div class="cont-box">
             <div class="col-12 poster-box">
@@ -724,7 +726,7 @@
         </section>
 
         <!-- 2-7. 최신동영상영역 -->
-        <section class="video-part inbox">
+        <section id="video-part" class="video-part inbox">
           <h2 class="stit">최신 동영상</h2>
           <div class="cont-box">
             <div class="clip-box col-12">
