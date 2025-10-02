@@ -27,18 +27,45 @@
     font-size: 8px;
   }
 
+  /* 전체 메뉴 박스 변경 */
+  .menu-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+    padding-right: 0;
+  }
+  /* 메뉴그룹 변경 */
+  .menu-group {
+    justify-content: flex-start;
+    align-items: flex-start;
+    box-sizing: border-box;
+    padding: 10vh 5vw;
+  }
+
   /* 미리보기 파트 : 한줄에 3개씩 */
   .preview-area li {
     width: calc((100% - 1.5% * 2) / 3);
   }
 
   /* 현장포토 & 대표포스터 : 한줄에 3개씩 */
-  .live-box ul, .poster-box ul {
+  .live-box ul,
+  .poster-box ul {
     grid-template-columns: repeat(3, 1fr);
-    grid-row: auto;
   }
+  /* 대표포스터 li 그리드 설정 초기화! */
   .poster-box ul li {
+    /* 가상클래스로 설정된 li도 강제적용위해
+    !important 사용함! */
     grid-row: auto !important;
+  }
+
+  /* 하단영역 플렉스 방향 변경 및 수직방향 정렬조정 */
+  #bottom-area .cont-box {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 /* 1024px 이하 미디어쿼리 종료 */
@@ -55,9 +82,9 @@
     width: calc((100% - 1.5% * 1) / 2);
   }
 
-  
   /* 현장포토 & 대표포스터 : 한줄에 2개씩 */
-  .live-box ul, .poster-box ul {
+  .live-box ul,
+  .poster-box ul {
     grid-template-columns: repeat(2, 1fr);
   }
 }
