@@ -298,6 +298,10 @@ h1.logo::before {
   top: 50%;
   translate: 0 -50%;
   right: 50px;
+  /* 플렉스 */
+  /* display: flex; */
+  display: none;
+  gap: 20px;
 }
 /* 버튼 디자인 */
 .btn-group button{
@@ -306,6 +310,7 @@ h1.logo::before {
   /* 아이콘설정(글자와 같음) */
   font-size: 3rem;
   cursor: pointer;
+  color: #222;
 }
 /* 햄버거 버튼 셋팅 : 처음에 두번째 i태그인 x버튼 안보임 */
 .btn-ham i:nth-child(2){
