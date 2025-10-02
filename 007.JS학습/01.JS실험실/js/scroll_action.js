@@ -63,20 +63,39 @@ callLetter(".stage", "신카이 마코토", 1500);
 // 1. 대상선정 :
 // (1) 이벤트 대상 : window
 // (2) 변경대상 : .scroll-act
-const scrollAct = myFn.qsa(".scroll-act");
-// (3) 변경대상 : .tit
-const tit = myFn.qs(".tit");
-// 타이틀요소에 트랜지션
-tit.style.transition = ".4s ease-in-out";
+const daesang = myFn.qsa(".scroll-act");
 
-// console.log("대상:", scrollAct,tit);
+// 등장위치값 계산변수
+let gijun = window.innerHeight/3*2;
 
-// 스크롤 등장요소의 위치값 담기
-// offsetTop은 맨위에서 부터 요소의 위치값
-// 배열변수에 순서대로 담는다!
-const posEl = [];
-scrollAct.forEach((el, idx) => (posEl[idx] = el.offsetTop));
+// 기준검사함수
+const checkFn = (el) => {
+    // el - 위치대상요소
 
-console.log("위치값:", posEl);
+    // 등장위치값
+    let pos = el.getBoundingClientRect().top;
+    
+    // 기준검사 조건에 맞으면 on 클래스추가
+    if(pos < gijun){
+        el.classList.add("on");
+    } //// if //////////////////
+    // 기준검사 조건에 맞지 않을 때 on 클래스 제거
+    else{
+        el.classList.remove("on");
+    } //// else //////////////
 
-// 2. 이벤트 설정하기 ////////
+    
+}; ///////// checkFn //////////////
+
+
+// 2. 이벤트 함수 설정하기 
+window.addEventListener('scroll',()=>{
+
+    console.log('스크롤~~~!');
+
+    // 대상의 개수만큼 하나씩 반복하여
+    // checkFn 함수로 보내준다!
+    // 그러면 함수에서 해당 대상에게 on 클래스를 더해준다!
+    daesang.forEach(el=>checkFn(el));
+
+}); /////// scroll 이벤트 /////////////////////
