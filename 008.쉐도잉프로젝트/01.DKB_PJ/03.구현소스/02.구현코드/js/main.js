@@ -147,4 +147,17 @@ $gnbList.click(function(){
 
 }); /// click ///
 
+// (3) 리스트 하위의 a요소 클릭시 페이지이동 특성막기!
+$gnbList.find('a').click(e=>e.preventDefault());
+
+// (4) 이전 이동버튼 클릭시 부모 .sub-menu의 클래스 on 제거하기
+$('.btn-up-menu').click(function(){
+  // 클릭된 버튼의 부모들중 .sub-menu에 클래스 on 제거
+  $(this).parents('.sub-menu').removeClass('on');
+  // parents(특정부모요소) 메서드 -> 부모요소들 중 특정부모요소를 선택
+  // 비교) parent() 메서드 -> 바로 상위 직계부모요소 선택
+  // removeClass() 메서드 -> 선택된 요소에 클래스를 제거
+
+}); /// click ///
+
 
