@@ -126,3 +126,25 @@ const $topArea = $("#top-area");
 $btnHam.on("click", () => {
   $topArea.toggleClass("on");
 }); /// click ///
+
+
+/************************************************ 
+    4. 상위메뉴 li 클릭시 서브메뉴에 클래스 넣기
+    ->  클래스 on 을 넣어서 서브메뉴가 등장함!
+************************************************/
+// (1) 이벤트 대상 : .gnb-menu > ul > li
+const $gnbList = $(".gnb-menu > ul > li").has('.sub-menu');
+// has(선택요소) 메서드 -> 자식으로 선택요소가 있는 요소를 선택
+// -> .sub-menu가 있는 li를 선택
+// console.log($gnbList);
+
+// (2) 이벤트 함수 구현하기 ////
+$gnbList.click(function(){
+  // this 키워드로 클릭된 li 자신을 선택하여
+  // 하위의 .sub-menu에 클래스 on을 넣기
+  $(this).find(".sub-menu").addClass("on");
+  // addClass() 메서드 -> 선택된 요소에 클래스를 넣기
+
+}); /// click ///
+
+
