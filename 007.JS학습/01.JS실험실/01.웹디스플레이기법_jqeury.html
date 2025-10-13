@@ -395,7 +395,7 @@
         /////// 제이쿼리코드구역 ////////////
         // 1. 탭 메뉴 기능 구현하기
         // (1) 이벤트 종류 :  click
-        
+
         // (2) 이벤트 대상 : .tab-button
         const $tabBtn = $(".tab-button");
 
@@ -407,6 +407,19 @@
         // (4) 변경 내용 : 
         // 이벤트 와 변경대상에 클래스 active넣기
         // 나머지 형제 클래스 active 는 제거하기
+        $tabBtn.click(function(){
+          // 1. 클릭된 탭(this)은 active클래스 추가
+          // 나머지 형제 탭메뉴(siblings)는 클래스 제거
+          $(this).addClass('active')
+          .siblings().removeClass('active');
+
+          // 2. 클릭된 탭의 순번을 이용하여 같은 순번의
+          // 컨텐트 박스에 active클래스 추가
+          $tabCont.eq($(this).index()).addClass('active')
+          .siblings().removeClass('active');
+          // -> 클릭된 탭순번은 index() 메서드로 구한다!
+          // console.log('탭순번:', $(this).index());
+        }); /// click /////////////////
 
       }); /////// 제이쿼리코드구역 //////////////////
     </script>
