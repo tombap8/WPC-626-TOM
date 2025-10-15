@@ -32,7 +32,6 @@
 
 *****************************************************/
 
-
 // 1. 대상선정 //////////////////
 // (1) 전체 슬라이드 박스 : .slide-box
 const $slideBox = $(".slide-box");
@@ -77,60 +76,57 @@ const $indic = $slideBox.find(".indic li");
 
 // 오른쪽 버튼 클릭시
 // 원리: translate X축 이동값을 -100%로 변경
-$abtn.click(function(){
-    // 버튼구분하기 : 오른쪽버튼(.ab2)이면 true
-    let isR = $(this).is('.ab2');
-    console.log("오른쪽?", isR);
+$abtn.click(function () {
+  // 광클금지함수 호출 셋팅하기
+  if (blockClick()) return;
 
-    // animate({CSS변경},시간,이징,함수)
+  // 버튼구분하기 : 오른쪽버튼(.ab2)이면 true
+  let isR = $(this).is(".ab2");
+  console.log("오른쪽?", isR);
 
-    // 1. 오른쪽 버튼일때
-    if(isR){
-        $slide.animate(
-            {translate:'-100%'},// CSS변경
-            400, // 시간
-            ()=>{ // 애니후 실행함수 시작
-                $slide // 주인공은? 슬라이드!
-                // (1) 맨앞요소 맨뒤로 이동
-                .append($slide.find('li').first())
-                // (2) 이때 translate값 초기화
-                .css({translate:'0%'});
-                
-            } /// 애니후 실행함수 끝 ///
-        );
-    } //// if //////
+  // animate({CSS변경},시간,이징,함수)
 
-    // 2. 왼쪽 버튼일때 //////
-    else {
+  // 1. 오른쪽 버튼일때
+  if (isR) {
+    $slide.animate(
+      { translate: "-100%" }, // CSS변경
+      TIME_GAP, // 시간
+      () => {
+        // 애니후 실행함수 시작
         $slide // 주인공은? 슬라이드!
-        // (1) 슬라이드가 먼저 맨뒤li를 맨앞으로 이동
-        .prepend($slide.find('li').last())
-        // (2) 이때 translate값 초기화
-        .css({translate:'-100%'})
-        // (3) 오른쪽 방향으로 슬라이드 이동애니
-        .animate({translate:'0%'},400);
-        // -> 주의! 0일 경우에도 단위를 반드시 써야
-        // 애니메이션이 잘 적용된다!
+          // (1) 맨앞요소 맨뒤로 이동
+          .append($slide.find("li").first())
+          // (2) 이때 translate값 초기화
+          .css({ translate: "0%" });
+      } /// 애니후 실행함수 끝 ///
+    ); /// animate //////
+  } //// if //////
 
-    } //// else //////
+  // 2. 왼쪽 버튼일때 //////
+  else {
+    $slide // 주인공은? 슬라이드!
+      // (1) 슬라이드가 먼저 맨뒤li를 맨앞으로 이동
+      .prepend($slide.find("li").last())
+      // (2) 이때 translate값 초기화
+      .css({ translate: "-100%" })
+      // (3) 오른쪽 방향으로 슬라이드 이동애니
+      .animate({ translate: "0%" }, TIME_GAP);
+    // -> 주의! 0일 경우에도 단위를 반드시 써야
+    // 애니메이션이 잘 적용된다!
+  } //// else //////
 
+  // 3. 슬라이드 위치표시 블릿
+  // (1) 블릿 대상: .indic li
+  // 해당 블릿은 오른쪽 버튼일때 순번 1, 왼쪽버튼일때 순번 0 슬라이드의 data-seq값을 읽어오면 된다!
+  let currIdx = $slide
+    .find("li")
+    .eq(isR ? 1 : 0)
+    .attr("data-seq");
+  console.log("읽은순번:", currIdx);
 
-    // 3. 슬라이드 위치표시 블릿
-    // (1) 블릿 대상: .indic li
-    // 해당 블릿은 오른쪽 버튼일때 순번 1, 왼쪽버튼일때 순번 0 슬라이드의 data-seq값을 읽어오면 된다!
-    let currIdx = 
-    $slide.find('li').eq(isR?1:0).attr('data-seq');
-    console.log("읽은순번:", currIdx);
-
-    // (2) 블릿 li클래스 on넣기(나머지는 빼기)
-    $indic.eq(currIdx).addClass('on')
-    .siblings().removeClass('on');
-
+  // (2) 블릿 li클래스 on넣기(나머지는 빼기)
+  $indic.eq(currIdx).addClass("on").siblings().removeClass("on");
 }); ////// click 메서드 //////////
-
-
-
-
 
 /******************************** 
 ////////// 광클금지함수 //////////
@@ -143,20 +139,19 @@ let stopClick = false;
 const TIME_GAP = 400;
 
 // [3] 광클금지함수 //////////////////
-function blockClick(){
-    // 1. 광클이면 true 를 리턴함!
-    if(stopClick) return true;
+function blockClick() {
+  // 1. 광클이면 true 를 리턴함!
+  if (stopClick) return true;
 
-    // 2. 클릭가능상태이면 전역변수 셋팅
-    stopClick = true;
-    setTimeout(() => {
-        stopClick = false;
-    }, TIME_GAP);
+  // 2. 클릭가능상태이면 전역변수 셋팅
+  stopClick = true;
+  setTimeout(() => {
+    stopClick = false;
+  }, TIME_GAP);
 
-    // 3. 상태값 리턴 (클릭가능상태 false)
-    return false;
+  // 3. 상태값 리턴 (클릭가능상태 false)
+  return false;
 } ////// blockClick 함수 ///////
-
 
 /*************************************** 
 /////////// 자동넘김 셋팅하기 ///////////
@@ -170,30 +165,48 @@ const IV_TIME = 2000;
 const TO_TIME = 5000;
 
 // 자동호출함수 최초호출 ////
-// slideAuto();
+slideAuto();
 
 // [3] 자동호출함수 ////////////////
-function slideAuto(){
-    // 지우기위해 전역변수 autoI에 할당함
-    autoI = setInterval(() => {
-        // 맨앞div 맨뒤로 이동
-        $target.append($target.find('div').first());
-    }, IV_TIME);
+function slideAuto() {
+  // 지우기위해 전역변수 autoI에 할당함
+  autoI = setInterval(() => {
+    // 1. 오른쪽버튼 클릭시 작동과 동일!
+    $slide.animate(
+      { translate: "-100%" }, // CSS변경
+      TIME_GAP, // 시간
+      () => {
+        // 애니후 실행함수 시작
+        $slide // 주인공은? 슬라이드!
+          // (1) 맨앞요소 맨뒤로 이동
+          .append($slide.find("li").first())
+          // (2) 이때 translate값 초기화
+          .css({ translate: "0%" });
+      } /// 애니후 실행함수 끝 ///
+    ); /// animate //////
 
+    // 2. 슬라이드 위치표시 블릿
+    // (1) 블릿 대상: .indic li
+    // 해당 블릿은 오른쪽 버튼일때 순번 1 슬라이드의 data-seq값을 읽어오면 된다!
+    let currIdx = $slide.find("li").eq(1).attr("data-seq");
+    // console.log("읽은순번:", currIdx);
+
+    // (2) 블릿 li클래스 on넣기(나머지는 빼기)
+    $indic.eq(currIdx).addClass("on").siblings().removeClass("on");
+  }, IV_TIME);
 } ////// slideAuto 함수 //////
 
 // 이동버튼 클릭시 지우기함수 호출하기 ////
-// $('.abtn').click(clearAuto);
+$(".abtn").click(clearAuto);
 
 // [4] 지우기 함수 /////////////////
-function clearAuto(){
-    // 1. 인터발 지우기
-    clearInterval(autoI);
+function clearAuto() {
+  // 1. 인터발 지우기
+  clearInterval(autoI);
 
-    // 2. 타임아웃 지우기 : 실행쓰나미 방지!!!
-    clearTimeout(autoT);
+  // 2. 타임아웃 지우기 : 실행쓰나미 방지!!!
+  clearTimeout(autoT);
 
-    // 3. 타임아웃 셋팅하기(일정시간후 다시 자동호출)
-    autoT = setTimeout(slideAuto, TO_TIME);
-
+  // 3. 타임아웃 셋팅하기(일정시간후 다시 자동호출)
+  autoT = setTimeout(slideAuto, TO_TIME);
 } ////// clearAuto 함수 //////
