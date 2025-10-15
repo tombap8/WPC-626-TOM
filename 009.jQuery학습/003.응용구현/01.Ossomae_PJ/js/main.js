@@ -18,3 +18,5 @@
 
 // 변경대상 변수할당 : .gbx>div
 const $target = $('.gbx');
+
+document.querySelector('.rb').onclick = ()=>{};
