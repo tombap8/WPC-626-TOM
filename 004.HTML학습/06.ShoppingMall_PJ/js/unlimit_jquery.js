@@ -89,10 +89,26 @@ $abtn.click(function(){
         $slide.animate(
             {translate:'-100%'},// CSS변경
             400, // 시간
-            ()=>{ // 애니후 실행함수
-
-        });
+            ()=>{ // 애니후 실행함수 시작
+                $slide // 주인공은? 슬라이드!
+                // (1) 맨앞요소 맨뒤로 이동
+                .append($slide.find('li').first())
+                // (2) 이때 translate값 초기화
+                .css({translate:'0'});
+                
+            } /// 애니후 실행함수 끝 ///
+        );
     } //// if //////
+
+    // 2. 왼쪽 버튼일때 //////
+    else {
+        $slide // 주인공은? 슬라이드!
+        // (1) 슬라이드가 먼저 맨뒤li를 맨앞으로 이동
+        .prepend($slide.find('li').last())
+        // (2) 이때 translate값 초기화
+        .css({translate:'-100%'});
+
+    } //// else //////
 
 }); ////// click 메서드 //////////
 
