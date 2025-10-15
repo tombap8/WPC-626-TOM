@@ -94,7 +94,7 @@ $abtn.click(function(){
                 // (1) 맨앞요소 맨뒤로 이동
                 .append($slide.find('li').first())
                 // (2) 이때 translate값 초기화
-                .css({translate:'0'});
+                .css({translate:'0%'});
                 
             } /// 애니후 실행함수 끝 ///
         );
@@ -106,9 +106,25 @@ $abtn.click(function(){
         // (1) 슬라이드가 먼저 맨뒤li를 맨앞으로 이동
         .prepend($slide.find('li').last())
         // (2) 이때 translate값 초기화
-        .css({translate:'-100%'});
+        .css({translate:'-100%'})
+        // (3) 오른쪽 방향으로 슬라이드 이동애니
+        .animate({translate:'0%'},400);
+        // -> 주의! 0일 경우에도 단위를 반드시 써야
+        // 애니메이션이 잘 적용된다!
 
     } //// else //////
+
+
+    // 3. 슬라이드 위치표시 블릿
+    // (1) 블릿 대상: .indic li
+    // 해당 블릿은 오른쪽 버튼일때 순번 1, 왼쪽버튼일때 순번 0 슬라이드의 data-seq값을 읽어오면 된다!
+    let currIdx = 
+    $slide.find('li').eq(isR?1:0).attr('data-seq');
+    console.log("읽은순번:", currIdx);
+
+    // (2) 블릿 li클래스 on넣기(나머지는 빼기)
+    $indic.eq(currIdx).addClass('on')
+    .siblings().removeClass('on');
 
 }); ////// click 메서드 //////////
 
