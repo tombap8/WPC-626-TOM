@@ -95,8 +95,11 @@ function clearAuto(){
     // 1. 인터발 지우기
     clearInterval(autoI);
 
-    // 타임아웃 셋팅하기(일정시간후 다시 자동호출)
-    setTimeout(slideAuto, TO_TIME);
+    // 2. 타임아웃 지우기 : 실행쓰나미 방지!!!
+    clearTimeout(autoT);
+
+    // 3. 타임아웃 셋팅하기(일정시간후 다시 자동호출)
+    autoT = setTimeout(slideAuto, TO_TIME);
 
 } ////// clearAuto 함수 //////
 
