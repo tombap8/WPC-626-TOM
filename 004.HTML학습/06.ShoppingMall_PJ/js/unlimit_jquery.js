@@ -52,10 +52,14 @@ const $firstSlide = $slide.find("li");
 // 최초슬라이드 li에 data-seq 속성 만들고 순번넣기
 // 왜 넣는가? 슬라이드 li순서가 계속 변경되므로
 // 블릿 인디케이터의 표시 순서를 잡기 위해 넣어준다!
+
+// [ 제이쿼리 each() 메서드 ]
+// 선택요소 개수 만큼 자동으로 반복해준다!
+// -> each((순번,요소)=>{})
 $firstSlide.each((idx, el) => {
   // 속성셋팅은 attr(속성명,값)
   $(el).attr("data-seq", idx);
-}); ////// forEach /////////////
+}); ////// each 메서드 /////////////
 
 // 슬라이드 개수 변수할당!
 // 보통 변경없이 사용하는 변수는 상수라고 하고
@@ -66,10 +70,31 @@ console.log("슬라이드개수:", SLIDE_CNT);
 // (4) 인디케이터 블릿대상
 const $indic = $slideBox.find(".indic li");
 
-console.log("대상:",$slideBox,$abtn,$slide,$indic);
+// console.log("대상:",$slideBox,$abtn,$slide,$indic);
 
 // 2. 이벤트 설정하기 ////////////////////
+// 버튼 클릭시 슬라이드 이동하기
 
+// 오른쪽 버튼 클릭시
+// 원리: translate X축 이동값을 -100%로 변경
+$abtn.click(function(){
+    // 버튼구분하기 : 오른쪽버튼(.ab2)이면 true
+    let isR = $(this).is('.ab2');
+    console.log("오른쪽?", isR);
+
+    // animate({CSS변경},시간,이징,함수)
+
+    // 1. 오른쪽 버튼일때
+    if(isR){
+        $slide.animate(
+            {translate:'-100%'},// CSS변경
+            400, // 시간
+            ()=>{ // 애니후 실행함수
+
+        });
+    } //// if //////
+
+}); ////// click 메서드 //////////
 
 
 
