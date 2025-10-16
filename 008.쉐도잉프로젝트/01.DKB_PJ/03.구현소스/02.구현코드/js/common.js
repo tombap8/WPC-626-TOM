@@ -1,5 +1,10 @@
 // 도깨비 PJ 공통 JS - common.js /////////
 
+// 배너 슬라이드 함수 불러오기
+import bannerFn from './main1_jquery.js';
+// default로 내보냈으므로 아무이름으로 받아도됨!
+
+
 // 같은 이름의 변수의 충돌을 막기위해 지역변수화를 해준다!
 // 방법은 (()=>{나의코드})() 익명함수를 바로 실행하는 지역코드로 감싸준다!
 // 나의코드는 지역화가 되고 익명함수는 바로 실행된다!
@@ -8,19 +13,27 @@
 /// 지역화 코드 시작 //////////////
 (() => {
   // 1. 상단, 하단 공통 모듈 html넣기
-  // (1) 대상 : #top-area, #bottom-area
+  // (1) 대상 : #top-area, #bottom-area, .banner-part
   const $topArea = $("#top-area");
   const $bottomArea = $("#bottom-area");
+  const $bannerPart = $(".banner-part");
+
 
   // (2) 대상에 load() 메서드로 html넣기
   // load(파일경로, 로딩후실행함수)
+  // (2-1) 상단부 html넣기
   $topArea.load("./inc/header.html",headerFn);
   // -> 상단부 html파일이 모두 로딩된후 headerFn함수가 실행됨!
+
+  // (2-2) 하단부 html넣기
   $bottomArea.load("./inc/footer.html");
+
+  // (2-3) 배너부 html넣기 : 로딩후 배너함수호출!
+  $bannerPart.load("./inc/banner.html",bannerFn);
 })();
 /// 지역화 코드 종료 //////////////
 
-/// 상단파트에서 실행할 함수 /////////////
+/// 2. 상단파트에서 실행할 함수 /////////////
 function headerFn() {
   ///////////////////////////////////////////////////
   // 1. 큐브로고박스 일정간격으로 클래스 넣었다 빼기 ///

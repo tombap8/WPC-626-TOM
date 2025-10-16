@@ -27,10 +27,11 @@
     <script src="./js/jquery-3.6.3.min.js"></script>
 
     <!-- 외부JS 제이쿼리버전 - defer필수! -->
-    <script src="./js/main1_jquery.js" defer></script>
+    <!-- <script src="./js/main1_jquery.js" defer></script> -->
 
-    <!-- 공통 JS -->
-    <script src="./js/common.js" defer></script>
+    <!-- 공통 JS : import 문법을 사용하려면
+     반드시 type='module'을 써야한다! -->
+    <script type="module" src="./js/common.js"></script>
     <!--  메인 JS -->
     <script src="./js/main.js" defer></script>
   </head>
@@ -43,41 +44,7 @@
     <div id="main-area">
       <main class="main-area">
         <!-- 2-1. 배너영역 -->
-        <section class="banner-part">
-          <h2 class="temp-tit blind">2-1. 배너영역</h2>
-          <!-- 배너박스 -->
-          <div class="banner-box">
-            <!-- 배너 슬라이드 박스 : ul>li구조 -->
-            <ul class="banner-slide">
-              <li>
-                <a href="#"
-                  ><img src="./images/banner/ban01.jpg" alt="배너이미지1"
-                /></a>
-              </li>
-              <li>
-                <a href="#"
-                  ><img src="./images/banner/ban02.jpg" alt="배너이미지2"
-                /></a>
-              </li>
-              <li>
-                <a href="#"
-                  ><img src="./images/banner/ban03.jpg" alt="배너이미지3"
-                /></a>
-              </li>
-            </ul>
-
-            <!--이동버튼-->
-            <a href="#" class="abtn ab1">
-              <img src="./images/banner/etc/left_btn.png" alt="왼쪽이동버튼" />
-            </a>
-            <a href="#" class="abtn ab2">
-              <img
-                src="./images/banner/etc/right_btn.png"
-                alt="오른쪽이동버튼"
-              />
-            </a>
-          </div>
-        </section>
+        <section class="banner-part"></section>
 
         <!-- 2-2. 캐릭터영역 -->
         <section class="cat-part inbox">
