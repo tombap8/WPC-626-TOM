@@ -57,3 +57,31 @@ window.addEventListener('wheel',(e)=>{ // e - 이벤트 전달변수
 
 },{passive:false}); //////////// wheel 이벤트 //////////////
 // addEventListener(이벤트명,함수,{passive:false});
+
+
+
+
+/******************************** 
+////////// 광휠금지함수 //////////
+********************************/
+// [1] 광휠금지상태변수 ///////////
+let stopWheel = false;
+// 값이 true일때 휠릭허용/ false면 불허용
+
+// [2] 광휠금지해제시간 상수셋팅 //////
+const TIME_GAP = 400;
+
+// [3] 광휠금지함수 //////////////////
+function blockWheel() {
+  // 1. 광휠이면 true 를 리턴함!
+  if (stopWheel) return true;
+
+  // 2. 휠가능상태이면 전역변수 셋팅
+  stopWheel = true;
+  setTimeout(() => {
+    stopWheel = false;
+  }, TIME_GAP);
+
+  // 3. 상태값 리턴 (휠가능상태 false)
+  return false;
+} ////// blockWheel 함수 ///////
