@@ -27,13 +27,20 @@ const pageCnt = page.length;
 
 console.log('페이지개수:',pageCnt);
 
-// 8. 휠 이벤트를 window에 적용하여 기본 휠작동 막기
+// 9. 메뉴 및 인디케이터 요소 li수집
+const gnb = document.querySelectorAll('.gnb li');
+const indic = document.querySelectorAll('.indic li');
+
+// 10. 휠 이벤트를 window에 적용하여 기본 휠작동 막기
 // -> 그래야 우리가 원하는 자동 스크롤 기능을 구현할 수 있다
 window.addEventListener('wheel',(e)=>{ // e - 이벤트 전달변수
     // (1) 기본 기능 막기
     e.preventDefault();
     // -> window / document / body 에서 기본기능막기를 할때
     // passive 모드값을 false로 설정해야 에러가 발생하지 않음
+
+    // (1.5) 광휠막기
+    if(blockWheel()) return;
     
     // (2) 휠 방향 알아내기
     // 이벤트객체.wheelDelta
@@ -55,11 +62,14 @@ window.addEventListener('wheel',(e)=>{ // e - 이벤트 전달변수
     // (4) 전체 포지션이동
     window.scrollTo(0,pgNo * winH);
 
+    // (5) 메뉴 클래스 on 넣기
+    for(let x of gnb) x.classList.remove('on');
+    gnb[pgNo].classList.add('on');
+    for(let y of indic) y.classList.remove('on');
+    indic[pgNo].classList.add('on');
+
 },{passive:false}); //////////// wheel 이벤트 //////////////
 // addEventListener(이벤트명,함수,{passive:false});
-
-
-
 
 /******************************** 
 ////////// 광휠금지함수 //////////
