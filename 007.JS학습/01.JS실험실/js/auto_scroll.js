@@ -11,6 +11,7 @@ document.body.style.overflow = 'hidden';
 
 // 4. html에 scroll-behavior:smooth 셋팅
 document.documentElement.style.scrollBehavior = 'smooth';
+// -> html 최상위 요소는 document.documentElement 로 선택함!
 
 // 5. 새로고침시 스크롤위치 맨위로 이동하기
 setTimeout(()=>{window.scrollTo(0,0);},400);
