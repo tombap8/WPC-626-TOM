@@ -17,6 +17,7 @@ import bannerFn from './main1_jquery.js';
   const $topArea = $("#top-area");
   const $bottomArea = $("#bottom-area");
   const $bannerPart = $(".banner-part");
+  const $spartMenu = $("#spart-menu");
 
 
   // (2) 대상에 load() 메서드로 html넣기
@@ -30,6 +31,9 @@ import bannerFn from './main1_jquery.js';
 
   // (2-3) 배너부 html넣기 : 로딩후 배너함수호출!
   $bannerPart.load("./inc/banner.html",bannerFn);
+
+  // (2-4) 드라마 파트메뉴 html넣기
+  $spartMenu.load("./inc/part_menu.html");
 })();
 /// 지역화 코드 종료 //////////////
 
