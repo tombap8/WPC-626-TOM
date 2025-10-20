@@ -4,6 +4,11 @@
 import { previewData, catData } from "../data/dkb_data.js";
 console.log(catData);
 
+// 스크롤액션 불러오기 /////
+import scrollAction from "./scroll_action.js";
+
+// 스크롤액션 함수 호출하기
+scrollAction();
 
 /************************************************ 
     1. 미리보기 데이터 바인딩 하기

@@ -476,11 +476,15 @@ h1.logo::before {
 }
 
 /***************** 3. 하단영역 *****************/
-.bottom-area {
+/* 겉박스 */
+#bottom-area{
   border-top: 1px solid #ccc;
+  background: url(../images/footer_bg_tvn-pc.png) no-repeat center/cover;
+}
+/* 속박스 */
+.bottom-area {
   padding-top: 20px;
   padding-bottom: 80px;
-  background: url(../images/footer_bg_tvn-pc.png) no-repeat center/cover;
 }
 
 /* 하단링크박스 */
