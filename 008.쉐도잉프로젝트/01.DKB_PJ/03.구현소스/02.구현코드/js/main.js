@@ -1,6 +1,36 @@
 // 도깨비 PJ 메인 페이지 JS - main.js /////////
 
+// 도깨비 데이터 불러오기 ////
+import { previewData } from "../data/dkb_data.js";
+console.log(previewData);
 
+
+/************************************************ 
+    1. 미리보기 데이터 바인딩 하기
+************************************************/
+// 데이터를 요소에 넣어서 화면에 출력하는 것을
+// 데이터 바인딩 이라고 한다!
+// (1) 바인딩 대상 : .preview-box ul.cont-box
+const previewArea = 
+document.querySelector('.preview-area ul.cont-box');
+console.log(previewArea);
+// (2) 바인딩 데이터 : previewData
+
+/* (3) 반복 구조
+<li>
+    <h3>제목</h3>
+    <p>내용</p>
+  </li>
+*/
+// (4) 데이터 바인딩하기 : map().join('')사용!
+// 배열.map((배열값,순번)=>리턴값) -> 새로운배열 생성!
+previewArea.innerHTML = 
+previewData.map(v=>`
+  <li>
+    <h3>${v.title}</h3>
+    <p>${v.story}</p>
+  </li>
+  `).join('');
 
 /************************************************ 
     2. 최신 동영상 파트에 스와이퍼 적용하기
