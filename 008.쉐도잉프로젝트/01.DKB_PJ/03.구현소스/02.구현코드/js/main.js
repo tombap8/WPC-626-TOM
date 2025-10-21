@@ -1,8 +1,8 @@
 // 도깨비 PJ 메인 페이지 JS - main.js /////////
 
 // 도깨비 데이터 불러오기 ////
-import { previewData, catData } from "../data/dkb_data.js";
-console.log(catData);
+import { previewData, catData, liveData } from "../data/dkb_data.js";
+console.log(liveData);
 
 // 스크롤액션 불러오기 /////
 import scrollAction from "./scroll_action.js";
@@ -104,9 +104,48 @@ catData.map(v=>`
   // -> \n은 엔터기호를 찾아냄
   // .replace(/\n/g,'<br/>')
 
+/************************************************ 
+    3. 캐릭터 소개 영역 데이터 바인딩하기
+************************************************/
+// (1) 바인딩 대상 : .live-box
+const liveBox = 
+document.querySelector('.live-box');
+console.log(liveBox);
+
+// (2) 바인딩 데이터 : liveData
+// (3) 바인딩 태그구조
+/* 
+<ul>
+  <li data-idx="1">
+    <figure>
+      <img
+        src="./images/live_photo/live_photo7.jpg"
+        alt="다 드립니다 ♡"
+      />
+      <figcaption>다 드립니다 ♡</figcaption>
+    </figure>
+  </li>
+</ul>
+*/
+
+// (4) 바인딩하기 -> 맵죠잉~~!
+liveBox.innerHTML = 
+'<ul>'+
+liveData.map(v=>`
+  <li data-idx="${v.idx}">
+    <figure>
+      <img
+        src="./images/live_photo/${v.imgName[0]}.jpg"
+        alt="${v.title}"
+      />
+      <figcaption>${v.title}</figcaption>
+    </figure>
+  </li>
+  `).join('')
++'</ul>';
 
 /************************************************ 
-    3. 최신 동영상 파트에 스와이퍼 적용하기
+    4. 최신 동영상 파트에 스와이퍼 적용하기
 ************************************************/
 const videoSwiper = new Swiper(".clip-box", {
   // 자동플레이설정
