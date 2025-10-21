@@ -1,8 +1,8 @@
 // 도깨비 PJ 메인 페이지 JS - main.js /////////
 
 // 도깨비 데이터 불러오기 ////
-import { previewData, catData, liveData } from "../data/dkb_data.js";
-console.log(liveData);
+import { previewData, catData, liveData, posterData, clipData } from "../data/dkb_data.js";
+console.log(clipData);
 
 // 스크롤액션 불러오기 /////
 import scrollAction from "./scroll_action.js";
@@ -105,7 +105,7 @@ catData.map(v=>`
   // .replace(/\n/g,'<br/>')
 
 /************************************************ 
-    3. 캐릭터 소개 영역 데이터 바인딩하기
+    3. 현장포토 영역 데이터 바인딩하기
 ************************************************/
 // (1) 바인딩 대상 : .live-box
 const liveBox = 
@@ -145,7 +145,93 @@ liveData.map(v=>`
 +'</ul>';
 
 /************************************************ 
-    4. 최신 동영상 파트에 스와이퍼 적용하기
+    4. 대표포스터 영역 데이터 바인딩하기
+************************************************/
+// (1) 바인딩 대상 : .poster-box
+const posterBox = 
+document.querySelector('.poster-box');
+console.log(posterBox);
+
+// (2) 바인딩 데이터 : posterData
+// (3) 바인딩 태그구조
+/* 
+<ul>
+  <li data-idx="1">
+    <figure>
+      <img
+        src="./images/poster_img/poster5.jpg"
+        alt="도깨비 5인 단체 포스터"
+      />
+      <figcaption>도깨비 5인 단체 포스터</figcaption>
+    </figure>
+  </li>
+</ul>
+*/
+
+// (4) 바인딩하기 -> 맵죠잉~~!
+posterBox.innerHTML = 
+'<ul>'+
+posterData.map(v=>`
+  <li data-idx="${v.idx}">
+    <figure>
+      <img
+        src="./images/poster_img/${v.imgName}.jpg"
+        alt="${v.title}"
+      />
+      <figcaption>${v.title}</figcaption>
+    </figure>
+  </li>
+  `).join('')
++'</ul>';
+
+/************************************************ 
+    5. 대표포스터 영역 데이터 바인딩하기
+************************************************/
+// (1) 바인딩 대상 : .clip-box
+const clipBox = 
+document.querySelector('.clip-box');
+console.log(clipBox);
+
+// (2) 바인딩 데이터 : clipData
+// (3) 바인딩 태그구조
+/* 
+<!-- 스와이퍼 랩퍼박스 : .swiper-wrapper -->
+<ul class="slide swiper-wrapper" data-db="clipData">
+    <!-- 스와이퍼 리스트 : .swiper-slide -->
+    <li class="swiper-slide" data-idx="1" data-seq="0">
+      <div class="clip-mv-box">
+        <img
+          src="./images/clip_img/1.jpg"
+          alt="김고은. 능력있으神 공유에게 뜬금포 사랑고백 ′사랑해요′"
+        />
+      </div>
+      <h4>
+        김고은. 능력있으神 공유에게 뜬금포 사랑고백 ′사랑해요′
+      </h4>
+      <h3>도깨비1화</h3>
+    </li>
+</ul>
+*/
+
+// (4) 바인딩하기 -> 맵죠잉~~!
+clipBox.innerHTML = 
+'<ul class="slide swiper-wrapper">'+
+clipData.map(v=>`
+  <li class="swiper-slide" data-idx="${v.idx}">
+    <div class="clip-mv-box">
+      <img
+        src="./images/clip_img/${v.idx}.jpg"
+        alt="${v.subtit}"
+      />
+    </div>
+    <h4>${v.subtit}</h4>
+    <h3>${v.title}</h3>
+  </li>
+  `).join('')
++'</ul>';
+
+/************************************************ 
+    6. 최신 동영상 파트에 스와이퍼 적용하기
 ************************************************/
 const videoSwiper = new Swiper(".clip-box", {
   // 자동플레이설정
