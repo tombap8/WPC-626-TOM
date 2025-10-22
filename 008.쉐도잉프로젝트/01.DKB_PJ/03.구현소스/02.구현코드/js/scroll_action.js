@@ -33,7 +33,7 @@ export default function scrollAction() {
 
   // 2. 이벤트 함수 설정하기
   window.addEventListener("scroll", () => {
-    console.log("스크롤~~~!");
+    // console.log("스크롤~~~!");
 
     // 대상의 개수만큼 하나씩 반복하여
     // checkFn 함수로 보내준다!

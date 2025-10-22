@@ -164,8 +164,23 @@ function headerFn() {
     // 변경대상 : 상단영역 .header
     const header = document.querySelector("#top-area");
     const stkMenu = document.querySelector("#spart-menu");
+
     // 스티키 셋팅값
-    let sktValue = 122;
+    let stkValue = 122;
+
+    // 가로크기를 체크하여 stkValue값을 변경하는 함수 만들기
+    const checkWidth = () => {
+      // 윈도우 가로크기 읽어오기 : window.innerWidth
+      // 만약 가로크기가 1024이하이면 크기값을 60으로 변경
+      window.innerWidth <= 1024 ? (stkValue = 60) : (stkValue = 122);
+    }; /////////// checkWidth 함수 //////////
+
+    // 처음로딩시 가로크기 체크함수 호출
+    checkWidth();
+    // 화면크기 변경시(resize이벤트) 가로크기 체크함수 호출
+    window.addEventListener("resize", checkWidth);
+    // resize이벤트는 브라우저 윈도우화면크기를 변경할때마다 발생함!
+
 
     // 스크롤 방향 알아내는 원리:
     // (1) 아랫방향
@@ -185,7 +200,7 @@ function headerFn() {
       // (1) 아랫방향
       // 이전 스크롤위치값 < 현재 스크롤위치값
       if (prevScroll < curScroll) {
-        console.log("스크롤 내려간다~~!");
+        // console.log("스크롤 내려간다~~!");
         // 스크롤 내려가면 메뉴 숨기기
         header.classList.add("hide");
         stkMenu.style.top = "0px";
@@ -193,10 +208,10 @@ function headerFn() {
       // (2) 윗방향 : 아랫방향이 아니면 윗방향
       // 이전 스크롤위치값 > 현재 스크롤위치값
       else {
-        console.log("스크롤 올라간다~~!");
+        // console.log("스크롤 올라간다~~!");
         // 스크롤 올라가면 메뉴 보이기
         header.classList.remove("hide");
-        stkMenu.style.top = sktValue + "px";
+        stkMenu.style.top = stkValue + "px";
       } /// else ////
 
       // 중요!!! 마지막에 이전스크롤위치를 저장!

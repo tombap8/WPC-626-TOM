@@ -430,6 +430,8 @@ h1.logo::before {
   top: 0;
   background-color: #fff;
   z-index: 999;
+  /* 상단영역과 동일한 트랜지션 적용! */
+  transition: top 0.3s ease-in-out;
 }
 /* 인박스 높이값 초기화 */
 .spart-menu.inbox {

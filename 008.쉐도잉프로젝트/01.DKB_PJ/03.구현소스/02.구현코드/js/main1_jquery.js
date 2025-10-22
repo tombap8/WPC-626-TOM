@@ -34,7 +34,7 @@ $firstSlide.each((idx, el) => {
 // 보통 변경없이 사용하는 변수는 상수라고 하고
 // 상수는 보통 대문자로 쓰고 스네이크 케이스 사용함!
 const SLIDE_CNT = $firstSlide.length;
-console.log("슬라이드개수:", SLIDE_CNT);
+// console.log("슬라이드개수:", SLIDE_CNT);
 
 // (4) 인디케이터 블릿대상
 // const $indic = $slideBox.find(".indic li");
