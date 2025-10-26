@@ -1,0 +1,162 @@
+@charset "utf-8";
+
+/* 폰트어썸 불러오기 */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css");
+
+/* 모바일용 버튼 추가 */
+.menu-btn-box {
+    /* display: none; */
+    position: fixed;
+    top: 4vh;
+    left: 2vh;
+    z-index: 10000;
+    cursor: pointer;
+}
+.menu-btn-box button {
+    width: 6vh;
+    height: 6vh;
+    background-color: transparent;
+    border: none;
+    font-size: 4vh;
+    cursor: pointer;
+}
+
+/* 모바일용 닫기 버튼 */
+.menu-close-btn {
+    /* display: none; */
+    position: absolute;
+    top: 2vh;
+    left: 2vh;
+    width: 6vh;
+    height: 6vh;
+    background-color: transparent;
+    border: none;
+    font-size: 4vh;
+    z-index: 999999;
+    cursor: pointer;
+}
+
+/* 미디어쿼리 CSS */
+/* 1500px 이하 미디어쿼리 시작 */
+@media screen and (max-width: 1500px) {
+    .gnb-menu ul {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 99999999 !important;
+        width: 40vw;
+        height: 100vh;
+        overflow-y: scroll;
+        background-color: #fff;
+        flex-direction: column;
+        white-space: nowrap;
+        z-index: 99999;
+        gap: 0;
+        align-items: normal;
+        padding-top: 10vh;
+        /* 트랜스레이트로 왼쪽 바깥이동 숨기기 */
+        translate: -100%;
+        /* 오른쪽 그림자 */
+        box-shadow: 4px 0 8px rgba(0,0,0,.2);
+        /* 트랜지션 */
+        transition: .6s;
+    }
+    .gnb-menu ul.on{
+        /* 메뉴 열기시 제자리 이동 */
+        translate: 0;
+    }
+    .gnb-menu:hover::before{
+        height: 0;
+    }
+
+    .gnb-menu ul > li > a {
+        display: block;
+        width: 100%;
+        line-height: 10vh;
+        font-size: 3vh;
+        /* padding: 5vh; */
+    }
+
+    /* 서브메뉴 자리차지하기 */
+    .gnb-menu ol.smenu {
+        position: static;
+        width: 100%;
+        margin: 0 auto;
+        transform: none;
+        padding: 0;
+        /* 트랜지션 시간 조정 */
+        transition-duration: .6s;
+    }
+    /* 서브메뉴 박스 채우기 */
+    .gnb-menu ol.smenu a{
+        display: block;
+    }
+
+    /* 기존 서브메뉴 오버 설정 지우기 */
+    .gnb-menu:hover ol.smenu {
+        height: auto;
+        max-height: 0;
+    }
+    /* 이벤트 위치 변경하여 서브 열기 */
+    .gnb-menu > ul > li:hover ol.smenu {
+        height: auto;
+        /* 최대 높이로 잡아주는 거니까
+        가장 긴 높이를 가지는 서브메뉴보다 크게잡음 */
+        max-height: 350px;
+    }
+
+    /* 배너 아래 */
+    .link-group {
+        flex-direction: column;
+        gap: 5vh;
+    }
+
+    /* 에린소식 */
+    .news-part,
+    .community-part {
+        height: auto;
+    }
+    .news-list-box ul.news-list.show,
+    .community-part > ul {
+        flex-direction: column;
+        gap: 5vh;
+    }
+    .community-group, .news-group {
+        white-space: nowrap;
+    }
+    /* 하단부분 */
+    .bottom-area{
+        white-space: nowrap;
+        height: auto;
+        padding: 0 5vw;
+    }
+    .temp-tit{
+        width: auto;
+    }
+    .bottom-menu, .copyright{
+        flex-wrap: wrap;
+    }
+    .banner-group .swiper-slide a img{
+        object-position: left center;
+    }
+    .banner-group .swiper-slide .text-area{
+        translate: -40% -50%;
+        white-space: nowrap;
+    }
+    .download-icon img{
+        width: 100%;
+    }
+}
+/* 1500px 이하 미디어쿼리 종료 */
+
+/* 800px 이하 미디어쿼리 시작 */
+@media screen and (max-width: 800px) {
+    /* 에린 소식 타이틀바 */
+    .community-group, .news-group {
+        flex-direction: column;
+        align-items: start;
+        gap: 2vh;
+    }
+
+}
+/* 800px 이하 미디어쿼리 종료 */
