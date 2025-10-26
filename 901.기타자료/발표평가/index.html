@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹퍼블리셔 포트폴리오 평가표</title> 
+    <style>
+        /* ... (CSS 코드: 이전과 동일) ... */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+        
+        .info-section {
+            padding: 30px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .info-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .info-item label {
+            font-size: 12px;
+            color: #6c757d;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .info-item input {
+            padding: 10px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .info-item input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .evaluation-section {
+            padding: 30px;
+        }
+        
+        .category {
+            margin-bottom: 30px;
+        }
+        
+        .category-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            font-weight: 600;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .category-icon {
+            font-size: 20px;
+        }
+        
+        .eval-item {
+            padding: 15px;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+        }
+        
+        .eval-item:hover {
+            background: #f8f9fa;
+        }
+        
+        .eval-item:last-child {
+            border-bottom: none;
+        }
+        
+        .eval-label {
+            font-size: 14px;
+            color: #333;
+            font-weight: 500;
+            flex: 1;
+        }
+        
+        .rating-group {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .rating-btn {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #e9ecef;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #6c757d;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+        
+        .rating-btn:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+        
+        .rating-btn.selected {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .score-display {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 30px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+        }
+        
+        .score-display h2 {
+            color: #667eea;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .total-score {
+            font-size: 48px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .score-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .breakdown-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .breakdown-item h3 {
+            font-size: 12px;
+            color: #6c757d;
+            margin-bottom: 5px;
+        }
+        
+        .breakdown-item p {
+            font-size: 20px;
+            font-weight: 700;
+            color: #667eea;
+        }
+        
+        .comment-section {
+            margin: 30px;
+        }
+        
+        .comment-section label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .comment-section textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 14px;
+            font-family: inherit;
+            resize: none; 
+            min-height: 100px;
+            overflow-y: hidden; 
+            transition: all 0.3s;
+        }
+        
+        .comment-section .print-comment-div {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 14px;
+            font-family: inherit;
+            white-space: pre-wrap; 
+            min-height: 100px;
+            box-sizing: border-box;
+        }
+        
+        .comment-section textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .btn-container {
+            padding: 0 30px 30px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-reset {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn-reset:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+        }
+        
+        .btn-submit {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        /* 인쇄 시 불필요한 요소 숨김 및 레이아웃 정리 */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                margin: 0;
+                max-width: 100%;
+            }
+            
+            .btn-container {
+                display: none;
+            }
+            
+            .rating-group {
+                display: none;
+            }
+            
+            .eval-item::after {
+                content: attr(data-score);
+                font-weight: bold;
+                color: #333;
+                font-size: 14px;
+                padding-right: 15px;
+            }
+            
+            .score-display {
+                border: 1px solid #ccc;
+                box-shadow: none;
+                margin: 10px 0;
+                padding: 10px;
+            }
+            
+            .score-breakdown {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 5px;
+            }
+            
+            .breakdown-item {
+                border: 1px solid #ccc;
+                padding: 5px;
+            }
+            
+            .header, .info-section, .category-header {
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+            }
+            
+            /* 인쇄 시 평가 섹션의 페이지 나누기 최적화 */
+            .category {
+                page-break-inside: avoid;
+                page-break-after: auto;
+            }
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎨 웹퍼블리셔 포트폴리오 평가표</h1>
+            <p>각 항목을 1점(매우 부족) ~ 5점(매우 우수)으로 평가해주세요</p>
+        </div>
+        
+        <div class="info-section">
+            <div class="info-grid">
+                <div class="info-item">
+                    <label>평가자 이름 (자동 생성됨)</label>
+                    <input type="text" id="evaluator" placeholder="자동 생성된 익명 이름" readonly>
+                </div>
+                <div class="info-item">
+                    <label>발표자 이름</label>
+                    <input type="text" id="presenter" placeholder="발표자 이름을 입력하세요">
+                </div>
+                <div class="info-item">
+                    <label>프로젝트명</label>
+                    <input type="text" id="project" placeholder="프로젝트명을 입력하세요">
+                </div>
+                <div class="info-item">
+                    <label>평가일</label>
+                    <input type="date" id="date">
+                </div>
+            </div>
+        </div>
+        
+        <div class="evaluation-section">
+            <div class="category">
+                <div class="category-header">
+                    <span class="category-icon">💻</span>
+                    <span>HTML/CSS 구조 및 코드 품질 (30점)</span>
+                </div>
+                <div class="eval-item" data-category="html" data-item="1">
+                    <span class="eval-label">1. 시맨틱 태그 사용의 적절성</span>
+                    <div class="rating-group"></div>
+                </div>
+                <div class="eval-item" data-category="html" data-item="2">
+                    <span class="eval-label">2. HTML 구조의 논리성과 깔끔함</span>
+                    <div class="rating-group"></div>
+                </div>
+                <div class="eval-item" data-category="html" data-item="3">
+                    <span class="eval-label">3. CSS 선택자 사용의 효율성</span>
+                    <div class="rating-group"></div>
+                </div>
+                <div class="eval-item" data-category="html" data-item="4">
+                    <span class="eval-label">4. 코드 가독성 (들여쓰기, 주석 등)</span>
+                    <div class="rating-group"></div>
+                </div>
+                <div class="eval-item" data-category="html" data-item="5">
+                    <span class="eval-label">5. CSS 속성 정리 및 최적화</span>
+                    <div class="rating-group"></div>
+                </div>
+                <div class="eval-item" data-category="html" data-item="6">
+                    <span class="eval-label">6. 웹 표준 및 유효성 검사 준수</span>
+                    <div class="rating-group"></div>
+                </div>
+            </div>
+            
+            <div class="category">
+                <div class="category-header">
+                    <span class="category-icon">🎨</span>
+                    <span>디자인 및 레이아웃 (25점)</span>
+                </div>
+                <div class="eval-item" data-category="design" data-item="7">
+                    <span class="eval-label">7. 전체적인 디자인의 완성도</span>
+                    <div class="rating-group"></div>
+                </div>
+                <div class="eval-item" data-category="design" data-item="8">
+                    <span class="eval-label">8. 색상 조합 및 배색의 조화</span>
+                    <div class="rating-group"></div>
+                </div>
+                <div class="eval-item" data-category="design" data-item="9">
+                    <span class="eval-label">9. 타이포그래피 및 가독성</span>
+                    <div class="rating-group"></div>
+                </div>
+                <div class="eval-item" data-category="design" data-item="10">
+                    <span class="eval-label">10. 여백 및 레이아웃 균형감</span>
+                    <div class="rating-group"></div>
+                </div>
+                <div class="eval-item" data-category="design" data-item="11">
+                    <span class="eval-label">11. 이미지 및 아이콘 사용의 적절성</span>
+                    <div class="rating-group"></div>
+                </div>
+            </div>
+            
+            <div class="category">
+                <div class="category-header">
+                    <span class="category-icon">📱</span>
+                    <span>사용성 및 반응형 (20점)</span>
+                </div>
+                <div class="eval-item" data-category="usability" data-item="12">
+                    <span class="eval-label">12. 직관적인 네비게이션 구조</span>
+                    <div class="rating-group"></div>
+                </div>
+                <div class="eval-item" data-category="usability" data-item="13">
+                    <span class="eval-label">13. 반응형 디자인 구현 정도</span>
+                    <div class="rating-group"></div>
+                </div>
+                <div class="eval-item" data-category="usability" data-item="14">
+                    <span class="eval-label">14. 다양한 화면 크기에서의 레이아웃</span>
+                    <div class="rating-group"></div>
+                </div>
+                <div class="eval-item" data-category="usability" data-item="15">
+                    <span class="eval-label">15. 버튼, 링크 등 인터랙션 요소의 명확성</span>
+                    <div class="rating-group"></div>
+                </div>
+            </div>
+            
+            <div class="category">
+                <div class="category-header">
+                    <span class="category-icon">⚙️</span>
+                    <span>기능 및 완성도 (15점)</span>
+                </div>
+                <div class="eval-item" data-category="function" data-item="16">
+                    <span class="eval-label">16. 구현된 기능의 작동 안정성</span>
+                    <div class="rating-group"></div>
+                </div>
+                <div class="eval-item" data-category="function" data-item="17">
+                    <span class="eval-label">17. 크로스 브라우징 고려 정도</span>
+                    <div class="rating-group"></div>
+                </div>
+                <div class="eval-item" data-category="function" data-item="18">
+                    <span class="eval-label">18. 전체적인 프로젝트 완성도</span>
+                    <div class="rating-group"></div>
+                </div>
+            </div>
+            
+            <div class="category">
+                <div class="category-header">
+                    <span class="category-icon">🎤</span>
+                    <span>발표 및 커뮤니케이션 (10점)</span>
+                </div>
+                <div class="eval-item" data-category="presentation" data-item="19">
+                    <span class="eval-label">19. 발표 내용의 명확성과 논리성</span>
+                    <div class="rating-group"></div>
+                </div>
+                <div class="eval-item" data-category="presentation" data-item="20">
+                    <span class="eval-label">20. 질문 응답 및 커뮤니케이션 능력</span>
+                    <div class="rating-group"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="score-display">
+            <h2>총점</h2>
+            <div class="total-score" id="totalScore">0</div>
+            <p style="color: #6c757d; margin-top: 5px;">/ 100점</p>
+            
+            <div class="score-breakdown">
+                <div class="breakdown-item">
+                    <h3>HTML/CSS</h3>
+                    <p id="htmlScore">0/30</p>
+                </div>
+                <div class="breakdown-item">
+                    <h3>디자인</h3>
+                    <p id="designScore">0/25</p>
+                </div>
+                <div class="breakdown-item">
+                    <h3>사용성</h3>
+                    <p id="usabilityScore">0/20</p>
+                </div>
+                <div class="breakdown-item">
+                    <h3>기능</h3>
+                    <p id="functionScore">0/15</p>
+                </div>
+                <div class="breakdown-item">
+                    <h3>발표</h3>
+                    <p id="presentationScore">0/10</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="comment-section">
+            <label>종합 의견 및 피드백</label>
+            <textarea id="comment" placeholder="좋았던 점, 개선이 필요한 점 등을 자유롭게 작성해주세요."></textarea>
+        </div>
+        
+        <div class="btn-container">
+            <button class="btn btn-reset" onclick="resetForm()">새 평가 시작 / 익명 이름 재설정</button>
+            <button class="btn btn-submit" onclick="submitForm()">평가표 인쇄 (PDF 저장)</button>
+        </div>
+    </div>
+    
+    <script>
+        const scores = {};
+        const commentArea = document.getElementById('comment');
+        const evaluatorInput = document.getElementById('evaluator'); 
+        const commentParent = commentArea.parentElement;
+        const minHeight = 100; 
+        const originalTitle = document.title; 
+
+        // 💡 50개의 익명 이름 배열
+        const ANONYMOUS_NAMES = [
+            "알파카_코더", "미스터_버그헌터", "CSS의_마법사", "자바스크립트의_달인", "무지개_디자이너",
+            "야근_요정", "커피_중독자", "웹표준_지킴이", "폰트_덕후", "시맨틱_전도사",
+            "와이어프레임_장인", "픽셀_탐정", "반응형_괴물", "레이아웃_마스터", "최종_최종_최종",
+            "배고픈_개발자", "타이포그래피_신", "디버깅_왕자", "크로스브라우징_영웅", "숨은_고수_17",
+            "오늘의_퍼블리셔", "빛의_속도_개발", "그림자_평가사", "주말_근무자_A", "퇴근_지향자",
+            "비밀의_멘토", "코드_정리꾼", "마크업_대장", "스타일링_귀신", "UX_파수꾼",
+            "숨참고_코딩_중", "퍼포먼스_킬러", "메타태그_전문가", "제이쿼리_생존자", "노력하는_병아리",
+            "화면_밝기_최대", "모바일_최적화", "깃허브_중독", "커밋_100번", "미니멀리스트_웹",
+            "어둠의_코더", "새벽_코딩", "핫픽스_제조기", "테스트_덕분", "엔터키_파괴자",
+            "주석_부자", "마우스_오버", "클릭_테스터", "백엔드_친화적"
+        ];
+        
+        // 💡 랜덤 익명 이름을 evaluator 필드에 설정하는 함수
+        function setRandomEvaluatorName() {
+            const randomIndex = Math.floor(Math.random() * ANONYMOUS_NAMES.length);
+            evaluatorInput.value = ANONYMOUS_NAMES[randomIndex];
+        }
+
+        function autoResizeTextarea() {
+            commentArea.style.height = '1px'; 
+            const newHeight = Math.max(minHeight, commentArea.scrollHeight);
+            commentArea.style.height = newHeight + 'px';
+        }
+        
+        function showError(message, focusId) {
+            const errorDiv = document.createElement('div');
+            errorDiv.style.cssText = 'position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: #dc3545; color: white; padding: 15px 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(220,53,69,0.4); z-index: 10000; font-weight: 600; animation: slideDown 0.3s ease;';
+            errorDiv.textContent = '❌ ' + message;
+            document.body.appendChild(errorDiv);
+            
+            if (focusId) {
+                document.getElementById(focusId).focus();
+            }
+            
+            setTimeout(() => {
+                errorDiv.style.animation = 'slideUp 0.3s ease';
+                setTimeout(() => errorDiv.remove(), 300);
+            }, 3000);
+        }
+
+        
+        // 초기 설정 실행
+        setRandomEvaluatorName(); 
+        document.getElementById('date').valueAsDate = new Date();
+        
+        document.querySelectorAll('.eval-item').forEach(item => {
+            const group = item.querySelector('.rating-group');
+            const itemNum = item.getAttribute('data-item');
+            
+            for (let i = 1; i <= 5; i++) {
+                const btn = document.createElement('button');
+                btn.className = 'rating-btn';
+                btn.textContent = i;
+                btn.onclick = () => selectRating(itemNum, i, btn, item);
+                group.appendChild(btn);
+            }
+        });
+        
+        commentArea.addEventListener('input', autoResizeTextarea);
+        window.addEventListener('load', autoResizeTextarea);
+        
+        function selectRating(itemNum, score, btn, itemElement) {
+            const parent = btn.parentElement;
+            parent.querySelectorAll('.rating-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            
+            scores[itemNum] = score;
+            itemElement.setAttribute('data-score', score + '점');
+            
+            updateTotalScore();
+        }
+        
+        function updateTotalScore() {
+            const categories = {
+                html: [1, 2, 3, 4, 5, 6],
+                design: [7, 8, 9, 10, 11],
+                usability: [12, 13, 14, 15],
+                function: [16, 17, 18],
+                presentation: [19, 20]
+            };
+            
+            let htmlTotal = 0, designTotal = 0, usabilityTotal = 0, functionTotal = 0, presentationTotal = 0;
+            
+            categories.html.forEach(item => htmlTotal += scores[item] || 0);
+            categories.design.forEach(item => designTotal += scores[item] || 0);
+            categories.usability.forEach(item => usabilityTotal += scores[item] || 0);
+            categories.function.forEach(item => functionTotal += scores[item] || 0);
+            categories.presentation.forEach(item => presentationTotal += scores[item] || 0);
+            
+            const total = htmlTotal + designTotal + usabilityTotal + functionTotal + presentationTotal;
+            
+            document.getElementById('totalScore').textContent = total;
+            document.getElementById('htmlScore').textContent = `${htmlTotal}/30`;
+            document.getElementById('designScore').textContent = `${designTotal}/25`;
+            document.getElementById('usabilityScore').textContent = `${usabilityTotal}/20`;
+            document.getElementById('functionScore').textContent = `${functionTotal}/15`;
+            document.getElementById('presentationScore').textContent = `${presentationTotal}/10`;
+        }
+        
+        function resetForm() {
+            if (!confirm("모든 평가 내용을 초기화하고 새로운 익명 이름을 받으시겠습니까?")) {
+                return;
+            }
+            document.querySelectorAll('.rating-btn').forEach(btn => btn.classList.remove('selected'));
+            document.querySelectorAll('.eval-item').forEach(item => item.removeAttribute('data-score'));
+            Object.keys(scores).forEach(key => delete scores[key]);
+            updateTotalScore();
+            document.getElementById('comment').value = '';
+            commentArea.style.height = minHeight + 'px';
+            setRandomEvaluatorName(); 
+            document.getElementById('presenter').value = '';
+            document.getElementById('project').value = '';
+        }
+        
+        function submitForm() {
+            const presenter = document.getElementById('presenter').value.trim();
+            const project = document.getElementById('project').value.trim();
+            
+            if (!presenter || !project) {
+                showError('발표자 이름과 프로젝트명을 모두 입력해주세요.');
+                if (!presenter) document.getElementById('presenter').focus();
+                else document.getElementById('project').focus();
+                return;
+            }
+            
+            const totalItems = 20;
+            const evaluatedItems = Object.keys(scores).length;
+            if (evaluatedItems < totalItems) {
+                 const missingItems = [];
+                for (let i = 1; i <= totalItems; i++) {
+                    if (!scores[i]) {
+                        missingItems.push(i);
+                    }
+                }
+                showError(`평가하지 않은 항목이 있습니다.\n\n미평가 항목: ${missingItems.join(', ')}번\n(총 ${totalItems - evaluatedItems}개 항목 미평가)`);
+                const firstMissing = document.querySelector(`[data-item="${missingItems[0]}"]`);
+                if (firstMissing) {
+                    firstMissing.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    firstMissing.style.backgroundColor = '#fff3cd';
+                    setTimeout(() => {
+                        firstMissing.style.backgroundColor = '';
+                    }, 2000);
+                }
+                return;
+            }
+            
+            // ----------------------------------------------------
+            // 파일명 동적 변경 및 PDF 잘림 방지 로직 시작
+            // ----------------------------------------------------
+
+            // 1. 인쇄 직전에 **<title>** 태그 내용 변경 (PDF 파일명 설정)
+            const presenterName = document.getElementById('presenter').value.trim();
+            const evaluatorName = document.getElementById('evaluator').value.trim(); 
+            
+            // 💡 요청하신 파일명 형식으로 조합: "발표자이름_포트폴리오_평가결과_익명이름"
+            const newTitle = `${presenterName}_포트폴리오_평가결과_${evaluatorName}`;
+            document.title = newTitle; 
+
+            // 2. PDF 잘림 방지를 위해 textarea를 div로 임시 변환
+            const commentValue = commentArea.value;
+            const tempDiv = document.createElement('div');
+            
+            tempDiv.classList.add('print-comment-div');
+            tempDiv.innerHTML = commentValue.replace(/\n/g, '<br>'); 
+
+            commentArea.style.display = 'none';
+            commentParent.appendChild(tempDiv);
+            
+            // 3. 인쇄 실행
+            window.print();
+            
+            // 4. 인쇄가 끝난 후 폼 및 제목 복구 로직
+            const restoreFormAndTitle = () => {
+                // a. div 제거 및 textarea 복구
+                commentParent.removeChild(tempDiv);
+                commentArea.style.display = 'block';
+                autoResizeTextarea();
+                
+                // b. **<title>** 태그 내용 원상복구
+                document.title = originalTitle; 
+                
+                // c. 이벤트 리스너 제거
+                window.removeEventListener('focus', restoreFormAndTitle);
+            };
+
+            // 인쇄 대화 상자가 닫히고 창에 포커스가 다시 돌아왔을 때 복구 함수 실행
+            window.addEventListener('focus', restoreFormAndTitle);
+        }
+    </script>
+</body>
+</html>
