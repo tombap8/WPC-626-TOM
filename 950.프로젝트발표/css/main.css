@@ -38,6 +38,21 @@ a {
   font-size: 30px;
 }
 
+/* 평가하기 버튼 */
+.btn-evaluation {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 10000;
+}
+
 /*큰제목*/
 .mainTit {
   position: absolute;
