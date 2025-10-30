@@ -87,8 +87,15 @@ function goGame() {
   } /// if ///
   // (2-2) '거북출발'일 경우
   else if (btxt === "거북출발") {
+    // 거북이동멈춤상태가 false일때만 작동
+    if (t1Stop) return;
+
+    // 거북이동
     t1pos += T1_NUM; // 16px씩증가
     t1.style.left = t1pos + "px";
+
+    // 토끼자동출발함수 호출!
+    goR1();
   } /// else if ///
   // (2-3) '처음으로'일 경우
   else {
@@ -122,6 +129,9 @@ function goR1() {
   autoI = setInterval(() => {
     r1pos++; // 1씩증가
     r1.style.left = r1pos + "px";
+
+    // 승리자 판별함수 호출
+    whoWinner();
   }, r1speed); // select박스의 선택값이 호출시간!
 
 } ///////// goR1함수 //////////////////
@@ -132,6 +142,15 @@ function goR1() {
         승자를 판별하여 메시지를 보여준다!
 *****************************************/
 function whoWinner() {
+  // (1) 기준값보다 위치값이 크면
+  if (r1pos >= FINAL_NUM || t1pos >= FINAL_NUM) {
+    // (2) 인터발멈춤!
+    clearInterval(autoI);
+    autoI = null; // 다시 시작시 작동하도록 초기화
+
+    // (3) 거북 작동중지
+    t1Stop = true;
+  } /// if ///
 
 } ///////// whoWinner 함수 ////////////////
 
