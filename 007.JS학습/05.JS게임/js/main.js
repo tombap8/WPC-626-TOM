@@ -76,6 +76,25 @@ btns.forEach((el) => myFn.addEvt(el, "click", goGame));
     기능: 버튼별 기능분기
 ***********************************/
 function goGame() {
+  // (1) 클릭된 버튼 텍스트 읽기
+  let btxt = this.innerText;
+  console.log('버튼텍스트:',btxt);
+
+  // (2) 기능별 분기하기 ////////////////
+  // (2-1) '토끼출발'일 경우
+  if (btxt === "토끼출발") {
+    goR1(); // 토끼자동이동함수 호출
+  } /// if ///
+  // (2-2) '거북출발'일 경우
+  else if (btxt === "거북출발") {
+    t1pos += T1_NUM; // 16px씩증가
+    t1.style.left = t1pos + "px";
+  } /// else if ///
+  // (2-3) '처음으로'일 경우
+  else {
+    // 페이지 리로드하기
+    location.reload();
+  } /// else ///
 
 } /////////// goGame 함수 ////////////
 
@@ -88,6 +107,10 @@ let autoI;
 // console.log('autoI할당전:',autoI);
 // -> undefined는 if문에서 false처리됨!
 function goR1() {
+  setInterval(() => {
+    r1pos++; // 1씩증가
+    r1.style.left = r1pos + "px";
+  }, 100);
 
 } ///////// goR1함수 //////////////////
 
@@ -97,7 +120,7 @@ function goR1() {
         승자를 판별하여 메시지를 보여준다!
 *****************************************/
 function whoWinner() {
-  
+
 } ///////// whoWinner 함수 ////////////////
 
 /**************************************** 
