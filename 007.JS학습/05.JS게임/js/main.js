@@ -104,13 +104,22 @@ function goGame() {
  ***********************************/
 // 인터발지우기용 변수
 let autoI;
-// console.log('autoI할당전:',autoI);
+console.log('autoI할당전:',autoI);
 // -> undefined는 if문에서 false처리됨!
 function goR1() {
-  setInterval(() => {
+  // 인터발 한번만 실행하기 위해
+  // 인터발을 할당한 변수가 false일때만
+  // 실행하도록 if문을 설정!
+
+  // 한번 변수할당이 되었으면 true가 되어서 return!
+  if(autoI) return;
+    console.log('토끼자동출발!');
+
+  // 인터발함수
+  autoI = setInterval(() => {
     r1pos++; // 1씩증가
     r1.style.left = r1pos + "px";
-  }, 100);
+  }, 10);
 
 } ///////// goR1함수 //////////////////
 
