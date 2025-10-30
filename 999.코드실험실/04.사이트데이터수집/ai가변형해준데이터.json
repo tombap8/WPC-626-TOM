@@ -1,0 +1,182 @@
+[
+  {
+    "idx": 101,
+    "catName": "뷰티 & 라이프스타일",
+    "title": "여름 필수템! 자외선 차단제의 올바른 선택과 사용법",
+    "imgSrc": "https://img.vogue.co.kr/vogue/2024/07/beauty_sunscreen_guide.jpg?x=500&y=300",
+    "dateWriter": "2024.07.15by 김민지 에디터",
+    "ariticle": "",
+    "mainCat": "beauty"
+  },
+  {
+    "idx": 102,
+    "catName": "패션 아이템",
+    "title": "클래식의 재해석: 2025 S/S 런웨이에서 본 미니멀 백 트렌드",
+    "imgSrc": "https://img.vogue.co.kr/vogue/2024/09/style_minimal_bag.jpg?x=750&y=450",
+    "dateWriter": "2024.09.28by Alice Cary",
+    "ariticle": "",
+    "mainCat": "fashion"
+  },
+  {
+    "idx": 103,
+    "catName": "푸드 & 여행",
+    "title": "가을 미식 여행: 국내 숨겨진 맛집 5곳 대공개",
+    "imgSrc": "https://img.vogue.co.kr/vogue/2024/10/lifestyle_food_trip.jpg?x=600&y=400",
+    "dateWriter": "2024.10.05by 이승현 기자",
+    "ariticle": "",
+    "mainCat": "lifestyle"
+  },
+  {
+    "idx": 104,
+    "catName": "패션 스타일링",
+    "title": "오피스 룩 고민 끝! 세련된 출근 복장 팁 7가지",
+    "imgSrc": "https://img.vogue.co.kr/vogue/2024/08/style_officelook_tips.jpg?x=800&y=500",
+    "dateWriter": "2024.08.10by Joy Montgomery",
+    "ariticle": "",
+    "mainCat": "fashion"
+  },
+  {
+    "idx": 105,
+    "catName": "뷰티 & 스킨케어",
+    "title": "환절기 피부 비상! 건조함 잡는 고보습 루틴 제안",
+    "imgSrc": "https://img.vogue.co.kr/vogue/2024/10/beauty_skincare_routine.jpg?x=450&y=280",
+    "dateWriter": "2024.10.20by 황혜원",
+    "ariticle": "",
+    "mainCat": "beauty"
+  },
+  {
+    "idx": 106,
+    "catName": "문화 & 예술",
+    "title": "꼭 봐야 할 전시회: 몰입형 미디어 아트의 세계",
+    "imgSrc": "https://img.vogue.co.kr/vogue/2024/09/culture_media_art.jpg?x=900&y=600",
+    "dateWriter": "2024.09.01by 박준영 평론가",
+    "ariticle": "",
+    "mainCat": "culture"
+  },
+  {
+    "idx": 107,
+    "catName": "패션 컬렉션",
+    "title": "샤넬 2024 F/W 컬렉션 하이라이트 분석",
+    "imgSrc": "https://img.vogue.co.kr/vogue/2024/03/fashion_chanel_fw.jpg?x=1200&y=800",
+    "dateWriter": "2024.03.15by 이지은 특파원",
+    "ariticle": "",
+    "mainCat": "fashion"
+  },
+  {
+    "idx": 108,
+    "catName": "푸드 & 레시피",
+    "title": "집에서 즐기는 이탈리아: 초보자를 위한 파스타 레시피",
+    "imgSrc": "https://img.vogue.co.kr/vogue/2024/05/lifestyle_pasta_recipe.jpg?x=550&y=350",
+    "dateWriter": "2024.05.25by 셰프 장민호",
+    "ariticle": "",
+    "mainCat": "lifestyle"
+  },
+  {
+    "idx": 109,
+    "catName": "뷰티 메이크업",
+    "title": "가을 무드 완성! 웜톤을 위한 MLBB 립스틱 추천",
+    "imgSrc": "https://img.vogue.co.kr/vogue/2024/10/beauty_mlbb_lipstick.jpg?x=400&y=250",
+    "dateWriter": "2024.10.01by 김소희 메이크업 아티스트",
+    "ariticle": "",
+    "mainCat": "beauty"
+  },
+  {
+    "idx": 110,
+    "catName": "인테리어",
+    "title": "작은 공간을 넓게! 미니멀리즘 인테리어 팁",
+    "imgSrc": "https://img.vogue.co.kr/vogue/2024/06/lifestyle_minimal_interior.jpg?x=700&y=480",
+    "dateWriter": "2024.06.18by 황혜원",
+    "ariticle": "",
+    "mainCat": "lifestyle"
+  },
+  {
+    "idx": 111,
+    "catName": "패션 악세사리",
+    "title": "시계와 주얼리: 스타일을 완성하는 디테일의 힘",
+    "imgSrc": "https://img.vogue.co.kr/vogue/2024/04/style_accessories_detail.jpg?x=650&y=420",
+    "dateWriter": "2024.04.10by Alice Cary",
+    "ariticle": "",
+    "mainCat": "fashion"
+  },
+  {
+    "idx": 112,
+    "catName": "여행 & 휴가",
+    "title": "단풍 명소 추천: 한국의 아름다운 가을 드라이브 코스",
+    "imgSrc": "https://img.vogue.co.kr/vogue/2024/10/culture_autumn_drive.jpg?x=950&y=550",
+    "dateWriter": "2024.10.12by Joy Montgomery",
+    "ariticle": "",
+    "mainCat": "culture"
+  },
+  {
+    "idx": 113,
+    "catName": "뷰티 헤어",
+    "title": "2024년 유행 헤어스타일: 트렌디한 단발과 롱 웨이브",
+    "imgSrc": "https://img.vogue.co.kr/vogue/2024/02/beauty_hair_trends.jpg?x=520&y=330",
+    "dateWriter": "2024.02.29by 황혜원",
+    "ariticle": "",
+    "mainCat": "beauty"
+  },
+  {
+    "idx": 114,
+    "catName": "건강 & 웰니스",
+    "title": "스트레스 관리: 정신 건강을 위한 명상 입문 가이드",
+    "imgSrc": "https://img.vogue.co.kr/vogue/2024/07/lifestyle_meditation_guide.jpg?x=480&y=300",
+    "dateWriter": "2024.07.01by 심리 상담가 A",
+    "ariticle": "",
+    "mainCat": "lifestyle"
+  },
+  {
+    "idx": 115,
+    "catName": "패션 스니커즈",
+    "title": "빈티지 스니커즈 열풍! 올드스쿨 운동화 스타일링 팁",
+    "imgSrc": "https://img.vogue.co.kr/vogue/2024/05/style_vintage_sneakers.jpg?x=780&y=520",
+    "dateWriter": "2024.05.18by 황혜원, Alice Cary",
+    "ariticle": "",
+    "mainCat": "fashion"
+  },
+  {
+    "idx": 116,
+    "catName": "문화 & 영화",
+    "title": "2024년 하반기 기대작! 주목해야 할 영화 10편",
+    "imgSrc": "https://img.vogue.co.kr/vogue/2024/08/culture_movie_preview.jpg?x=850&y=580",
+    "dateWriter": "2024.08.22by 황혜원",
+    "ariticle": "",
+    "mainCat": "culture"
+  },
+  {
+    "idx": 117,
+    "catName": "뷰티 바디케어",
+    "title": "향으로 힐링: 나만을 위한 퍼퓸과 바디 로션 조합",
+    "imgSrc": "https://img.vogue.co.kr/vogue/2024/09/beauty_perfume_bodycare.jpg?x=350&y=200",
+    "dateWriter": "2024.09.10by 김민지 에디터",
+    "ariticle": "",
+    "mainCat": "beauty"
+  },
+  {
+    "idx": 118,
+    "catName": "패션 트렌드",
+    "title": "블랙 & 화이트의 귀환: 모노크롬 룩을 연출하는 방법",
+    "imgSrc": "https://img.vogue.co.kr/vogue/2024/03/style_monochrome_look.jpg?x=1000&y=700",
+    "dateWriter": "2024.03.05by Joy Montgomery",
+    "ariticle": "",
+    "mainCat": "fashion"
+  },
+  {
+    "idx": 119,
+    "catName": "라이프 & 테크",
+    "title": "스마트 홈 입문: 삶의 질을 높여주는 AI 가전 추천",
+    "imgSrc": "https://img.vogue.co.kr/vogue/2024/06/lifestyle_smart_home.jpg?x=720&y=460",
+    "dateWriter": "2024.06.30by 이승현 기자",
+    "ariticle": "",
+    "mainCat": "lifestyle"
+  },
+  {
+    "idx": 120,
+    "catName": "패션 아우터",
+    "title": "겨울 코트 구매 가이드: 롱 코트 vs. 더플 코트",
+    "imgSrc": "https://img.vogue.co.kr/vogue/2024/11/style_winter_coat_guide.jpg?x=880&y=650",
+    "dateWriter": "2024.11.01by 황혜원, Alice Cary",
+    "ariticle": "",
+    "mainCat": "fashion"
+  }
+]
