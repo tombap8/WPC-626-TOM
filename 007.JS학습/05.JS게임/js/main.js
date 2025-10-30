@@ -113,13 +113,16 @@ function goR1() {
 
   // 한번 변수할당이 되었으면 true가 되어서 return!
   if(autoI) return;
-    console.log('토끼자동출발!');
+
+  // 토끼 속도를 레벨로 읽어오기
+  let r1speed = level.value;
+  console.log('토끼속도:',r1speed);
 
   // 인터발함수
   autoI = setInterval(() => {
     r1pos++; // 1씩증가
     r1.style.left = r1pos + "px";
-  }, 10);
+  }, r1speed); // select박스의 선택값이 호출시간!
 
 } ///////// goR1함수 //////////////////
 
