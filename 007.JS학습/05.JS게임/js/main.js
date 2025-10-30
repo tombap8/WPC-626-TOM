@@ -194,7 +194,7 @@ function whoWinner() {
     `;
 
     // (9) 버튼박스 위로 올리기
-    myFn.qs("#btns").style.zIndex = 200;
+    myFn.qs("#btns").style.zIndex = 200;    
   } /// if ///
 
 } ///////// whoWinner 함수 ////////////////
