@@ -9,12 +9,11 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  color: #000;
-  background: #fff;
-  line-height: 1.6;
+body{
+  font-family: 'Roboto', "Noto Sans KR";
+  padding-top: 209px;
 }
+
 
 a {
   text-decoration: none;
