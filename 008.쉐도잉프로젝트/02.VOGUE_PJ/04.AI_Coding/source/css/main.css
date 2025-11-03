@@ -131,6 +131,72 @@ header {
   margin-bottom: 20px;
 }
 
+.hero-slider {
+  width: 100%;
+  height: 100%;
+}
+.swiper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.swiper-slide {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 100%;
+  background: #222;
+}
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  left: 0; top: 0;
+  z-index: 1;
+  opacity: 0.86;
+}
+.hero-text {
+  position: relative;
+  z-index: 2;
+  background: rgba(0,0,0,.4);
+  color: #fff;
+  width: 100%;
+  padding: 34px 38px;
+  box-sizing: border-box;
+  text-align: left;
+  font-family: 'Pretendard', 'sans-serif';
+}
+.hero-text p {
+  font-size: 19px;
+}
+.hero-text h1 {
+  margin: 12px 0 0 0;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -1.2px;
+}
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fff;
+  --swiper-navigation-size: 38px;
+  background: rgba(0,0,0,0.25);
+  border-radius: 50%;
+}
+.swiper-pagination {
+  bottom: 14px !important;
+}
+.swiper-pagination-bullet {
+  background: #fff !important;
+  opacity: .7;
+}
+.swiper-pagination-bullet-active {
+  background: #e31e61 !important;
+  opacity: 1;
+}
+
+
 /* ========== 컨텐츠 섹션 공통 ========== */
 main {
   max-width: 1400px;
