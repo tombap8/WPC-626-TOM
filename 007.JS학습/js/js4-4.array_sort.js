@@ -214,3 +214,33 @@ import myFn from "./my_function.js";
 
 
 ******************************************************/
+
+// 숫자값 배열
+const arrNumber = [4, 5, 8, 10, 2, 1, 9, 3, 7, 6];
+
+// console.log("숫자배열원본:", arrNumber);
+// console.log("숫자배열정렬-sort()", arrNumber.sort());
+// console.log(
+//   "숫자배열정렬-sort((a,b)=>a-b)",
+//   arrNumber.sort((a, b) => a - b)
+// );
+// console.log(
+//   "숫자배열정렬-sort((닭가슴살,계란후라이)=>닭가슴살-계란후라이)",
+//   arrNumber.sort((닭가슴살, 계란후라이) => 닭가슴살 - 계란후라이)
+// );
+// console.log(
+//   "숫자배열정렬-sort((닭가슴살,계란후라이)=>계란후라이-닭가슴살)",
+//   arrNumber.sort((닭가슴살, 계란후라이) => 계란후라이 - 닭가슴살)
+// );
+// console.log(
+//   "숫자배열정렬-sort((a,b)=>{return a-b})",
+//   arrNumber.sort((a, b) => {
+//     return a - b;
+//   })
+// );
+// console.log(
+//   "숫자배열정렬-sort(function(a,b){return a-b})",
+//   arrNumber.sort(function (a, b) {
+//     return a - b;
+//   })
+// );
