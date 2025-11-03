@@ -303,7 +303,6 @@ const arrString = ["파", "타", "하", "가", "바", "사", "다", "라", "차"
 //   arrNumber.sort((a, b) => (a == b ? 0 : a > b ? -1 : 1))
 // );
 
-
 // [1] 숫자로만된 배열의 정렬 ///////////////////////////
 
 // [1-1] 출력대상 : .showNum
@@ -312,3 +311,76 @@ const showNum = document.querySelector(".showNum");
 // [1-2] 현재 숫자배열 출력하기
 // 배열데이터 : arrNumber
 console.log("숫자배열원본:", arrNumber);
+
+// [1-3] 현재 숫자배열 출력하기 함수 //////
+const showNumFn = (newArray) => {
+  // newArray: 전달된 배열
+  // 배열데이터만큼 숫자 이미지를 만들어서 화면에 출력하기
+  // 순서: 먼저 출력요소에 html넣기 셋팅후
+  // 이퀄 오른쪽에서 배열만큼 map을 돌아서 코드를 생성한다!
+  showNum.innerHTML = newArray
+    .map(
+      (v) => `
+    <img src="./images/num/num_0${v}.png" 
+    alt="숫자이미지">`
+    )
+    .join("");
+}; ////////////////// showNumFn함수 /////////////////
+
+// 기본 숫자배열로 화면출력함수 최초호출하기
+showNumFn(arrNumber);
+
+// [1-4] 숫자정렬 선택박스 변경시 실행함수 /////////
+document.querySelector("#sel").addEventListener("change", function () {
+  // 선택된 선택박스의 value값
+  const selValue = this.value;
+
+  // console.log('선택값:', selValue);
+
+  if (selValue == 1) {
+    // 오름차순 정렬
+    arrNumber.sort((a, b) => (a == b ? 0 : a < b ? -1 : 1));
+  } else if (selValue == 2) {
+    // 내림차순 정렩
+    arrNumber.sort((a, b) => (a == b ? 0 : a > b ? -1 : 1));
+  }
+  showNumFn(arrNumber);
+}); /////////////// 숫자정렬 선택박스 변경시 실행함수 //
+
+// [2] 문자로만된 배열의 정렬 ///////////////////////////
+
+// [2-1] 출력대상 : .showNum2
+const showNum2 = document.querySelector(".showNum2");
+
+// [2-2] 현재 문자배열 출력하기
+// 배열데이터 : arrString
+console.log("문자배열원본:", arrString);
+
+// [2-3] 현재 문자배열 출력하기 함수 //////
+const showNumFn2 = (newArray) => {
+  // newArray: 전달된 배열
+  // 배열데이터만큼 숫자 이미지를 만들어서 화면에 출력하기
+  // 순서: 먼저 출력요소에 html넣기 셋팅후
+  // 이퀄 오른쪽에서 배열만큼 map을 돌아서 코드를 생성한다!
+  showNum2.innerHTML = newArray.map((v) => `<span>${v}</span>`).join("");
+}; ////////////////// showNumFn2함수 /////////////////
+
+// 기본 문자배열로 화면출력함수 최초호출하기
+showNumFn2(arrString);
+
+// [2-4] 문자정렬 선택박스 변경시 실행함수 /////////
+document.querySelector("#sel2").addEventListener("change", function () {
+  // 선택된 선택박스의 value값
+  const selValue = this.value;
+
+  // console.log('선택값:', selValue);
+
+  if (selValue == 1) {
+    // 오름차순 정렬
+    arrString.sort((a, b) => (a == b ? 0 : a < b ? -1 : 1));
+  } else if (selValue == 2) {
+    // 내림차순 정렬
+    arrString.sort((a, b) => (a == b ? 0 : a > b ? -1 : 1));
+  }
+  showNumFn2(arrString);
+}); /////////////// showNumFn2함수 /////////////////
