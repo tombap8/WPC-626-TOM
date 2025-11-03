@@ -284,21 +284,31 @@ const arrString = ["파", "타", "하", "가", "바", "사", "다", "라", "차"
 ★★★★★★★★★★★★★★★★★★★★★★★★★★
 *************************************************/
 
-console.log(
-  "문자값 배열-sort() 오름차순",
-  arrString.sort((a, b) => (a == b ? 0 : a < b ? -1 : 1))
-);
+// console.log(
+//   "문자값 배열-sort() 오름차순",
+//   arrString.sort((a, b) => (a == b ? 0 : a < b ? -1 : 1))
+// );
 
-console.log(
-  "문자값 배열-sort() 내림차순",
-  arrString.sort((a, b) => (a == b ? 0 : a > b ? -1 : 1))
-);
-console.log(
-  "숫자값 배열-sort() 오름차순",
-  arrNumber.sort((a, b) => (a == b ? 0 : a < b ? -1 : 1))
-);
+// console.log(
+//   "문자값 배열-sort() 내림차순",
+//   arrString.sort((a, b) => (a == b ? 0 : a > b ? -1 : 1))
+// );
+// console.log(
+//   "숫자값 배열-sort() 오름차순",
+//   arrNumber.sort((a, b) => (a == b ? 0 : a < b ? -1 : 1))
+// );
 
-console.log(
-  "숫자값 배열-sort() 내림차순",
-  arrNumber.sort((a, b) => (a == b ? 0 : a > b ? -1 : 1))
-);
+// console.log(
+//   "숫자값 배열-sort() 내림차순",
+//   arrNumber.sort((a, b) => (a == b ? 0 : a > b ? -1 : 1))
+// );
+
+
+// [1] 숫자로만된 배열의 정렬 ///////////////////////////
+
+// [1-1] 출력대상 : .showNum
+const showNum = document.querySelector(".showNum");
+
+// [1-2] 현재 숫자배열 출력하기
+// 배열데이터 : arrNumber
+console.log("숫자배열원본:", arrNumber);
