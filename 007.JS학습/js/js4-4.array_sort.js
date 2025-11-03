@@ -283,3 +283,22 @@ const arrString = ["파", "타", "하", "가", "바", "사", "다", "라", "차"
     sort((a,b) => a==b? 0 : a > b ? -1 : 1)
 ★★★★★★★★★★★★★★★★★★★★★★★★★★
 *************************************************/
+
+console.log(
+  "문자값 배열-sort() 오름차순",
+  arrString.sort((a, b) => (a == b ? 0 : a < b ? -1 : 1))
+);
+
+console.log(
+  "문자값 배열-sort() 내림차순",
+  arrString.sort((a, b) => (a == b ? 0 : a > b ? -1 : 1))
+);
+console.log(
+  "숫자값 배열-sort() 오름차순",
+  arrNumber.sort((a, b) => (a == b ? 0 : a < b ? -1 : 1))
+);
+
+console.log(
+  "숫자값 배열-sort() 내림차순",
+  arrNumber.sort((a, b) => (a == b ? 0 : a > b ? -1 : 1))
+);
