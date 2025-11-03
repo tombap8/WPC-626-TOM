@@ -30,6 +30,9 @@
 
       추가체크일 : 11/7(금)
       전체 소스 정리 & 보완
+
+      ★ 노션상세일정:
+      https://cerulean-spy-f57.notion.site/29de4c9eb92880abafcbdcf7a0fef70a?pvs=74
       
   ----------------
     [ 산리오 PJ ]
