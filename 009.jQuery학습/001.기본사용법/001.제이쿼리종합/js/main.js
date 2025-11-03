@@ -113,7 +113,7 @@ $room.each((idx, el) => {
 }); /////// each 메서드 /////////////
 
 // 좀비는 모두 숨기기!
-$('.mz').hide();
+$(".mz").hide();
 
 // 2. 버튼 셋팅하기 //////////////////////
 // 대상 : .btns button -> $btns변수
@@ -124,6 +124,76 @@ $btns.hide().first().show();
 // $btns.hide().eq(3).show();
 
 // 3. 미니언즈 공통 기능함수 ///////////////////
+const actMini = (el, seq, fn) => {
+  // el : 클릭된 버튼요소
+  // seq : 이동할 li방 순번
+  // fn : 이동후 실행할 콜백함수
+
+  console.log("이동방순번:", seq);
+
+  // 1. 메시지 숨기기
+  $msg.fadeOut(300);
+
+  // 2. 클릭된 버튼 자신 숨기기
+  $(el).slideUp(300);
+
+  // 3. 방의 위치 알아내기
+  // -> 요소의 위치는 offset().top / offset().left 메서드 사용
+  let myRoom = {}; // 위치정보 객체
+  let myTarget = $room.eq(seq); // n번방
+  myRoom.top = myTarget.offset().top;
+  // 방 중앙에 오도록 방크기의 절반만큼 이동하고 자기크기의
+  // 절반만큼 빼줌!
+  myRoom.left = myTarget.offset().left + myTarget.width() / 2 - $mi.width() / 2;
+  console.log("n번방위치:", myRoom);
+
+  // 4. 미니언즈 이동하기
+  $mi.animate(
+    {
+      top: myRoom.top,
+      left: myRoom.left,
+    },
+    800, // 시간
+    "easeOutElastic", // 이징
+    fn // 이동후 콜백함수
+  );
+  // animate({CSS설정},시간,이징,함수);
+}; ///////////// actMini 함수 ///////////////
 
 // 4. 버튼 클릭하여 기능수행하기 ////////////////
 // (4-1) "들어가기" 버튼 클릭시
+$btns.first().click(function () {
+
+  // 버튼별 기능구현하기 //////////////
+  let fn = ()=>{ // 이동후 콜백함수
+
+    // 5. 메시지 변경후 나타나기 
+    // -> 방번호와 같은 순번 메시지
+    // -> 도착 1초후 나타나기
+    $msg.html(msgTxt[8]).delay(1000).fadeIn(300);
+
+    // 다음버튼 보이기
+    $(this).next().fadeIn(300);
+  }; // fn 함수 끝 //////////////
+
+  // 3. 미니언즈 공통 기능함수 호출하기
+  actMini(this, 8, fn);
+})
+// 다음버튼
+.next()
+.click(function () {
+  // 버튼별 기능구현하기 //////////////
+  let fn = ()=>{ // 이동후 콜백함수
+
+    // 5. 메시지 변경후 나타나기 
+    // -> 방번호와 같은 순번 메시지
+    // -> 도착 1초후 나타나기
+    $msg.html(msgTxt[9]).delay(1000).fadeIn(300);
+    
+    // 다음버튼 보이기
+    $(this).next().fadeIn(300);
+  }; // fn 함수 끝 //////////////
+
+  // 3. 미니언즈 공통 기능함수 호출하기
+  actMini(this, 9, fn);
+})
