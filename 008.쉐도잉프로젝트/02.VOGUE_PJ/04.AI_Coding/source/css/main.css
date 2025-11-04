@@ -826,6 +826,8 @@ footer {
 /* Best Stories Swiper Styles */
 .best-stories {
   position: relative;
+  /* 드래그시 선택영역 안잡히게함! */
+  user-select: none;
 }
 
 .best-stories-slider {
@@ -834,7 +836,54 @@ footer {
 }
 
 .best-stories-slider .swiper {
-  overflow: visible;
+  overflow: hidden;
+}
+
+.best-stories-slider .swiper-slide {
+  height: auto;
+}
+
+.best-stories-slider .card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.best-stories-slider .card-image {
+  flex-shrink: 0;
+}
+
+.best-stories-slider .card-content {
+  flex-grow: 1;
+}
+
+/* Best Stories 텍스트 스타일 */
+.best-stories-slider .category {
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #e74c3c;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.best-stories-slider .s_tit {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.best-stories-slider .date {
+  font-size: 13px;
+  color: #999;
+  line-height: 1.4;
+}
+
+.best-stories-slider .date span {
+  color: #999;
+  margin-left: 5px;
 }
 
 .best-stories-next,
