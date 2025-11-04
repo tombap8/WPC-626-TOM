@@ -11,9 +11,10 @@ console.log("제이슨확인:", siteData);
 
 // [1] 배너파트 데이터 바인딩하기 //////////
 // 대상: .hero-slider .swiper-wrapper
-document.querySelector('.hero-slider .swiper-wrapper')
-.innerHTML = bannerData.map(v=>
-`
+document.querySelector(".hero-slider .swiper-wrapper").innerHTML = bannerData
+  .map(
+    (v) =>
+      `
     <div class="swiper-slide">
         <img
         class="hero-image"
@@ -25,4 +26,6 @@ document.querySelector('.hero-slider .swiper-wrapper')
         <h1>${v.title}</h1>
         </div>
     </div>
-`).join('');
+`
+  )
+  .join("");
