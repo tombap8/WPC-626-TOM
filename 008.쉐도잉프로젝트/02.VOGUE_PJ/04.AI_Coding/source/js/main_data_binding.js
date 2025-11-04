@@ -4,7 +4,10 @@
 // (1) 배너정보 제이슨
 import bannerData from "../data/banner_data.json" with { type: "json" };
 
-console.log("배너정보 제이슨:", bannerData);
+// (2) 보그사이트정보 제이슨
+import siteData from "../data/vogue_korea_data.json" with { type: "json" };
+
+console.log("제이슨확인:", siteData);
 
 // [1] 배너파트 데이터 바인딩하기 //////////
 // 대상: .hero-slider .swiper-wrapper
