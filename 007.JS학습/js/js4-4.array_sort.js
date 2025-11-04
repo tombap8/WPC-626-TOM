@@ -384,3 +384,70 @@ document.querySelector("#sel2").addEventListener("change", function () {
   }
   showNumFn2(arrString);
 }); /////////////// showNumFn2함수 /////////////////
+
+// [3] 객체데이터 배열의 정렬 //////////////
+// [3-1] 객체데이터 배열
+// - 객체구조 :
+// (1) idx - 순번 / (2) tit - 제목 / (3) cont - 내용
+const list1 = [
+  {
+    idx: 8,
+    tit: "나는 구누?",
+    cont: "공동구매) 슬로건 공구 (계좌와 네이버폼)",
+  },
+  {
+    idx: 4,
+    tit: "여기는 어디?",
+    cont: "총공 공지] 오늘부터 일 2회, 총공 진행합니다",
+  },
+  {
+    idx: 1,
+    tit: "나야나",
+    cont: "연합 갈라 서포트 계좌오픈",
+  },
+  {
+    idx: 15,
+    tit: "이제 얼마나 남은거니?",
+    cont: "음악프로그램에 출연 요청글도 써볼까요?",
+  },
+]; /////////////// list1 /////////////
+
+console.log(list1);
+
+// [3-2] 데이터 바인딩하기 : 함수화하여 재사용!
+// 바인딩 출력대상
+const showList3 = myFn.qs(".showList3");
+
+const showList3Fn = (newArray) => {
+  // newArray 데이터 바인딩할 배열
+  showList3.innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>번호</th>
+              <th>제목</th>
+              <th>내용</th>
+            </tr>
+          </thead>
+          <tbody>
+          ${newArray
+            .map(
+              (v) => `            
+                <tr>
+                    <td>${v.idx}</td>
+                    <td>${v.tit}</td>
+                    <td>${v.cont}</td>
+                </tr>
+                `
+            )
+            .join("")}
+            
+            </tbody>
+                </table>
+    
+    `;
+}; //////// showList3Fn 함수 //////////
+
+// 바인딩함수 최초호출!
+showList3Fn(list1);
+console.log("객체배열원본:", list1);
