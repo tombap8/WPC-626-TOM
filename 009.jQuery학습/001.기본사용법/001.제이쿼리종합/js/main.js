@@ -249,7 +249,7 @@ $btns
   }) /////////// click ////////////////
 
 
-  // (4-4) "무서우니 윗층으로!" 버튼 클릭시
+  // (4-4) "다시옆방으로!" 버튼 클릭시
   .next()
   .click(function () {
     // 버튼별 기능구현하기 //////////////
@@ -271,4 +271,35 @@ $btns
 
     // 3. 미니언즈 공통 기능함수 호출하기
     actMini(this, 6, fn);
+  }) /////////// click ////////////////
+
+  // (4-5) "무서우니 윗층으로!" 버튼 클릭시
+  .next()
+  .click(function () {
+    // 버튼별 기능구현하기 //////////////
+    let fn = () => {
+      // 이동후 콜백함수
+      // [1] 여러 메시지를 순차적으로 보이게하기
+      $msg
+      .html(msgTxt[4][0][0])
+        .fadeIn(200)
+        .delay(500)
+        .fadeIn(200,()=>$msg.html(msgTxt[4][0][1]))
+        .delay(500)
+        .fadeIn(200,()=>$msg.html(msgTxt[4][0][2]))
+        .delay(500)
+        .fadeIn(200,()=>$msg.html(msgTxt[4][0][3]))
+        .delay(500)
+        .fadeIn(200,()=>$msg.html(msgTxt[4][0][4]))
+        .delay(500)
+        .fadeIn(200,()=>$msg.html(msgTxt[4][0][5]))
+        .delay(500)
+        .fadeIn(200,()=>$msg.html(msgTxt[4][0][6]))
+        .delay(500)
+        .fadeIn(200,()=>$msg.html(msgTxt[4][0][7]))
+      
+    }; // fn 함수 끝 //////////////
+
+    // 3. 미니언즈 공통 기능함수 호출하기
+    actMini(this, 4, fn);
   }) /////////// click ////////////////
