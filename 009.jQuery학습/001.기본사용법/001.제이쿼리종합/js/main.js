@@ -118,10 +118,10 @@ $(".mz").hide();
 // 2. 버튼 셋팅하기 //////////////////////
 // 대상 : .btns button -> $btns변수
 // 변경사항 : 모든 버튼을 숨기고 첫번째 버튼만 보이게함!
-$btns.hide().first().show();
+// $btns.hide().first().show();
 
 // 예비코드 : 특정순번버튼만 나오게하기
-// $btns.hide().eq(3).show();
+$btns.hide().eq(2).show();
 
 // 3. 미니언즈 공통 기능함수 ///////////////////
 const actMini = (el, seq, fn) => {
@@ -281,22 +281,39 @@ $btns
       // 이동후 콜백함수
       // [1] 여러 메시지를 순차적으로 보이게하기
       $msg
-      .html(msgTxt[4][0][0])
+      .html(msgTxt[4][0][0]) // "무",
         .fadeIn(200)
         .delay(500)
-        .fadeIn(200,()=>$msg.html(msgTxt[4][0][1]))
+        .fadeIn(200,()=>$msg.html(msgTxt[4][0][1])) // "무.",
         .delay(500)
-        .fadeIn(200,()=>$msg.html(msgTxt[4][0][2]))
+        .fadeIn(200,()=>$msg.html(msgTxt[4][0][2])) // "무.서",
         .delay(500)
-        .fadeIn(200,()=>$msg.html(msgTxt[4][0][3]))
+        .fadeIn(200,()=>$msg.html(msgTxt[4][0][3])) // "무.서.",
         .delay(500)
-        .fadeIn(200,()=>$msg.html(msgTxt[4][0][4]))
+        .fadeIn(200,()=>$msg.html(msgTxt[4][0][4])) // "무.서.워",
         .delay(500)
-        .fadeIn(200,()=>$msg.html(msgTxt[4][0][5]))
+        .fadeIn(200,()=>$msg.html(msgTxt[4][0][5])) // "무.서.워.",
         .delay(500)
-        .fadeIn(200,()=>$msg.html(msgTxt[4][0][6]))
+        .fadeIn(200,()=>$msg.html(msgTxt[4][0][6])) // "무.서.워..",
         .delay(500)
-        .fadeIn(200,()=>$msg.html(msgTxt[4][0][7]))
+        .fadeIn(200,()=>$msg.html(msgTxt[4][0][7])) // "무.서.워...",
+        .delay(3000)
+        .fadeIn(200,()=>$msg.html(msgTxt[4][1])); 
+        // `아~악! 물렸다!<br>어서 치료주사방으로!`
+
+        // [2] 7번방의 좀비 윗층으로 뛰어오른후 달겨들기
+        $room.eq(7).find('.mz')
+        .delay(4000) // 4초후
+        .animate({top: '-100%'},500,'easeOutBounce')
+        .delay(500) // 0.5초후
+        .animate({right: '123%'},1500,'easeOutElastic');
+
+        // [3] 미니언즈 주인공 이미지 좀비로 변경하기 + 회색처리
+        // 7초후 적용하기
+        setTimeout(() => {
+          $mi.find('img').attr('src','images/mz1.png')
+          .css('filter','grayscale(100%)');          
+        }, 7000);
       
     }; // fn 함수 끝 //////////////
 
