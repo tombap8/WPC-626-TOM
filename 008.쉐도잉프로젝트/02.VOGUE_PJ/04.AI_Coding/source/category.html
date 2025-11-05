@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Category - VOGUE Korea</title>
+    <!-- 폰트어썸 CDN CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Swiper CSS 추가 -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <!-- CSS 파일 -->
+    <link rel="stylesheet" href="./css/core.css" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/category.css" />
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Swiper JS 추가 -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Common JS (공통 모듈 로드) -->
+    <script src="./js/common.js"></script>
+    <!-- Category JS -->
+    <script src="./js/category.js"></script>
+  </head>
+  <body>
+    <!-- ========== 헤더 영역 (공통 모듈) ========== -->
+    <div id="header-area"></div>
+
+    <!-- ========== 메인 컨텐츠 ========== -->
+    <main class="category-main">
+      <!-- 카테고리 탭 네비게이션 -->
+      <section class="category-tabs">
+        <div class="tab-container">
+          <button class="tab-btn active" data-category="all">전체</button>
+          <button class="tab-btn" data-category="fashion">Fashion</button>
+          <button class="tab-btn" data-category="beauty">Beauty</button>
+          <button class="tab-btn" data-category="living">Living</button>
+          <button class="tab-btn" data-category="culture">Culture</button>
+        </div>
+      </section>
+
+      <!-- 카테고리 타이틀 -->
+      <section class="category-header">
+        <h1 class="category-title">ALL STORIES</h1>
+        <p class="category-description">보그 코리아의 모든 스토리를 만나보세요</p>
+      </section>
+
+      <!-- 컨텐츠 영역 (SPA로 동적 로드) -->
+      <section class="category-content">
+        <div class="content-container">
+          <!-- 여기에 동적으로 컨텐츠가 로드됩니다 -->
+          <div class="loading-message">
+            <i class="fa-solid fa-spinner fa-spin"></i>
+            <p>Loading...</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 페이지네이션 -->
+      <section class="category-pagination">
+        <div class="pagination-container">
+          <button class="page-btn prev" disabled>
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <div class="page-numbers">
+            <button class="page-num active">1</button>
+            <button class="page-num">2</button>
+            <button class="page-num">3</button>
+            <span class="page-dots">...</span>
+            <button class="page-num">10</button>
+          </div>
+          <button class="page-btn next">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- ========== 푸터 영역 (공통 모듈) ========== -->
+    <div id="footer-area"></div>
+  </body>
+</html>

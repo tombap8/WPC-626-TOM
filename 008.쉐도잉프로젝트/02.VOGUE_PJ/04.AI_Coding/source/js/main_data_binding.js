@@ -167,3 +167,155 @@ const peopleGridHTML = `
 `;
 
 document.querySelector(".people-grid").innerHTML = peopleGridHTML;
+
+// [6] FASHION 파트 데이터 바인딩하기 //////////
+const fashion = siteData.sections.fashion;
+
+// 대상: .fashion .stories-grid
+document.querySelector(".fashion .stories-grid").innerHTML = `
+  <!-- 메인 스토리 (오른쪽 큰 카드) -->
+  <article class="main-story">
+    <img
+      class="main-story-image"
+      src="${fashion.mainHighlight.image}"
+      alt="${fashion.mainHighlight.title}"
+    />
+    <div class="main-story-overlay">
+      <div class="main-story-meta">
+        <span class="main-story-category">${fashion.mainHighlight.category}</span>
+        <span class="main-story-date">${fashion.mainHighlight.date}</span>
+      </div>
+      <h3 class="main-story-title">
+        ${fashion.mainHighlight.title}
+      </h3>
+    </div>
+  </article>
+
+  ${fashion.articles
+    .map(
+      (article) => `
+  <!-- 서브 스토리 -->
+  <article class="sub-story">
+    <div class="sub-story-image-wrapper">
+      <img
+        class="sub-story-image"
+        src="${article.image}"
+        alt="${article.title}"
+      />
+    </div>
+    <div class="sub-story-content">
+      <div class="sub-story-category">${article.category}</div>
+      <h3 class="sub-story-title">${article.title}</h3>
+      <div class="sub-story-meta">
+        <span class="date">${article.date}</span>
+        <span class="divider">|</span>
+        <span class="author">by ${article.author}</span>
+      </div>
+    </div>
+  </article>
+  `
+    )
+    .join("")}
+`;
+
+// [7] BEAUTY 파트 데이터 바인딩하기 //////////
+const beauty = siteData.sections.beauty;
+
+// 대상: .beauty .stories-grid
+document.querySelector(".beauty .stories-grid").innerHTML = `
+  <!-- 메인 스토리 (좌측 큰 카드) -->
+  <article class="main-story">
+    <img
+      class="main-story-image"
+      src="${beauty.mainHighlight.image}"
+      alt="${beauty.mainHighlight.title}"
+    />
+    <div class="main-story-overlay">
+      <div class="main-story-meta">
+        <span class="main-story-category">${beauty.mainHighlight.category}</span>
+        <span class="main-story-date">${beauty.mainHighlight.date}</span>
+      </div>
+      <h3 class="main-story-title">
+        ${beauty.mainHighlight.title}
+      </h3>
+    </div>
+  </article>
+
+  ${beauty.articles
+    .map(
+      (article) => `
+  <!-- 서브 스토리 -->
+  <article class="sub-story">
+    <div class="sub-story-image-wrapper">
+      <img
+        class="sub-story-image"
+        src="${article.image}"
+        alt="${article.title}"
+      />
+    </div>
+    <div class="sub-story-content">
+      <div class="sub-story-category">${article.category}</div>
+      <h3 class="sub-story-title">${article.title}</h3>
+      <div class="sub-story-meta">
+        <span class="date">${article.date}</span>
+        <span class="divider">|</span>
+        <span class="author">by ${article.author}</span>
+      </div>
+    </div>
+  </article>
+  `
+    )
+    .join("")}
+`;
+
+// [8] LIVING 파트 데이터 바인딩하기 //////////
+const living = siteData.sections.living;
+
+// 대상: #living .grid
+document.querySelector("#living .grid").innerHTML = living.articles
+  .map(
+    (article) => `
+  <article class="card">
+    <div class="card-image">
+      <div class="placeholder-img">
+        <img
+          src="${article.image}"
+          alt="${article.title}"
+        />
+      </div>
+    </div>
+    <div class="card-content">
+      <p class="category">${article.category}</p>
+      <h3 class="s_tit">${article.title}</h3>
+      <p class="date">${article.date}<span>by ${article.author}</span></p>
+    </div>
+  </article>
+  `
+  )
+  .join("");
+
+// [9] LATEST STORIES 파트 데이터 바인딩하기 //////////
+const latestStories = siteData.sections.latestStories;
+
+// 대상: .latest-stories-box .grid
+document.querySelector(".latest-stories-box .grid").innerHTML = latestStories.articles
+  .map(
+    (article) => `
+  <article class="card">
+    <div class="card-image">
+      <div class="placeholder-img">
+        <img
+          src="${article.image}"
+          alt="${article.title}"
+        />
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="card-category">${article.category}</div>
+      <h3 class="card-title">${article.title}</h3>
+      <p class="card-subtitle">${article.date} by ${article.author}</p>
+    </div>
+  </article>
+  `
+  )
+  .join("");
