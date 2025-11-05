@@ -136,3 +136,34 @@ document.querySelector(".must-read .grid").innerHTML = mustRead.articles
   `
   )
   .join("");
+
+  // [5] PEOPLE NOW 파트 데이터 바인딩하기 //////////
+const peopleNow = siteData.sections.peopleNow;
+
+// 대상: .people-grid (첫 번째 카드는 타이틀이므로 제외)
+const peopleGridHTML = `
+  <article class="people-card">
+    <div class="section-header">
+      <h2 class="section-title">${peopleNow.title.split(' ')[0]}<br />${peopleNow.title.split(' ')[1]}</h2>
+      <h3>${peopleNow.subtitle}</h3>
+    </div>
+  </article>
+  ${peopleNow.people
+    .map(
+      (person) => `
+  <article class="people-card">
+    <img
+      src="${person.image}"
+      alt="${person.title}"
+    />
+    <div class="post_content">
+      <p><span>${person.category}</span></p>
+      <h3>${person.title}</h3>
+    </div>
+  </article>
+  `
+    )
+    .join("")}
+`;
+
+document.querySelector(".people-grid").innerHTML = peopleGridHTML;
