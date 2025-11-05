@@ -30,7 +30,7 @@ document.querySelector(".hero-slider .swiper-wrapper").innerHTML = bannerData
   )
   .join("");
 
-  // [2] TODAY'S STORIES 파트 데이터 바인딩하기 //////////
+// [2] TODAY'S STORIES 파트 데이터 바인딩하기 //////////
 const todaysStories = siteData.sections.todaysStories;
 
 // 대상: .todays-stories .stories-grid
@@ -44,7 +44,9 @@ document.querySelector(".todays-stories .stories-grid").innerHTML = `
     />
     <div class="main-story-overlay">
       <div class="main-story-meta">
-        <span class="main-story-category">${todaysStories.mainHighlight.category}</span>
+        <span class="main-story-category">${
+          todaysStories.mainHighlight.category
+        }</span>
         <span class="main-story-date">${todaysStories.mainHighlight.date}</span>
       </div>
       <h3 class="main-story-title">
@@ -80,12 +82,11 @@ document.querySelector(".todays-stories .stories-grid").innerHTML = `
     .join("")}
 `;
 
-
 // [3] BEST STORIES 파트 데이터 바인딩하기 //////////
 const bestStories = siteData.sections.bestStories;
 
 // 대상: .best-stories-slider .swiper-wrapper
-document.querySelector(".best-stories-slider .swiper-wrapper").innerHTML = 
+document.querySelector(".best-stories-slider .swiper-wrapper").innerHTML =
   bestStories.articles
     .map(
       (article) => `
@@ -109,3 +110,29 @@ document.querySelector(".best-stories-slider .swiper-wrapper").innerHTML =
   `
     )
     .join("");
+
+// [4] MUST READ 파트 데이터 바인딩하기 //////////
+const mustRead = siteData.sections.mustRead;
+
+// 대상: .must-read .grid
+document.querySelector(".must-read .grid").innerHTML = mustRead.articles
+  .map(
+    (article) => `
+  <article class="card">
+    <div class="card-image">
+      <div class="placeholder-img">
+        <img
+          src="${article.image}"
+          alt="${article.title}"
+        />
+      </div>
+    </div>
+    <div class="card-content">
+      <p class="category">${article.category}</p>
+      <h3 class="s_tit">${article.title}</h3>
+      <p class="date">${article.date}<span>by ${article.author}</span></p>
+    </div>
+  </article>
+  `
+  )
+  .join("");

@@ -631,3 +631,25 @@ const sbtn = myFn.qs(".sbtn");
 const fbtn = myFn.qs(".fbtn");
 
 // (1) 버튼 클릭시 이벤트 설정하기 //////
+myFn.addEvt(sbtn, "click", function () {
+  console.log('검색해~~!');
+  // 1) 검색어가 없으면 경고창 띄우기
+  if(stxt.value == '') {
+    alert('검색어를 입력해줘!');
+    return;
+  } /// if ///
+  // 2) 검색어가 있으면 검색
+  else{
+    // 여러 검색 결과를 모으려면 filter() 메서드사용!
+    const newArray = list2.filter(v => {
+      return String(v[sCta4.value]).includes(stxt.value);
+    });
+    // 숫자일 경우도 문자화하여 검색해야함!
+    // 따라서 String()으로 형변환하여 검색한다!
+    // 3) 화면출력
+    showList4Fn(newArray);
+    console.log("객체배열원본:", list2);
+  } /// else ////
+
+  
+}); ////////////// click 이벤트함수 ////////////
