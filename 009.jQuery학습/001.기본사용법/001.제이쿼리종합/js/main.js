@@ -118,10 +118,10 @@ $(".mz").hide();
 // 2. 버튼 셋팅하기 //////////////////////
 // 대상 : .btns button -> $btns변수
 // 변경사항 : 모든 버튼을 숨기고 첫번째 버튼만 보이게함!
-// $btns.hide().first().show();
+$btns.hide().first().show();
 
 // 예비코드 : 특정순번버튼만 나오게하기
-$btns.hide().eq(4).show();
+// $btns.hide().eq(4).show();
 
 // 3. 미니언즈 공통 기능함수 ///////////////////
 const actMini = (el, seq, fn) => {
@@ -435,28 +435,104 @@ $btns
             $mi.hide();
           }
         ) //// animate ////
-        
+
         // [6] 지연후 헬기 계속이동
         .delay(500) // 0.5초 후
-        .animate({
-          left: '70%',
-          rotate: '15deg'
-        },4000, 'easeInOutCirc',
-      function(){ // 애니후 콜백함수
+        .animate(
+          {
+            left: "70%",
+            rotate: "15deg",
+          },
+          4000,
+          "easeInOutCirc",
+          function () {
+            // 애니후 콜백함수
 
-        // [7] 조종사가 좀비된 이미지로 변경
-        $(this).attr('src', 'images/heli3.png');
-      }) ////// animate //////
+            // [7] 조종사가 좀비된 이미지로 변경
+            $(this).attr("src", "images/heli3.png");
+          }
+        ) ////// animate //////
 
-      // [8] 지연후 헬기 천천히 화면바깥으로 나감!
-      .delay(300) // 0.3초 후
-      .animate({
-        left: '110%',
-      },10000, 'linear',()=>{});
+        // [8] 지연후 헬기 천천히 화면바깥으로 나감!
+        .delay(300) // 0.3초 후
+        .animate(
+          {
+            left: "110%",
+          },
+          10000,
+          "linear",
+          () => {
+            // [9] 최종애니 콜백함수
+            // -> 간판떨어져, 건물무너져~~ 등
 
+            // [9-1] 간판떨어지기
+            let tit = $(".tit");
+            // 1단계: 클래스 'on'주기
+            tit.addClass("on");
+            // 2단계: 클래스 'on2'주기
+            setTimeout(() => {
+              tit.addClass("on2");
+            }, 3000);
 
+            // [9-2] 건물 무너지기 : 6초후
+            setTimeout(() => {
+              $room.parent().addClass("on");
+              // parent()는 li의 부모인 ul로 올라감
+            }, 6000);
 
+            // [9-3] 추가구현 : 20초후 작동시작
+            setTimeout(() => {
+              // 1) 건물무너지고 9번방 좀비가 올라옴
+              // - 건물이 돌아가 있으므로 세워놓고 올라옴
+              $room
+                .parent() // li의 부모 ul건물 박스
+                .attr("style", "transform:rotate(0deg) !important");
+              // 9번방 좀비
+              $room
+                .eq(9)
+                .find(".mz")
+                // 2)지표로 올라오기
+                .animate(
+                  {
+                    bottom: "594%",
+                  },
+                  3000
+                )
+                // 3)기다리기
+                .delay(3000)
+                // 4)오른쪽으로 사라짐(5초간)
+                .animate(
+                  {
+                    right: "-240%",
+                  },
+                  5000,
+                  () => {
+                    // 진짜끝!!!
+                    // 5) 엔딩글자 나옴
+                    $("body").append('<h1 class="ending">THE END</h1>');
 
+                    $(".ending")
+                      .css({
+                        position: "fixed",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%,-50%)",
+                        margin: "0",
+                        padding: "0",
+                        color: "white",
+                        fontSize: "20vh",
+                        textShadow: "0 0 5px #000",
+                        fontFamily: "vladimir script",
+                      })
+                      .hide() // 숨기기
+                      .fadeIn(1000) // 페이드로 보이기
+                      .animate({ color: "red" }, 1000);
+                    // 마지막 글자색 빨간색으로 마무리!!!
+                  }
+                ); /// animate ///
+            }, 20000);
+          }
+        ); //////// animate //////
     }; // fn 함수 끝 //////////////
 
     // 3. 미니언즈 공통 기능함수 호출하기
