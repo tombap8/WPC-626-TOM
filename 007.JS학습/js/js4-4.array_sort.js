@@ -597,6 +597,7 @@ const sel4 = myFn.qs("#sel4");
 // 정렬할 배열데이터 담을 변수
 let tgArray4 = list2.slice();
 // 처음엔 기본전체배열값 할당함!
+// 검색시에 반드시 꼭~~~~! 이 변수에 검색결과를 할당해야함!
 
 // 이벤트 설정하기 : 대상 - sel4
 myFn.addEvt(sel4, "change", function () {
@@ -671,5 +672,28 @@ myFn.addEvt(sbtn, "click", function () {
     // 3) 화면출력
     showList4Fn(newArray);
     console.log("객체배열원본:", list2);
+
+    // 4) 검색된 데이터로 정렬되 되야하므로
+    // 검색 배열 데이터를 담는 변수인 tgArray4에 newArray을 저장해야함!
+    tgArray4 = newArray.slice();
   } /// else ////
 }); ////////////// click 이벤트함수 ////////////
+
+/// [4-5] 검색창에서 엔터를 칠 경우 검색버튼 클릭이벤트 발생하기 ///
+myFn.addEvt(stxt, "keydown", function (e) {
+  if (e.keyCode == 13) sbtn.click();
+}); //////////// keydown 이벤트함수 //////////
+
+/// [4-6] 전체버튼 클릭시 이벤트 설정하기 ///
+myFn.addEvt(fbtn, "click", function () {
+  // (1) 전체배열출력
+  showList4Fn(list2);
+  // (2) 초기화 : 검색창 지우기, 기준선택 첫번째 값으로 변경
+  // 정렬 파트도 처음값으로 변경
+  stxt.value = "";
+  sCta4.value = "tit";
+  sel4.value = "0";
+
+  // (3) 정렬 배열 데이터 전체배열로 다시 변경하기
+  tgArray4 = list2.slice();
+}); //////////// click 이벤트함수 //////////
