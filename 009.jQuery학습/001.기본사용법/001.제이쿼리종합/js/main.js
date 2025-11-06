@@ -231,23 +231,25 @@ $btns
             .eq(7)
             .find(".mz") // 좀비선택
             .delay(1000) // 1초후
-            .fadeIn(300, 
+            .fadeIn(
+              300,
               // function() { // 일반익명함수 this는 좀비!
-              () => { // 일반익명함수 this는 좀비!
-              console.log('this의미:', this);
-              // 좀비등장후 콜백
-              // [3] 다음 메시지 나타나기
-              $msg.html(msgTxt[7][1]);
-              // [4] 다음버튼 보이기
-              $(this).next().fadeIn(300);
-            }); /////// fadeIn ////////////
+              () => {
+                // 일반익명함수 this는 좀비!
+                console.log("this의미:", this);
+                // 좀비등장후 콜백
+                // [3] 다음 메시지 나타나기
+                $msg.html(msgTxt[7][1]);
+                // [4] 다음버튼 보이기
+                $(this).next().fadeIn(300);
+              }
+            ); /////// fadeIn ////////////
         }); ///////// fadeIn ////////////
     }; // fn 함수 끝 //////////////
 
     // 3. 미니언즈 공통 기능함수 호출하기
     actMini(this, 7, fn);
   }) /////////// click ////////////////
-
 
   // (4-4) "다시옆방으로!" 버튼 클릭시
   .next()
@@ -266,7 +268,7 @@ $btns
           $msg.html(msgTxt[6][1]);
           // [3] 다음버튼 보이기
           $(this).next().fadeIn(300);
-        })
+        });
     }; // fn 함수 끝 //////////////
 
     // 3. 미니언즈 공통 기능함수 호출하기
@@ -281,43 +283,46 @@ $btns
       // 이동후 콜백함수
       // [1] 여러 메시지를 순차적으로 보이게하기
       $msg
-      .html(msgTxt[4][0][0]) // "무",
+        .html(msgTxt[4][0][0]) // "무",
         .fadeIn(200)
         .delay(500)
-        .fadeIn(200,()=>$msg.html(msgTxt[4][0][1])) // "무.",
+        .fadeIn(200, () => $msg.html(msgTxt[4][0][1])) // "무.",
         .delay(500)
-        .fadeIn(200,()=>$msg.html(msgTxt[4][0][2])) // "무.서",
+        .fadeIn(200, () => $msg.html(msgTxt[4][0][2])) // "무.서",
         .delay(500)
-        .fadeIn(200,()=>$msg.html(msgTxt[4][0][3])) // "무.서.",
+        .fadeIn(200, () => $msg.html(msgTxt[4][0][3])) // "무.서.",
         .delay(500)
-        .fadeIn(200,()=>$msg.html(msgTxt[4][0][4])) // "무.서.워",
+        .fadeIn(200, () => $msg.html(msgTxt[4][0][4])) // "무.서.워",
         .delay(500)
-        .fadeIn(200,()=>$msg.html(msgTxt[4][0][5])) // "무.서.워.",
+        .fadeIn(200, () => $msg.html(msgTxt[4][0][5])) // "무.서.워.",
         .delay(500)
-        .fadeIn(200,()=>$msg.html(msgTxt[4][0][6])) // "무.서.워..",
+        .fadeIn(200, () => $msg.html(msgTxt[4][0][6])) // "무.서.워..",
         .delay(500)
-        .fadeIn(200,()=>$msg.html(msgTxt[4][0][7])) // "무.서.워...",
+        .fadeIn(200, () => $msg.html(msgTxt[4][0][7])) // "무.서.워...",
         .delay(3000)
-        .fadeIn(200,()=>$msg.html(msgTxt[4][1])); 
-        // `아~악! 물렸다!<br>어서 치료주사방으로!`
+        .fadeIn(200, () => $msg.html(msgTxt[4][1]));
+      // `아~악! 물렸다!<br>어서 치료주사방으로!`
 
-        // [2] 7번방의 좀비 윗층으로 뛰어오른후 달겨들기
-        $room.eq(7).find('.mz')
+      // [2] 7번방의 좀비 윗층으로 뛰어오른후 달겨들기
+      $room
+        .eq(7)
+        .find(".mz")
         .delay(4000) // 4초후
-        .animate({top: '-100%'},500,'easeOutBounce')
+        .animate({ top: "-100%" }, 500, "easeOutBounce")
         .delay(500) // 0.5초후
-        .animate({right: '123%'},1500,'easeOutElastic');
+        .animate({ right: "123%" }, 1500, "easeOutElastic");
 
-        // [3] 미니언즈 주인공 이미지 좀비로 변경하기 + 회색처리
-        // 7초후 적용하기
-        setTimeout(() => {
-          // 좀비로 변경
-          $mi.find('img').attr('src','images/mz1.png')
-          .css('filter','grayscale(100%)'); 
-          // [4] 다음버튼 보이기
-          $(this).next().fadeIn(300);         
-        }, 7000);
-      
+      // [3] 미니언즈 주인공 이미지 좀비로 변경하기 + 회색처리
+      // 7초후 적용하기
+      setTimeout(() => {
+        // 좀비로 변경
+        $mi
+          .find("img")
+          .attr("src", "images/mz1.png")
+          .css("filter", "grayscale(100%)");
+        // [4] 다음버튼 보이기
+        $(this).next().fadeIn(300);
+      }, 7000);
     }; // fn 함수 끝 //////////////
 
     // 3. 미니언즈 공통 기능함수 호출하기
@@ -330,14 +335,87 @@ $btns
     // 버튼별 기능구현하기 //////////////
     let fn = () => {
       // [1] 주사기 회전하기 : 미니언즈보다 위로 조정
-      $('.inj').css({zIndex: 9999})
-      .animate({
-        rotate:'-150deg'
-      },400,()=>{ // 애니후 함수
-        // [2] 미니언즈 이미지 변경하기(눈하나짜리 후유증...)
-      })
+      $(".inj")
+        .css({ zIndex: 9999 })
+        .animate(
+          {
+            rotate: "-150deg",
+          },
+          400,
+          () => {
+            // 애니후 함수
+            // [2] 미니언즈 이미지 변경하기(눈하나짜리 후유증...)
+            $mi
+              .find("img")
+              .attr("src", "images/m2.png")
+              // 그레이스케일 원상복구
+              .css("filter", "grayscale(0%)");
+
+            // [3] 주사기 없애기
+            $(".inj").hide();
+
+            // [5] 대사날리기
+            $msg.html(msgTxt[2]).fadeIn(300);
+
+            // [6] 다음버튼 보이기
+            $(this).next().fadeIn(300);
+          }
+        );
     }; // fn 함수 끝 //////////////
 
     // 3. 미니언즈 공통 기능함수 호출하기
     actMini(this, 2, fn);
   }) /////////// click ////////////////
+
+  // (4-7) "3번방으로!" 버튼 클릭시
+  .next()
+  .click(function () {
+    // 버튼별 기능구현하기 //////////////
+    let fn = () => {
+      // [1] 대사날리기
+      $msg.html(msgTxt[3]).fadeIn(300);
+
+      // [2] 다음버튼 보이기
+      $(this).next().fadeIn(300);
+    }; // fn 함수 끝 //////////////
+
+    // 3. 미니언즈 공통 기능함수 호출하기
+    actMini(this, 3, fn);
+  }) /////////// click ////////////////
+
+  // (4-8) "1번방으로!" 버튼 클릭시
+  .next()
+  .click(function () {
+    // 버튼별 기능구현하기 //////////////
+    let fn = () => {
+      // [1] 대사날리기
+      $msg.html(msgTxt[1]).fadeIn(300);
+
+      // [2] 다음버튼 보이기
+      $(this).next().fadeIn(300);
+    }; // fn 함수 끝 //////////////
+
+    // 3. 미니언즈 공통 기능함수 호출하기
+    actMini(this, 1, fn);
+  }) /////////// click ////////////////
+
+  // (4-9) "헬기를 호출!" 버튼 클릭시
+  .next()
+  .click(function () {
+    // 버튼별 기능구현하기 //////////////
+    let fn = () => {
+      // 마지막 최종 쑈쑈쑈!
+      // [1] 대사날리기
+      $msg.html(msgTxt[0]).fadeIn(300);
+
+      // [2] 1번방의 단체좀비들 달겨들기!
+      $room.eq(1)
+      .find('.mz')
+      .fadeIn(300)
+      .animate({right:'100%'},3000,'easeInCirc');
+
+    }; // fn 함수 끝 //////////////
+
+    // 3. 미니언즈 공통 기능함수 호출하기
+    actMini(this, 1, fn);
+  }); /////////// click ////////////////
