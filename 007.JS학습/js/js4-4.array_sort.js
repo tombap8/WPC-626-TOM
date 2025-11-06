@@ -496,7 +496,8 @@ myFn.addEvt(sel3, "change", function () {
     // 내림차순
     newArrey.sort((a, b) => (a[cta] == b[cta] ? 0 : a[cta] > b[cta] ? -1 : 1));
   } /// else if ///
-  else { // 정렬되기 전 원본으로 돌아가기
+  else {
+    // 정렬되기 전 원본으로 돌아가기
     newArrey = list1;
   } /// else ///
 
@@ -557,17 +558,26 @@ const showList4Fn = (newArray) => {
             </tr>
           </thead>
           <tbody>
-          ${newArray
-            .map(
-              (v) => `            
+          ${
+            // 만약 결과가 없을 경우 빈배열이므로
+            // length == 0이다!
+            // 배열길이가 0이냐? 데이터없음표시 : 데이터map돌기
+            newArray.length == 0
+              ? `<tr>
+                  <td colspan="3">데이터가 없습니다</td>
+                </tr>`
+              : newArray
+                  .map(
+                    (v) => `            
                 <tr>
                     <td>${v.idx}</td>
                     <td>${v.tit}</td>
                     <td>${v.cont}</td>
                 </tr>
                 `
-            )
-            .join("")}
+                  )
+                  .join("")
+          }
             
             </tbody>
                 </table>
@@ -632,24 +642,34 @@ const fbtn = myFn.qs(".fbtn");
 
 // (1) 버튼 클릭시 이벤트 설정하기 //////
 myFn.addEvt(sbtn, "click", function () {
-  console.log('검색해~~!');
+  console.log("검색해~~!");
   // 1) 검색어가 없으면 경고창 띄우기
-  if(stxt.value == '') {
-    alert('검색어를 입력해줘!');
+  // trim()은 문자열의 앞뒤공백을 제거함
+  // 따라서 스페이스바만 쓰면 아무것도 안쓴것으로 인식됨!
+  if (stxt.value.trim() == "") {
+    alert("검색어를 입력해줘!");
     return;
   } /// if ///
   // 2) 검색어가 있으면 검색
-  else{
+  else {
     // 여러 검색 결과를 모으려면 filter() 메서드사용!
-    const newArray = list2.filter(v => {
+    const newArray = list2.filter((v) => {
       return String(v[sCta4.value]).includes(stxt.value);
     });
     // 숫자일 경우도 문자화하여 검색해야함!
     // 따라서 String()으로 형변환하여 검색한다!
+
+    // indexOf()사용
+    // const newArray = list2.filter(v => {
+    //   return String(v[sCta4.value]).indexOf(stxt.value) !== -1;
+    // });
+
+    // 이해를 위해 직접 값을 넣어본다!
+    // let 테스트 = list2.filter(값=>값.tit.includes('z'));
+    // console.log(테스트);
+
     // 3) 화면출력
     showList4Fn(newArray);
     console.log("객체배열원본:", list2);
   } /// else ////
-
-  
 }); ////////////// click 이벤트함수 ////////////
