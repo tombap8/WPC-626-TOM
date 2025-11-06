@@ -409,13 +409,56 @@ $btns
       $msg.html(msgTxt[0]).fadeIn(300);
 
       // [2] 1번방의 단체좀비들 달겨들기!
-      $room.eq(1)
-      .find('.mz')
-      .fadeIn(300)
-      .animate({right:'100%'},3000,'easeInCirc');
+      $room
+        .eq(1)
+        .find(".mz")
+        .fadeIn(300)
+        .animate({ right: "100%" }, 3000, "easeInCirc");
+
+      // [3] 헬기 등장 : .heli
+      $(".heli")
+        .css({ rotate: "25deg" })
+        .animate(
+          {
+            left: "24%",
+            rotate: "0deg",
+          },
+          3000,
+          "easeOutBack",
+          function () {
+            // 애니후 콜백함수
+            // 여기서 this는 .heli이다!
+            // [4] 헬기 이미지 미니언즈 탄것으로 바꾸기
+            $(this).attr("src", "images/heli2.png");
+
+            // [5] 헬기에 탔으니까 미니언즈 숨기기
+            $mi.hide();
+          }
+        ) //// animate ////
+        
+        // [6] 지연후 헬기 계속이동
+        .delay(500) // 0.5초 후
+        .animate({
+          left: '70%',
+          rotate: '15deg'
+        },4000, 'easeInOutCirc',
+      function(){ // 애니후 콜백함수
+
+        // [7] 조종사가 좀비된 이미지로 변경
+        $(this).attr('src', 'images/heli3.png');
+      }) ////// animate //////
+
+      // [8] 지연후 헬기 천천히 화면바깥으로 나감!
+      .delay(300) // 0.3초 후
+      .animate({
+        left: '110%',
+      },10000, 'linear',()=>{});
+
+
+
 
     }; // fn 함수 끝 //////////////
 
     // 3. 미니언즈 공통 기능함수 호출하기
-    actMini(this, 1, fn);
+    actMini(this, 0, fn);
   }); /////////// click ////////////////
