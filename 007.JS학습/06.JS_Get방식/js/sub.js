@@ -7,7 +7,9 @@ import myFn from "./my_function.js";
 // location.href를 오른쪽에 쓰면 상단의 URL값을 읽어온다!
 // location.search를 사용하면 물음표 뒤엣 값을 읽어온다!
 let pm = location.search;
+let pm2 = location.href;
 console.log("location.search 결과:",pm);
+console.log("location.href 결과:",pm2);
 
 // 기본 Get방식 파라미터의 물음표시그널이 있는지 확인하여
 // 없으면 자르기전에 첫 페이지로 돌려보낸다!

@@ -715,6 +715,8 @@ section {
   position: relative;
   /* 드래그시 선택영역 안잡히게함! */
   user-select: none;
+  /* 넘치는 자식요소 숨기기 */
+  overflow: hidden;
 }
 
 .best-stories-slider {
