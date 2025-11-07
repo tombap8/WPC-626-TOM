@@ -2,8 +2,10 @@
 /* 보그 코리아 공통 CSS - common.css */
 
 /* 공통셋팅 */
-main {
-  overflow: hidden;
+body{
+  overflow-x: hidden;
+  /* 가로스크롤 생김 방지
+  -> 자식요소중 sticky도 이상없음!!! */
 }
 
 /* Header와 Footer 스타일 */

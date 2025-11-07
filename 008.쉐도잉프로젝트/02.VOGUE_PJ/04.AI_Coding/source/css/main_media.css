@@ -168,17 +168,9 @@
   }
 
   /* Latest Stories 반응형 */
-  .latest-stories-box {
-    grid-template-columns: 1fr;
-  }
 
-  .latest-stories-box > article:first-child .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .latest-stories-box > article:last-child {
-    position: static;
-    margin-top: 20px;
+   .latest-stories-box > article:first-child .grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .card-title {

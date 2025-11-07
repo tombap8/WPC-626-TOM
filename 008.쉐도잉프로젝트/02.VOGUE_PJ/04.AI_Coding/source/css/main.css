@@ -531,8 +531,9 @@ section {
   position: relative;
   /* 드래그시 선택영역 안잡히게함! */
   user-select: none;
-  /* 넘치는 자식요소 숨기기 */
-  overflow: hidden;
+  /* 넘치는 자식요소 숨기기 -> 전체가 보여여함!
+  여기서 주면 1400px안에 갖힘! 주지마! */
+  /* overflow: hidden; */
 }
 
 .best-stories-slider {
@@ -663,7 +664,7 @@ section {
 /* Latest Stories 오른쪽 광고 이미지 */
 .latest-stories-box > article:last-child {
   position: sticky;
-  top: 229px;
+  top: 20px;
   height: fit-content;
 }
 
