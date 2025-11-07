@@ -75,6 +75,9 @@ $cbx.on("mousedown touchstart", (e) => {
 
   // [2] 클릭시 위치값 셋팅
   startX = e.pageX || e.changedTouches[0].pageX;
+
+  // [3] 커서 움켜쥔 모양
+  $cbx.css("cursor", "grabbing");
 }); ///////// mousedown touchstart //////////
 
 // (3) 드래그 상태 종료 이벤트함수 //////
@@ -82,6 +85,9 @@ $cbx.on("mousedown touchstart", (e) => {
 $cbx.on("mouseup touchend", (e) => {
   // [1] 드래그 상태변수를 false로 변경
   isDrag = false;
+
+  // [2] 커서 손편 모양
+  $cbx.css("cursor", "grab");
 }); ///////// mouseup touchend //////////
 
 // (4) 이미지변경 함수 ////////////////////
