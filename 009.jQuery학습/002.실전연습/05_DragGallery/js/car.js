@@ -43,7 +43,7 @@ let startX = 0;
 
 // (3) 마우스무드 이벤트 발생금지 상태변수
 // true - 금지상태, false - 허용상태
-let stopDrag = true;
+let stopDrag = false;
 
 // 2. 드래그 이벤트 함수 설정하기 /////////////////
 
@@ -90,7 +90,15 @@ let seqNum = 0;
 function changeImg(dir) {
   // dir - 방향
   // left - 왼쪽방향, right - 오른쪽방향
-  console.log("함수에서 방향:", dir);
+  // console.log("함수에서 방향:", dir);
+
+  // console.log('드래그요청');
+
+  // [0] 광드래그 막기 ////////
+  if (stopDrag) return;
+  stopDrag = true;
+  setTimeout(() => (stopDrag = false), 20);
+  // console.log('드래그허용');
 
   // [1] 현재 이미지숨기기
   $imgs.eq(seqNum).hide();
