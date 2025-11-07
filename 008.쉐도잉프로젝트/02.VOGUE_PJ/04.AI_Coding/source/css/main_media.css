@@ -79,6 +79,12 @@
 @media (max-width: 819px) {
   body {
     padding: 20px 15px;
+  }  
+  
+  main > section{
+    padding: 0;    
+    margin-top: 20px !important;
+
   }
 
   .section-title {
@@ -91,7 +97,7 @@
   그래서 !important사용 */
   .stories-grid {
     grid-template-columns: 1fr !important;
-    gap: 30px;
+    gap: 30px 0;
   }
 
   /* 큰 카드 위치변경 :  
