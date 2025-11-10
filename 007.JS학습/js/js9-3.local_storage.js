@@ -85,14 +85,7 @@ import myFn from "./my_function.js";
 // 1. 버튼 기능 이벤트 대상 : .local-box button
 const btnLocal = myFn.qsa(".local-box button");
 
-// -> 추가대상 : 수정하기 선택박스요소 - select#sel
-const selBox = myFn.qs("select#sel");
-
-// -> 추가대상 : 수정항목 제목/내용
-const tit2 = myFn.qs("#tit2");
-const cont2 = myFn.qs("#cont2");
-
-console.log("대상:", btnLocal, selBox, tit2, cont2);
+// console.log("대상:", btnLocal);
 
 // 2. 버튼에 이벤트 설정하기
 btnLocal.forEach((ele) => 
