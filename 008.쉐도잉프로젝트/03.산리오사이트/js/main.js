@@ -9,3 +9,14 @@ import catData from './cat_data.json' with{type:'json'};
 // GNB용 데이터 배열
 const gnbData = ["company","character","place","recruit"];
 
+// 1. GNB메뉴 데이터 바인딩하기 ////
+myFn
+  .qs(".gnb").innerHTML = `
+    <ul>
+      ${gnbData.map(v=>`
+        <li>
+          <a href="#">${v}</a>
+        </li>
+      `).join('')}
+    </ul>
+  `;

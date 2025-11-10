@@ -35,3 +35,115 @@ body {
   overflow-x: hidden;
 }
 
+/* 1. 상단영역 */
+body {
+  padding-top: 10rem;
+}
+/* 겉박스 */
+#top-area {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+}
+/* 속박스 */
+.top-area {
+  padding: var(--top-area-padding-size);
+}
+/* 상단영역 플렉스 */
+.top-area > ul {
+  display: flex;
+  /* 양쪽끝에 배치함 */
+  justify-content: space-between;
+}
+/* 로고 */
+h1.logo img {
+  height: min(4rem, 4vw);
+  /* 최대사이즈 지정:4rem이 최대크기 */
+}
+
+/* GNB메뉴 */
+.gnb {
+  height: 100%;
+}
+.gnb > ul {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8rem;
+
+  font-size: 1.6rem;
+  font-weight: 500;
+
+  /* 대문자 출력 */
+  text-transform: uppercase;
+}
+
+/* 모바일 GNB 햄버거버튼 */
+.gnb-mob {
+  position: absolute;
+  top: 2rem;
+  right: 5rem;
+  width: 34px;
+  height: 34px;
+  /* 처음에 안보임! */
+  display: none;
+}
+.gnb-mob span {
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: #000;
+  transition: 0.3s ease-out;
+}
+/* 2번째,3번째 span */
+.gnb-mob span + span {
+  margin-top: 11px;
+}
+.gnb-mob.on span:nth-child(1) {
+  translate: 0 15px;
+  rotate: 45deg;
+}
+.gnb-mob.on span:nth-child(2) {
+  translate: 17px 0;
+  width: 0;
+}
+.gnb-mob.on span:nth-child(3) {
+  translate: 0 -15px;
+  rotate: -45deg;
+}
+
+/* 2. 메인영역 */
+/* 메인영역 개별박스 공통 */
+#main-area > div {
+  padding: var(--contents-box-padding-size);
+}
+/* 2-1. 배너영역 */
+.banner {
+  /* 부모자격 */
+  position: relative;
+  /* 넘치는 자식 숨기기 */
+  overflow: hidden;
+  background: url(../images/main_visual_bg.jpg) 0/50px;
+  text-align: center;
+  padding-bottom: 10rem !important;
+}
+/* 배너 이미지 */
+.banner img {
+  height: 60vmin;
+}
+/* 데스크탑 박스 */
+.dt-box {
+  transition: 0.4s ease-in-out;
+}
+/* 모바일용 박스 */
+.mob-box {
+  position: absolute;
+  top: -100%;
+  opacity: 0;
+  width: 100%;
+  padding-top: 8.5rem;
+  transition: 0.4s ease-in-out;
+}
