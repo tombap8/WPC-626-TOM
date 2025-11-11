@@ -19,7 +19,7 @@ export default function loginSession() {
         let iNum = Math.floor(Math.random() * 6);
 
         console.log("로그인 사용자 정보:", user, '/랜덤수:', iNum);
-        // 3. 로그인 사용자표시 정보를 상단에 출력하기
+        // 4. 로그인 사용자표시 정보를 상단에 출력하기
         $('header')
         .append(`<div id="login-display">
             ${
@@ -28,7 +28,7 @@ export default function loginSession() {
                 // 랜덤수는 원하는 최대수를 랜덤에 곱하고
                 // 올림처리하면 1부터 최대수까지 나옴
                 // 0부터 시작하려면 내림처리하면 됨
-        // 4. CSS 적용하기
+        // 5. CSS 적용하기
         $('#login-display').css({
             position: 'absolute',
             // 상단 정중앙위치
@@ -36,8 +36,10 @@ export default function loginSession() {
             left: '50%',
             translate: '-50%',
             fontSize: '18px',
-
-        });
+        }); /// css ////
+        // 6. 헤더의 로그인,회원가입 버튼 숨기기 
+        // + 로그아웃버튼 보이기
+        $('.header-actions').addClass('on');
     } //// if /////
     else {
         console.log("로그인 정보가 없습니다.");
