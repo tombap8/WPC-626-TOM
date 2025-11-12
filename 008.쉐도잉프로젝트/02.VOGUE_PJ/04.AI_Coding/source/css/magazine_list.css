@@ -1,5 +1,16 @@
 @charset "UTF-8";
 /* 매거진 리스트 페이지 CSS - magazine_list.css */
+@import "./core.css";
+@import "./reset.css";
+@import "./common.css";
+
+
+/* 메인 박스 */
+.main-area {
+  margin-bottom: 10vh;
+  padding: 0 5vw;
+}
+
 /* 배너 섹션 */
 .banner {
   width: 100%;
@@ -17,12 +28,6 @@
   object-fit: cover;
 }
 
-/* 컨테이너 */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
 
 /* 상품 리스트 헤더 */
 .product-header {
