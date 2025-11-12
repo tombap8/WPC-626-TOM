@@ -1,436 +1,62 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    
+    <!-- 폰트어썸 CDN CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
     <!-- 메인 CSS -->
     <link rel="stylesheet" href="./css/main.css" />
 
     <!-- 메인 미디어쿼리 CSS -->
     <link rel="stylesheet" href="./css/main_media.css" />
 
-    
+    <!-- 매거진 리스트 CSS -->
+    <link rel="stylesheet" href="./css/magazine_list.css" />
+
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     <!-- Common JS (공통 모듈 로드) -->
     <script src="./js/common.js" type="module"></script>
+
+    <!-- 매거진 리스트 데이터 바인딩 JS -->
+    <script type="module" src="./js/magazine_list.js"></script>
+
     <title>VOGUE 정기구독</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            color: #333;
-        }
-
-        /* 배너 섹션 */
-        .banner {
-            width: 100%;
-            height: 400px;
-            background: #f5f5f5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 50px;
-        }
-
-        .banner img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* 컨테이너 */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* 상품 리스트 헤더 */
-        .product-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .product-header h2 {
-            font-size: 24px;
-            font-weight: 500;
-        }
-
-        .more-btn {
-            padding: 8px 20px;
-            background: #fff;
-            border: 1px solid #ddd;
-            cursor: pointer;
-            font-size: 14px;
-            color: #666;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .more-btn:hover {
-            background: #333;
-            color: #fff;
-            border-color: #333;
-        }
-
-        /* 상품 그리드 */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-
-        /* 상품 카드 */
-        .product-card {
-            position: relative;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .product-image {
-            position: relative;
-            width: 100%;
-            padding-bottom: 100%;
-            overflow: hidden;
-            background: #f9f9f9;
-            margin-bottom: 15px;
-        }
-
-        .product-image img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .discount-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #e31837;
-            color: #fff;
-            padding: 5px 10px;
-            font-size: 14px;
-            font-weight: bold;
-            z-index: 1;
-        }
-
-        .badge {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            padding: 4px 8px;
-            background: rgba(0,0,0,0.7);
-            color: #fff;
-            font-size: 11px;
-            z-index: 1;
-        }
-
-        .product-info {
-            padding: 0 5px;
-        }
-
-        .product-name {
-            font-size: 16px;
-            font-weight: 500;
-            margin-bottom: 5px;
-            color: #333;
-        }
-
-        .product-desc {
-            font-size: 13px;
-            color: #999;
-            margin-bottom: 10px;
-            line-height: 1.4;
-        }
-
-        .price-box {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .original-price {
-            text-decoration: line-through;
-            color: #999;
-            font-size: 14px;
-        }
-
-        .sale-price {
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .member-only {
-            font-size: 14px;
-            color: #666;
-        }
-
-        /* 태블릿 (1024px 이하) */
-        @media (max-width: 1024px) {
-            .container {
-                max-width: 100%;
-                padding: 0 30px;
-            }
-
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 25px;
-            }
-
-            .banner {
-                height: 300px;
-            }
-
-            .product-header h2 {
-                font-size: 22px;
-            }
-        }
-
-        /* 모바일 (819px 이하) */
-        @media (max-width: 819px) {
-            .container {
-                padding: 0 15px;
-            }
-
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
-            }
-
-            .banner {
-                height: 200px;
-                margin-bottom: 30px;
-            }
-
-            .product-header {
-                margin-bottom: 20px;
-            }
-
-            .product-header h2 {
-                font-size: 18px;
-            }
-
-            .more-btn {
-                font-size: 12px;
-                padding: 6px 15px;
-            }
-
-            .product-name {
-                font-size: 14px;
-            }
-
-            .product-desc {
-                font-size: 12px;
-            }
-
-            .original-price {
-                font-size: 12px;
-            }
-
-            .sale-price {
-                font-size: 16px;
-            }
-
-            .discount-badge {
-                font-size: 12px;
-                padding: 4px 8px;
-            }
-        }
-    </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- ========== 헤더 영역 (공통 모듈) ========== -->
     <div id="header-area"></div>
 
     <!-- 배너 섹션 -->
     <section class="banner">
-        <img src="https://cdn-pro-web-241-46.cdn-nhncommerce.com/dsmag452110_godomall_com/data/skin/front/test/img/banner/slider_511517418/51ede99afa8d38a1e04ae1121e32f7bc_59652.jpg" alt="정기구독 배너">
+      <img
+        src="https://cdn-pro-web-241-46.cdn-nhncommerce.com/dsmag452110_godomall_com/data/skin/front/test/img/banner/slider_511517418/51ede99afa8d38a1e04ae1121e32f7bc_59652.jpg"
+        alt="정기구독 배너"
+      />
     </section>
 
     <!-- 메인 컨텐츠 -->
     <main class="container">
-        <!-- 상품 리스트 헤더 -->
-        <div class="product-header">
-            <h2>정기구독 전체상품</h2>
-            <a href="#" class="more-btn">+ 더보기</a>
-        </div>
+      <!-- 상품 리스트 헤더 -->
+      <div class="product-header">
+        <h2>정기구독 전체상품</h2>
+        <a href="#" class="more-btn">+ 더보기</a>
+      </div>
 
-        <!-- 상품 그리드 -->
-        <div class="product-grid" id="productGrid">
-            <!-- JavaScript로 동적 생성 -->
-        </div>
+      <!-- 상품 그리드 -->
+      <div class="product-grid" id="productGrid">
+        <!-- JavaScript로 동적 생성 -->
+      </div>
     </main>
 
     <!-- ========== 푸터 영역 (공통 모듈) ========== -->
     <div id="footer-area"></div>
-
-    <script>
-        // 상품 데이터 JSON
-        const productsData = {
-            "products": [
-                {
-                    "id": 1,
-                    "name": "쿠오카 세럼 블렌드 + 더블유 정기구독 12개월",
-                    "description": "1년 정기구독시 '쿠오카 세럼 블렌드' 정품을 함께 드립니다.",
-                    "image": "https://godomall.speedycdn.net/135d464bb6e6ef46c78bf30c67f818d1/goods/1000000309/image/add2/1000000190_add2_016.jpg",
-                    "originalPrice": 173000,
-                    "salePrice": null,
-                    "discount": 60,
-                    "badge": "이벤트",
-                    "memberOnly": true
-                },
-                {
-                    "id": 2,
-                    "name": "쿠오카 크림 블렌드 + 더블유 정기구독 12개월",
-                    "description": "1년 정기구독시 '쿠오카 크림 블렌드' 정품을 함께 드립니다.",
-                    "image": "https://godomall.speedycdn.net/135d464bb6e6ef46c78bf30c67f818d1/goods/1000000310/image/add2/1000000191_add2_016.jpg",
-                    "originalPrice": 183000,
-                    "salePrice": null,
-                    "discount": 63,
-                    "badge": "이벤트",
-                    "memberOnly": true
-                },
-                {
-                    "id": 3,
-                    "name": "보그 정기구독",
-                    "description": "보그 정기구독시 25% 할인 혜택!!",
-                    "image": "https://godomall.speedycdn.net/135d464bb6e6ef46c78bf30c67f818d1/goods/1000000297/image/add2/1000000297_add2_069.png",
-                    "originalPrice": 96000,
-                    "salePrice": 72000,
-                    "discount": 25,
-                    "badge": "인기",
-                    "memberOnly": false
-                },
-                {
-                    "id": 4,
-                    "name": "지큐 정기구독",
-                    "description": "지큐 정기구독시 25% 할인 혜택!!",
-                    "image": "https://godomall.speedycdn.net/135d464bb6e6ef46c78bf30c67f818d1/goods/1000000298/image/add2/1000000298_add2_043.png",
-                    "originalPrice": 90000,
-                    "salePrice": 67500,
-                    "discount": 25,
-                    "badge": "인기",
-                    "memberOnly": false
-                },
-                {
-                    "id": 5,
-                    "name": "얼루어 정기구독",
-                    "description": "얼루어 정기구독시 선착순으로 특별 선물을 드립니다.",
-                    "image": "https://godomall.speedycdn.net/135d464bb6e6ef46c78bf30c67f818d1/goods/1000000299/image/add2/1000000299_add2_020.png",
-                    "originalPrice": 84000,
-                    "salePrice": 63000,
-                    "discount": 25,
-                    "badge": "이벤트",
-                    "memberOnly": false
-                },
-                {
-                    "id": 6,
-                    "name": "더블유 정기구독",
-                    "description": "더블유 정기구독시 25% 혜택!",
-                    "image": "https://godomall.speedycdn.net/135d464bb6e6ef46c78bf30c67f818d1/goods/1000000300/image/add2/1000000300_add2_090.png",
-                    "originalPrice": 90000,
-                    "salePrice": 67500,
-                    "discount": 25,
-                    "badge": "이벤트",
-                    "memberOnly": false
-                },
-                {
-                    "id": 7,
-                    "name": "보그, 지큐 정기구독 패키지",
-                    "description": "패키지 정기구독시 최대 30% 할인해드립니다.",
-                    "image": "https://godomall.speedycdn.net/135d464bb6e6ef46c78bf30c67f818d1/goods/1000000301/image/add2/1000000301_add2_01.png",
-                    "originalPrice": 186000,
-                    "salePrice": 120000,
-                    "discount": 35,
-                    "badge": "기획",
-                    "memberOnly": false
-                },
-                {
-                    "id": 8,
-                    "name": "보그, 얼루어 정기구독 패키지",
-                    "description": "패키지 정기구독시 최대 30% 할인해드립니다.",
-                    "image": "https://godomall.speedycdn.net/135d464bb6e6ef46c78bf30c67f818d1/goods/1000000302/image/add2/1000000302_add2_044.png",
-                    "originalPrice": 174000,
-                    "salePrice": 120000,
-                    "discount": 31,
-                    "badge": "기획",
-                    "memberOnly": false
-                },
-                {
-                    "id": 9,
-                    "name": "보그, 더블유 정기구독 패키지",
-                    "description": "패키지 정기구독시 최대 30% 할인해드립니다.",
-                    "image": "https://godomall.speedycdn.net/135d464bb6e6ef46c78bf30c67f818d1/goods/1000000303/image/add2/1000000303_add2_076.png",
-                    "originalPrice": 186000,
-                    "salePrice": 120000,
-                    "discount": 35,
-                    "badge": null,
-                    "memberOnly": false
-                }
-            ]
-        };
-
-        // 숫자를 원화 형식으로 변환
-        function formatPrice(price) {
-            return price.toLocaleString('ko-KR') + '원';
-        }
-
-        // 상품 카드 HTML 생성 함수
-        function createProductCard(product) {
-            const badgeHTML = product.badge ? `<span class="badge">${product.badge}</span>` : '';
-            
-            const priceHTML = product.memberOnly 
-                ? `<p class="member-only">이 제품은 회원가입후 구매가 가능합니다.</p>`
-                : `<span class="sale-price">${formatPrice(product.salePrice)}</span>`;
-
-            return `
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-badge">${product.discount}</span>
-                        ${badgeHTML}
-                        <img src="${product.image}" alt="${product.name}">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">${product.name}</h3>
-                        <p class="product-desc">${product.description}</p>
-                        <div class="price-box">
-                            <span class="original-price">${formatPrice(product.originalPrice)}</span>
-                            ${priceHTML}
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        // 상품 렌더링 함수
-        function renderProducts() {
-            const productGrid = document.getElementById('productGrid');
-            const productsHTML = productsData.products.map(product => createProductCard(product)).join('');
-            productGrid.innerHTML = productsHTML;
-        }
-
-        // 페이지 로드 시 상품 렌더링
-        document.addEventListener('DOMContentLoaded', renderProducts);
-    </script>
-</body>
+  </body>
 </html>

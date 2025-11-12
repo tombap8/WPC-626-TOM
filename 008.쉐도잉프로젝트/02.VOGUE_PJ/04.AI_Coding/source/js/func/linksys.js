@@ -57,6 +57,11 @@ export default function () {
           console.log("회원가입 페이지로 이동합니다.");
           location.href = "member.html";
           break;
+
+        // 구독버튼 클릭시
+        case "gudok-btn":
+          console.log("구독 페이지로 이동합니다.");
+          location.href = "magazine_list.html";
       }
     }); ///////////// click //////////////
   }); ///////////// forEach //////////////
