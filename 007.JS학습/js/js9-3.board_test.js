@@ -26,6 +26,10 @@ const tit = document.querySelector("#tit");
 const cont = document.querySelector("#cont");
 // (3) 입력버튼
 const sbtn = document.querySelector("#sbtn");
+// (4) 히든필드 : 수정할 데이터의 idx값
+const hiddenIdx = document.querySelector("#hidden-idx");
+// (5) 취소버튼
+const cancelBtn = document.querySelector("#cancel-btn");
 
 // [2] 이벤트 함수 만들기 /////////////////
 sbtn.addEventListener("click", () => {
@@ -108,6 +112,9 @@ sbtn.addEventListener("click", () => {
 // 출력할 박스는?
 const boardBox = document.querySelector(".board");
 
+// 입력/수정버튼 변경할 부모버튼박스
+const btnBox = document.querySelector(".btn-box");
+
 // 만약 로컬쓰가 있다면 화면출력하기!
 // 화면출력 함수 ///////////////
 const showBoard = (myFriend) => {
@@ -121,13 +128,14 @@ const showBoard = (myFriend) => {
             <th>제목</th>
             <th>내용</th>
             <th>삭제</th>
+            <th>수정</th>
         </tr>
         <!-- 데이터에 따른 반복바인딩 -->
         ${
           myFriend.length === 0
             ? `
             <tr>
-                <td colspan="4">데이터가 없습니다</td>
+                <td colspan="5">데이터가 없습니다</td>
             </tr>
             `
             : myFriend
@@ -139,6 +147,13 @@ const showBoard = (myFriend) => {
                 <td>${v.cont}</td>
                 <td>
                     <button class="del-btn" data-seq="${i}">×</button>
+                </td>
+                <td>
+                    <button 
+                    class="mod-btn" 
+                    data-seq="${i}"
+                    style="background-color: silver;"
+                    >✎</button>
                 </td>
             </tr>
         `
@@ -174,7 +189,98 @@ const showBoard = (myFriend) => {
     // 물론 getAttribute(속성명)으로 부를 수 있지만
     // 길어서 불편하다!
   }); ////////// forEach /////////////
+
+  // (3) 수정버튼 기능구현
+  document.querySelectorAll(".mod-btn").forEach((el,idx,coll) => {
+    // el - 각각의 수정버튼, idx - 순번, coll - 전체버튼컬렉션
+    // 버튼 클릭 설정하기
+    el.addEventListener("click", () => {
+      // [1] 클릭된 버튼 배경색 읽어오기
+      let bgc = el.style.backgroundColor;
+
+      // [2] 모든 수정버튼 배경색 초기화
+      coll.forEach((btn)=>btn.style.backgroundColor="silver");
+
+      // [3] 클릭된 버튼 표시색 변경하기 (silver <-> aqua)
+      el.style.backgroundColor = bgc === "silver" ? "aqua" : "silver";
+
+      // [4] 수정 반영버튼 보이기/숨기기
+      bgc === "silver" ? 
+      btnBox.classList.add('on') :
+      btnBox.classList.remove('on');
+
+      // [5] 수정할 데이터 입력창에 넣기
+      tit.value = 
+      bgc === "silver" ? myFriend[el.dataset.seq].tit:'';
+      cont.value = 
+      bgc === "silver" ? myFriend[el.dataset.seq].cont:'';
+
+      // [6] 히든필드에 수정할 데이터의 idx값 넣기
+      hiddenIdx.value = bgc === "silver" ? el.dataset.seq:'';
+
+      console.log("수정항목:", el.dataset.seq, bgc);
+    }); /////// click ///////
+  }); ////////// forEach /////////////
+
 }; //////////// showBoard //////////////
+
+// [ 수정 / 취소 버튼 기능구현 ] /////////
+// 대상 : 수정버튼 - .modify-btn
+// 기능 : 수정할 데이터 항목을 선택하여 로컬스에 넣기
+document.querySelector('#update-btn')
+.addEventListener('click', ()=>{
+  // [1] 로컬스의 데이터를 읽어온후 파싱하기
+  let currData = JSON.parse(localStorage.getItem("my-board"));
+
+  // [2] 제목, 내용 항목 빈값 유효성 검사실시
+  if (!tit.value.trim()) {
+    alert("제목을 입력하세요");
+    tit.focus();
+    return;
+  }
+  if (!cont.value.trim()) {
+    alert("내용을 입력하세요");
+    cont.focus();
+    return;
+  }
+
+  // [3] 수정할 데이터 항목 찾기
+  let targetData = currData[hiddenIdx.value];
+  if (!targetData) {
+    alert("수정할 데이터가 없습니다");
+    return;
+  }
+
+  // [4] 수정할 데이터 항목 업데이트
+  targetData.tit = tit.value;
+  targetData.cont = cont.value;
+
+  // [5] 로컬스에 수정된 데이터 반영하기
+  localStorage.setItem("my-board", JSON.stringify(currData));
+
+  // [6] 게시판 다시 출력하기
+  showBoard(currData);
+
+  // [7] 취소버튼을 클릭이벤트 발생하여 초기화
+  cancelBtn.click();
+
+}); ////////////// update /////////
+
+// 대상 : 취소버튼 - .cancel-btn
+// 기능 : 수정모드 취소 및 입력창 초기화
+cancelBtn.addEventListener("click", () => {
+  // [1] 수정모드 취소 및 입력창 초기화
+  btnBox.classList.remove("on");
+  tit.value = "";
+  cont.value = "";
+  // [2] 리스트의 수정버튼 배경색 초기화
+  // -> 히든필드에 있는 idx값을 참조하여 바로 변경함
+  document.querySelectorAll(".mod-btn")[hiddenIdx.value].style.backgroundColor = "silver";
+  
+  // [3] 히든필드 초기화
+  hiddenIdx.value = "";
+
+}); ///////// cancel /////////
 
 // 만약 로컬쓰가 있으면 게시판 출력하기! 최초호출!
 const checkLocals = localStorage.getItem("my-board");
@@ -191,9 +297,10 @@ else {
             <th>제목</th>
             <th>내용</th>
             <th>삭제</th>
+            <th>수정</th>
         </tr>
         <tr>
-            <td colspan="4">데이터가 없습니다</td>
+            <td colspan="5">데이터가 없습니다</td>
         </tr>
     </table>
     `;

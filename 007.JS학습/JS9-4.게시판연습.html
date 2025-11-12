@@ -107,6 +107,8 @@
       <!-- <form action="" method="post"> -->
       <ul>
         <li>
+          <!-- 수정시 idx항목을 히든필드에 저장함 -->
+          <input type="hidden" id="hidden-idx" />
           <label for="tit">제목</label>
           <input type="text" id="tit" />
         </li>
@@ -119,7 +121,7 @@
             <input type="submit" value="입력" id="sbtn" />
           </div>
           <div class="modify-box">
-            <input type="submit" value="수정" id="mobtn" />
+            <input type="submit" value="수정" id="update-btn" />
             <input type="submit" value="취소" id="cancel-btn" />
           </div>
         </li>
