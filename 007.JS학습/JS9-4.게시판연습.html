@@ -63,6 +63,16 @@
         background-color: #ccc;
       }
 
+      /* 테이블 하단영역 : 페이지네이션 */
+      table tfoot td {
+        background-color: #fff !important;
+        border-top: 1px solid #000;
+      }
+      /* 버튼에 손가락표시 */
+      table tfoot td button {
+        cursor: pointer;
+      }
+
       /* 입력창 공통 스타일 */
       .inbx {
         width: 1000px;
@@ -109,8 +119,8 @@
       <!-- <form action="" method="post"> -->
       <ul>
         <li>
-          <!-- 수정시 idx항목을 히든필드에 저장함 -->
-          <input type="hidden" id="hidden-idx" />
+          <!-- 수정시 배열순번을 히든필드에 저장함 -->
+          <input type="hidden" id="hidden-seq" />
           <label for="tit">제목</label>
           <input type="text" id="tit" />
         </li>

@@ -26,8 +26,8 @@ const tit = document.querySelector("#tit");
 const cont = document.querySelector("#cont");
 // (3) 입력버튼
 const sbtn = document.querySelector("#sbtn");
-// (4) 히든필드 : 수정할 데이터의 idx값
-const hiddenIdx = document.querySelector("#hidden-idx");
+// (4) 히든필드 : 수정할 데이터의 배열순번값
+const hiddenSeq = document.querySelector("#hidden-seq");
 // (5) 취소버튼
 const cancelBtn = document.querySelector("#cancel-btn");
 
@@ -51,7 +51,7 @@ sbtn.addEventListener("click", () => {
   // (2) 로컬스토리지에 배열값이 없으면 새로만들고
   // 있으면 기존값에 데이터를 추가한다!
   let nowLocal = localStorage.getItem("my-board");
-  console.log("지금로컬쓰있나?", nowLocal);
+  // console.log("지금로컬쓰있나?", nowLocal);
 
   // 로컬스토리지에 저장하는 배열
   let myArr;
@@ -132,6 +132,7 @@ const btnBox = document.querySelector(".btn-box");
 
    (2) 현재 페이지에 맞는 데이터만 추출하기
    -> myFriend.slice(시작인덱스, 끝인덱스) 
+   -> 시작 인덱스 부터 끝인덱스 전까지 선택
 
    (3) 페이지네이션 UI 구성하기
    - 전체 페이지 수에 맞게 페이지 번호 버튼 생성
@@ -140,10 +141,11 @@ const btnBox = document.querySelector(".btn-box");
 
 // [ 페이징 관련 변수 셋팅하기 ] /////
 // (1) 페이지당 표시할 데이터 수
-const itemsPerPage = 10;
+const itemsPerPage = 3;
 
 // (2) 현재 페이지 번호
 let currentPage = 1;
+// -> 전역변수로 페이징 번호 업데이트하여 리스트변경에 관여함!
 
 // (3) 전체 페이지 수
 let totalPages = 0;
@@ -157,9 +159,27 @@ const showBoard = (myFriend) => {
   // (0) 배열값은 기본적으로 내림차순(최신글순)으로 출력
   myFriend.sort((a, b) => b.idx - a.idx);
 
+  // (0.5) 페이징 처리 부분 ///////////////////
+  // (0.5-1)전체 페이지 수 계산하기
+  totalPages = Math.ceil(myFriend.length / itemsPerPage);
+  console.log("전체 페이지 수:", totalPages);
+
+  // (0.5-2)현재 페이지에 맞는 데이터만 추출하기 //////////////
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  // startIndex - 시작인덱스, endIndex - 끝인덱스
+  // currentPage - 현재페이지, itemsPerPage - 페이지당표시수
+  const pagedData = myFriend.slice(startIndex, endIndex);
+  // pagedData - 현재페이지 데이터
+  // 1페이지: 0~2, 2페이지: 3~5, 3페이지: 6~8 ...
+  // -> 주의! slice는 끝인덱스 전까지 추출함!
+  console.log("현재 페이지 데이터:", pagedData);
+  //////////////////////////////////////////////////////////
+
   // (1) 테이블 형식으로 출력하기
   boardBox.innerHTML = `
     <table>
+      <thead>
         <tr>
             <th>번호</th>
             <th>제목</th>
@@ -167,6 +187,8 @@ const showBoard = (myFriend) => {
             <th>삭제</th>
             <th>수정</th>
         </tr>
+      </thead>
+      <tbody>
         <!-- 데이터에 따른 반복바인딩 -->
         ${
           myFriend.length === 0
@@ -175,21 +197,24 @@ const showBoard = (myFriend) => {
                 <td colspan="5">데이터가 없습니다</td>
             </tr>
             `
-            : myFriend
+            : pagedData
                 .map(
                   (v, i) => `
             <tr>
-                <td>${i+1}</td>
+                <td>${i + 1}</td>
                 <td>${v.tit}</td>
                 <td>${v.cont}</td>
                 <td>
-                    <button class="del-btn" data-seq="${i}">×</button>
+                    <button 
+                      class="del-btn" 
+                      data-idx="${v.idx}"
+                    >×</button>
                 </td>
                 <td>
                     <button 
-                    class="mod-btn" 
-                    data-seq="${i}"
-                    style="background-color: silver;"
+                      class="mod-btn" 
+                      data-idx="${v.idx}"
+                      style="background-color: silver;"
                     >✎</button>
                 </td>
             </tr>
@@ -197,6 +222,29 @@ const showBoard = (myFriend) => {
                 )
                 .join("")
         }
+        </tbody>
+        <!-- 페이지네이션이 있는 테이블 하단영역 -->
+        <tfoot>
+          <tr>
+            <td colspan="5">
+              <!-- 페이지 번호 버튼 -->
+              ${
+                // Array.from()메서드로 숫자생성하기
+                // 1부터 totalPages까지의 숫자 생성
+                // 사용형식: v - 배열값, i - 배열순번
+                // Array.from({length:숫자}, (v, i) => { return ... })
+                Array.from(
+                  { length: totalPages },
+                  (_, i) => `
+                <button class="page-btn" data-page="${i + 1}">
+                  ${i + 1}
+                </button>
+              `
+                ).join("")
+              }
+            </td>
+          </tr>
+        </tfoot>
     </table>
     `;
 
@@ -204,16 +252,31 @@ const showBoard = (myFriend) => {
   document.querySelectorAll(".del-btn").forEach((el) => {
     // 버튼 클릭 설정하기
     el.addEventListener("click", () => {
-      console.log("삭제항목:", el.getAttribute("data-seq"), el.dataset.seq);
+      console.log("삭제항목:", el.getAttribute("data-idx"), el.dataset.idx);
 
+      // (2-1) 삭제할 항목의 idx값을 이용하여
+      // 원본 배열에서 해당 항목의 인덱스(순번)를 찾는다!
+      const delIdx = myFriend.findIndex(
+        (item) => item.idx === parseInt(el.dataset.idx)
+      );
+      // findIndex() 메서드는 조건에 맞는 첫번째 요소의 인덱스를 반환한다!
+      // 조건에 맞는 요소가 없으면 -1을 반환한다!
+      console.log("삭제할 항목의 배열순번:", delIdx);
+
+      // (2-2) 순번으로 배열값 삭제하기 //////
       // 현재 배열 데이터 값을 변경하여
       // 다시 반영하도록 showBoard()함수를 호출한다!
-      // data-seq는 배열순번을 가지고 있으므로
+      // data-idx로 배열순번을 구한 delIdx로
+      // splice()를 사용하여 삭제한다!
       // 배열.splice(지울순번,개수)를 사용할 수 있다!
       if (confirm("정말 삭제할까요?")) {
-        myFriend.splice(el.dataset.seq, 1);
+        // [1] 배열 원본에서 삭제하기
+        myFriend.splice(delIdx, 1);
+        // [2] 게시판 첫페이지로 변경하기
+        currentPage = 1;
+        // [3] 게시판 다시 출력하기
         showBoard(myFriend);
-        // 실제 로컬스에 반영하기
+        // [4] 실제 로컬스에 반영하기
         localStorage.setItem("my-board", JSON.stringify(myFriend));
       } //////// if /////////////
       // confirm() : 사용자가 확인을 누르면 true, 취소를 누르면 false를 반환한다.
@@ -227,8 +290,8 @@ const showBoard = (myFriend) => {
     // 길어서 불편하다!
   }); ////////// forEach /////////////
 
-  // (3) 수정버튼 기능구현
-  document.querySelectorAll(".mod-btn").forEach((el,idx,coll) => {
+  // (3) 수정버튼 기능구현 ///////////////
+  document.querySelectorAll(".mod-btn").forEach((el, idx, coll) => {
     // el - 각각의 수정버튼, idx - 순번, coll - 전체버튼컬렉션
     // 버튼 클릭 설정하기
     el.addEventListener("click", () => {
@@ -236,36 +299,51 @@ const showBoard = (myFriend) => {
       let bgc = el.style.backgroundColor;
 
       // [2] 모든 수정버튼 배경색 초기화
-      coll.forEach((btn)=>btn.style.backgroundColor="silver");
+      coll.forEach((btn) => (btn.style.backgroundColor = "silver"));
 
       // [3] 클릭된 버튼 표시색 변경하기 (silver <-> aqua)
       el.style.backgroundColor = bgc === "silver" ? "aqua" : "silver";
 
       // [4] 수정 반영버튼 보이기/숨기기
-      bgc === "silver" ? 
-      btnBox.classList.add('on') :
-      btnBox.classList.remove('on');
+      bgc === "silver"
+        ? btnBox.classList.add("on")
+        : btnBox.classList.remove("on");
 
-      // [5] 수정할 데이터 입력창에 넣기
-      tit.value = 
-      bgc === "silver" ? myFriend[el.dataset.seq].tit:'';
-      cont.value = 
-      bgc === "silver" ? myFriend[el.dataset.seq].cont:'';
+      // [5] 수정할 데이터의 원본에서의 순번 구하기
+      const modIdx = myFriend.findIndex(
+        (item) => item.idx === parseInt(el.dataset.idx)
+      );
+      console.log("수정할 항목의 배열순번:", modIdx);
 
-      // [6] 히든필드에 수정할 데이터의 idx값 넣기
-      hiddenIdx.value = bgc === "silver" ? el.dataset.seq:'';
+      // [6] 수정할 데이터 입력창에 넣기
+      tit.value = bgc === "silver" ? myFriend[modIdx].tit : "";
+      cont.value = bgc === "silver" ? myFriend[modIdx].cont : "";
 
-      console.log("수정항목:", el.dataset.seq, bgc);
+      // [7] 히든필드에 수정할 데이터의 배열순번값 넣기
+      hiddenSeq.value = bgc === "silver" ? modIdx : "";
+
+      console.log("수정항목:", modIdx, bgc);
     }); /////// click ///////
   }); ////////// forEach /////////////
 
+  // (4) 페이지네이션 버튼 기능구현 ///////////////
+  document.querySelectorAll(".page-btn").forEach((el) => {
+    el.addEventListener("click", () => {
+      console.log("페이지 이동:", el.dataset.page);
+      // 페이지 이동 시 필요한 로직 추가
+      // 예: 현재 페이지 번호를 업데이트하고 게시판을 다시 출력
+      currentPage = el.dataset.page;
+      showBoard(myFriend);
+      // 취소버튼을 클릭이벤트 발생하여 초기화
+      cancelBtn.click();
+    }); /// click ///
+  }); /// forEach ///
 }; //////////// showBoard //////////////
 
 // [ 수정 / 취소 버튼 기능구현 ] /////////
 // 대상 : 수정버튼 - .modify-btn
 // 기능 : 수정할 데이터 항목을 선택하여 로컬스에 넣기
-document.querySelector('#update-btn')
-.addEventListener('click', ()=>{
+document.querySelector("#update-btn").addEventListener("click", () => {
   // [1] 로컬스의 데이터를 읽어온후 파싱하기
   let currData = JSON.parse(localStorage.getItem("my-board"));
 
@@ -282,7 +360,7 @@ document.querySelector('#update-btn')
   }
 
   // [3] 수정할 데이터 항목 찾기
-  let targetData = currData[hiddenIdx.value];
+  let targetData = currData[hiddenSeq.value];
   if (!targetData) {
     alert("수정할 데이터가 없습니다");
     return;
@@ -300,7 +378,6 @@ document.querySelector('#update-btn')
 
   // [7] 취소버튼을 클릭이벤트 발생하여 초기화
   cancelBtn.click();
-
 }); ////////////// update /////////
 
 // 대상 : 취소버튼 - .cancel-btn
@@ -310,13 +387,13 @@ cancelBtn.addEventListener("click", () => {
   btnBox.classList.remove("on");
   tit.value = "";
   cont.value = "";
-  // [2] 리스트의 수정버튼 배경색 초기화
-  // -> 히든필드에 있는 idx값을 참조하여 바로 변경함
-  document.querySelectorAll(".mod-btn")[hiddenIdx.value].style.backgroundColor = "silver";
-  
-  // [3] 히든필드 초기화
-  hiddenIdx.value = "";
+  // [2] 리스트의 수정버튼 배경색 모두 초기화
+  document.querySelectorAll(".mod-btn").forEach((btn) => {
+    btn.style.backgroundColor = "silver";
+  });
 
+  // [3] 히든필드 초기화
+  hiddenSeq.value = "";
 }); ///////// cancel /////////
 
 // 만약 로컬쓰가 있으면 게시판 출력하기! 최초호출!
