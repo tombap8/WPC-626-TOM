@@ -5,7 +5,14 @@ import productsData from '../data/magazine_data.json' with { type: 'json' };
 
 // 숫자를 원화 형식으로 변환
 function formatPrice(price) {
+  // toLocaleString(투로케일스트링)을 사용한 방법
+  // -> 국가별 형식에 맞게 숫자를 변환
+  // "ko-KR" : 한국형식
+  // "en-US" : 미국형식
+  // "ja-JP" : 일본형식
   return price.toLocaleString("ko-KR") + "원";
+  // 정규식을 사용한 방법
+  // return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "원";
 }
 
 // 상품 카드 HTML 생성 함수
@@ -19,24 +26,24 @@ function createProductCard(product) {
     : `<span class="sale-price">${formatPrice(product.salePrice)}</span>`;
 
   return `
-                <div class="product-card">
-                    <div class="product-image">
-                        <span class="discount-badge">${product.discount}</span>
-                        ${badgeHTML}
-                        <img src="${product.image}" alt="${product.name}">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">${product.name}</h3>
-                        <p class="product-desc">${product.description}</p>
-                        <div class="price-box">
-                            <span class="original-price">${formatPrice(
-                              product.originalPrice
-                            )}</span>
-                            ${priceHTML}
-                        </div>
-                    </div>
-                </div>
-            `;
+      <div class="product-card">
+          <div class="product-image">
+              <span class="discount-badge">${product.discount}%</span>
+              ${badgeHTML}
+              <img src="${product.image}" alt="${product.name}">
+          </div>
+          <div class="product-info">
+              <h3 class="product-name">${product.name}</h3>
+              <p class="product-desc">${product.description}</p>
+              <div class="price-box">
+                  <span class="original-price">${formatPrice(
+                    product.originalPrice
+                  )}</span>
+                  ${priceHTML}
+              </div>
+          </div>
+      </div>
+  `;
 }
 
 // 상품 렌더링 함수
@@ -49,4 +56,24 @@ function renderProducts() {
 }
 
 // 페이지 로드 시 상품 렌더링
-document.addEventListener("DOMContentLoaded", renderProducts);
+document.addEventListener("DOMContentLoaded", ()=>{
+  renderProducts();
+  
+  // 2. 카드요소를 수집하여 각 요소에 click 이벤트 설정하기 ////
+  const cardList = document.querySelectorAll(".product-card");
+  console.log(cardList);
+
+  cardList.forEach((card, idx) => {
+    card.addEventListener("click", () => {
+      location.href = `./magazine_detail.html?pid=${idx}`;
+      // 클릭된 카드의 상품 데이터 가져오기
+      // const product = productsData.products[idx];
+      // console.log(product);
+    }); //// click ////
+  }); ///////////////// forEach ////
+}); /////////////// 로딩구역 //////////////////
+// DOMContentLoaded : HTML문서가 모두 로드된 후 실행되는 이벤트
+// load 이벤트와 비교할것!
+// load 이벤트는 모든 리소스(이미지, 스타일시트 등)가 로드된 후 실행됨
+
+
