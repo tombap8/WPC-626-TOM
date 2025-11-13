@@ -65,7 +65,31 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
   cardList.forEach((card, idx) => {
     card.addEventListener("click", () => {
-      location.href = `./magazine_detail.html?pid=${idx}`;
+
+      // Get방식으로 데이터 전달하기 코드 ////
+      // location.href = `./magazine_detail.html?pid=${idx}`;
+
+      // 클릭된 카드의 상품 데이터 가져오기
+      const product = productsData.products[idx];
+
+      // post방식으로 데이터 전송하기
+      const formData = new FormData();
+      formData.append("product", product);
+      fetch("./magazine_detail.html", {
+        method: "POST",
+        body: formData
+      }); /// fetch ////
+
+      // Post방식으로 데이터를 전달하는 방법 ///
+      // 1) FormData 객체 생성
+      // 2) .append("키",값) 메서드로 데이터 추가
+      // 3) fetch() 메서드로 전송
+      //    - method: "POST"
+      //    - body: FormData 객체
+
+
+
+
       // 클릭된 카드의 상품 데이터 가져오기
       // const product = productsData.products[idx];
       // console.log(product);
