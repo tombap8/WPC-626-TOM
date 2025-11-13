@@ -66,19 +66,25 @@ document.addEventListener("DOMContentLoaded", ()=>{
   cardList.forEach((card, idx) => {
     card.addEventListener("click", () => {
 
-      // Get방식으로 데이터 전달하기 코드 ////
-      // location.href = `./magazine_detail.html?pid=${idx}`;
-
       // 클릭된 카드의 상품 데이터 가져오기
       const product = productsData.products[idx];
 
+      // 객체를 전송하기 위해 URLSearchParams 객체 생성
+      const params = new URLSearchParams(product);
+
+      // Get방식으로 데이터 전달하기 코드 ////
+      location.href = `./magazine_detail.html?${params}`;
+      // params로 객체를 전달한다!
+
+
       // post방식으로 데이터 전송하기
-      const formData = new FormData();
-      formData.append("product", product);
-      fetch("./magazine_detail.html", {
-        method: "POST",
-        body: formData
-      }); /// fetch ////
+      // -> 공식 서버에 배포했을때 작동함!
+      // const formData = new FormData();
+      // formData.append("product", product);
+      // fetch("./magazine_detail.html", {
+      //   method: "POST",
+      //   body: formData
+      // }); /// fetch ////
 
       // Post방식으로 데이터를 전달하는 방법 ///
       // 1) FormData 객체 생성
