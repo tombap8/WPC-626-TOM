@@ -11,7 +11,23 @@ console.log("파라미터:",params);
 const pname = params.get("name");
 // (2) 이미지
 const pimg = params.get("image");
+// (3) 짧은 설명
+const pdesc = params.get("description");
+// (4) 정가
+const poriprice = params.get("originalPrice");
+// (5) 판매가
+const psaleprice = params.get("salePrice");
+// (6) 할인율
+const pdiscount = params.get("discount");
+// (7) 회원전용여부
+const pmemberonly = params.get("memberOnly");
+// (8) 배지
+const pbadge = params.get("badge");
 console.log("파라미터 pname:",pname);
+// (9) 상품코드
+const pcode = params.get("pcode");
+// (10) 재고수량
+const pcount = params.get("count");
 
 // 태그 만들기 대상 : 
 document.querySelector(".product-section").innerHTML = `
@@ -41,17 +57,21 @@ document.querySelector(".product-section").innerHTML = `
     <div class="info-list">
       <div class="info-row">
         <div class="info-label">짧은설명</div>
-        <div class="info-value">보그 정기구독시 25% 할인 혜택!!</div>
+        <div class="info-value">
+          ${pdesc}
+        </div>
       </div>
       <div class="info-row">
         <div class="info-label">정가</div>
         <div class="info-value">
-          <del>96,000원</del>
+          <del>${poriprice}</del>
         </div>
       </div>
       <div class="info-row price-row">
         <div class="info-label">판매가</div>
-        <div class="info-value">72,000원</div>
+        <div class="info-value">
+        ${pmemberonly?'이 제품은 회원가입후 구매가 가능합니다.':psaleprice}
+        </div>
       </div>
       <div class="info-row">
         <div class="info-label">구매제한</div>
@@ -66,7 +86,7 @@ document.querySelector(".product-section").innerHTML = `
       </div>
       <div class="info-row">
         <div class="info-label">상품코드</div>
-        <div class="info-value">1000000297</div>
+        <div class="info-value">${pcode}</div>
       </div>
       <div class="info-row">
         <div class="info-label">신간발행일</div>
@@ -74,13 +94,14 @@ document.querySelector(".product-section").innerHTML = `
       </div>
       <div class="info-row">
         <div class="info-label">상품재고</div>
-        <div class="info-value">81개</div>
+        <div class="info-value">${pcount}개</div>
       </div>
     </div>
     <div class="select-area">
       <div class="info-label" style="margin-bottom: 8px">시작 월</div>
       <select class="select-box">
-        <option>2025-11월호 부터</option>
+        <option>
+        ${new Date().getFullYear()}-${new Date().getMonth() + 1}월호 부터</option>
       </select>
     </div>
     <div class="selected-item">
