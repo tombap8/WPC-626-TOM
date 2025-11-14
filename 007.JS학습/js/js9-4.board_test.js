@@ -101,10 +101,14 @@ sbtn.addEventListener("click", () => {
   // -> JSON.stringify(배열/객체)
   localStorage.setItem("my-board", JSON.stringify(myArr));
 
-  // (5) 화면출력!
+  // (5) 첫페이지로 변경
+  currentPage = 1;
+  currentPaginationBlock = 1;
+
+  // (6) 화면출력!
   showBoard(myArr);
 
-  // (6) 초기화!
+  // (7) 초기화!
   tit.value = "";
   cont.value = "";
 }); //////////// click 이벤트함수 //////////
@@ -137,6 +141,14 @@ const btnBox = document.querySelector(".btn-box");
    (3) 페이지네이션 UI 구성하기
    - 전체 페이지 수에 맞게 페이지 번호 버튼 생성
    - 현재 페이지에 맞는 버튼 강조 표시
+
+   (4) 페이지네이션의 페이징 구현하기
+   - 페이지네이션을 일정 개수만큼만 보이게함
+   - 양쪽에 페이지네이션 이동 버튼을 생성하여
+   페이지네이션 내에서 페이지네이션 블록을 이동함
+   - 이때 필요한 것은 페이지네이션의 한계수와
+   전체 페이지네이션 블록수와 현재블록번호가 필요함!
+
 *******************************************/
 
 // [ 페이징 관련 변수 셋팅하기 ] /////
@@ -149,6 +161,16 @@ let currentPage = 1;
 
 // (3) 전체 페이지 수
 let totalPages = 0;
+
+// (4) 페이지네이션 한계수
+const paginationLimit = 3;
+
+// (5) 전체 페이지네이션 블록수
+let totalPaginationBlocks = 0;
+
+// (6) 현재 페이지네이션 블록 번호
+let currentPaginationBlock = 1;
+
 //////////////////////////////////////
 
 // 만약 로컬쓰가 있다면 화면출력하기!
@@ -174,6 +196,10 @@ const showBoard = (myFriend) => {
   // 1페이지: 0~2, 2페이지: 3~5, 3페이지: 6~8 ...
   // -> 주의! slice는 끝인덱스 전까지 추출함!
   console.log("현재 페이지 데이터:", pagedData);
+
+  // (0.5-3) 전체 페이지네이션 블록수 계산하기 /////////////
+  totalPaginationBlocks = Math.ceil(totalPages / paginationLimit);
+  console.log("전체 페이지네이션 블록수:", totalPaginationBlocks);
   //////////////////////////////////////////////////////////
 
   // (1) 테이블 형식으로 출력하기
@@ -201,7 +227,7 @@ const showBoard = (myFriend) => {
                 .map(
                   (v, i) => `
             <tr>
-                <td>${i + 1}</td>
+                <td>${(i + 1)+((currentPage-1)*itemsPerPage)}</td>
                 <td>${v.tit}</td>
                 <td>${v.cont}</td>
                 <td>
@@ -227,21 +253,55 @@ const showBoard = (myFriend) => {
         <tfoot>
           <tr>
             <td colspan="5">
+              <!-- 페이지네이션 이전블록이동버튼 -->
+              <button 
+                class="page-block-btn" 
+                data-page-block="${Number(currentPaginationBlock) - 1}" 
+                ${
+                  Number(currentPaginationBlock) === 1 ? 
+                  "disabled" : ""
+                }>◀</button>
+
               <!-- 페이지 번호 버튼 -->
               ${
                 // Array.from()메서드로 숫자생성하기
                 // 1부터 totalPages까지의 숫자 생성
                 // 사용형식: v - 배열값, i - 배열순번
                 // Array.from({length:숫자}, (v, i) => { return ... })
-                Array.from(
-                  { length: totalPages },
-                  (_, i) => `
-                <button class="page-btn" data-page="${i + 1}">
-                  ${i + 1}
-                </button>
-              `
-                ).join("")
+                // 페이지네이션 블록만큼만 보이게 하기 //////
+                // 마지막 블록일 때는 남은 페이지 수만큼만 생성하기
+                (() => {
+                  // 현재 블록의 시작 페이지 번호
+                  const blockStartPage = (currentPaginationBlock - 1) * paginationLimit + 1;
+                  // 현재 블록의 끝 페이지 번호 (전체 페이지 수를 넘지 않도록)
+                  const blockEndPage = Math.min(blockStartPage + paginationLimit - 1, totalPages);
+                  // 현재 블록에 표시할 페이지 버튼 개수
+                  const buttonsToShow = blockEndPage - blockStartPage + 1;
+                  
+                  return Array.from(
+                    { length: buttonsToShow },
+                    (_, i) => {
+                      const pageNum = blockStartPage + i;
+                      return `
+                        <button 
+                          class="page-btn" 
+                          data-page="${pageNum}"
+                          style="background-color: ${pageNum == currentPage ? "aqua" : "silver"};"
+                        >
+                          ${pageNum}
+                        </button>
+                      `;
+                    }
+                  ).join("");
+                })()
               }
+              <!-- 페이지네이션 다음블록이동버튼 -->
+              <button 
+                class="page-block-btn" 
+                data-page-block="${Number(currentPaginationBlock) + 1}" 
+                ${
+                  Number(currentPaginationBlock) === totalPaginationBlocks ? "disabled" : ""
+                }>▶</button>
             </td>
           </tr>
         </tfoot>
@@ -274,6 +334,7 @@ const showBoard = (myFriend) => {
         myFriend.splice(delIdx, 1);
         // [2] 게시판 첫페이지로 변경하기
         currentPage = 1;
+        currentPaginationBlock = 1;
         // [3] 게시판 다시 출력하기
         showBoard(myFriend);
         // [4] 실제 로컬스에 반영하기
@@ -338,6 +399,23 @@ const showBoard = (myFriend) => {
       cancelBtn.click();
     }); /// click ///
   }); /// forEach ///
+
+  // (5) 페이지네이션 블록 버튼 기능구현 /////
+  document.querySelectorAll(".page-block-btn").forEach((el) => {
+    el.addEventListener("click", () => {
+      console.log("페이지 블록 이동:", el.dataset.pageBlock);
+      // 페이지 블록 이동 시 필요한 로직 추가
+      // 예: 현재 페이지 블록 번호를 업데이트하고 게시판을 다시 출력
+      currentPaginationBlock = el.dataset.pageBlock;
+      showBoard(myFriend);
+      // 취소버튼을 클릭이벤트 발생하여 초기화
+      cancelBtn.click();
+      // 블록 이동후 그 블록의 첫페이지로 이동하기
+      currentPage = (currentPaginationBlock - 1) * paginationLimit + 1;
+      showBoard(myFriend);
+    }); /// click ///
+  }); /// forEach ///
+
 }; //////////// showBoard //////////////
 
 // [ 수정 / 취소 버튼 기능구현 ] /////////
