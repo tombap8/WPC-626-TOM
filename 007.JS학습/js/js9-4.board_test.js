@@ -270,10 +270,13 @@ const showBoard = (myFriend) => {
                 // Array.from({length:숫자}, (v, i) => { return ... })
                 // 페이지네이션 블록만큼만 보이게 하기 //////
                 // 마지막 블록일 때는 남은 페이지 수만큼만 생성하기
-                (() => {
-                  // 현재 블록의 시작 페이지 번호
+                (() => { // 익명함수가 이자리에서 실행!
+                  // (1)현재 블록의 시작 페이지 번호
+                  // (1,4,7...)
                   const blockStartPage = (currentPaginationBlock - 1) * paginationLimit + 1;
-                  // 현재 블록의 끝 페이지 번호 (전체 페이지 수를 넘지 않도록)
+                  // (2)현재 블록의 끝 페이지 번호 
+                  // (전체 페이지 수를 넘지 않도록)
+                  // (3,6,9...)
                   const blockEndPage = Math.min(blockStartPage + paginationLimit - 1, totalPages);
                   // 현재 블록에 표시할 페이지 버튼 개수
                   const buttonsToShow = blockEndPage - blockStartPage + 1;
@@ -380,8 +383,8 @@ const showBoard = (myFriend) => {
       tit.value = bgc === "silver" ? myFriend[modIdx].tit : "";
       cont.value = bgc === "silver" ? myFriend[modIdx].cont : "";
 
-      // [7] 히든필드에 수정할 데이터의 배열순번값 넣기
-      hiddenSeq.value = bgc === "silver" ? modIdx : "";
+      // [7] 히든필드에 수정할 데이터의 고유 idx값 넣기 (배열순번이 아님!)
+      hiddenSeq.value = bgc === "silver" ? myFriend[modIdx].idx : "";
 
       console.log("수정항목:", modIdx, bgc);
     }); /////// click ///////
@@ -419,7 +422,7 @@ const showBoard = (myFriend) => {
 }; //////////// showBoard //////////////
 
 // [ 수정 / 취소 버튼 기능구현 ] /////////
-// 대상 : 수정버튼 - .modify-btn
+// 대상 : 수정버튼 - #update-btn
 // 기능 : 수정할 데이터 항목을 선택하여 로컬스에 넣기
 document.querySelector("#update-btn").addEventListener("click", () => {
   // [1] 로컬스의 데이터를 읽어온후 파싱하기
@@ -437,16 +440,18 @@ document.querySelector("#update-btn").addEventListener("click", () => {
     return;
   }
 
-  // [3] 수정할 데이터 항목 찾기
-  let targetData = currData[hiddenSeq.value];
-  if (!targetData) {
+  // [3] 수정할 데이터 항목 찾기 (idx 값으로 검색)
+  const targetIdx = parseInt(hiddenSeq.value);
+  const targetDataIndex = currData.findIndex(item => item.idx === targetIdx);
+  
+  if (targetDataIndex === -1) {
     alert("수정할 데이터가 없습니다");
     return;
   }
 
   // [4] 수정할 데이터 항목 업데이트
-  targetData.tit = tit.value;
-  targetData.cont = cont.value;
+  currData[targetDataIndex].tit = tit.value;
+  currData[targetDataIndex].cont = cont.value;
 
   // [5] 로컬스에 수정된 데이터 반영하기
   localStorage.setItem("my-board", JSON.stringify(currData));
