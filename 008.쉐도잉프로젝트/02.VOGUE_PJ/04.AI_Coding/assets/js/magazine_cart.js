@@ -141,6 +141,11 @@ function removeItem(pcode, index) {
       
       localStorage.setItem("cart-info", JSON.stringify(allCartItems));
       loadCartItems(); // 다시 로드
+      
+      // 장바구니 개수 업데이트
+      if (typeof window.updateCartCount === 'function') {
+        window.updateCartCount();
+      }
     }
   }
 }
@@ -171,6 +176,11 @@ function changeQuantity(pcode, index) {
         
         localStorage.setItem("cart-info", JSON.stringify(allCartItems));
         loadCartItems(); // 다시 로드
+        
+        // 장바구니 개수 업데이트
+        if (typeof window.updateCartCount === 'function') {
+          window.updateCartCount();
+        }
       }
     }
   }
@@ -297,6 +307,11 @@ function setupDeleteButton() {
           
           localStorage.setItem("cart-info", JSON.stringify(allCartItems));
           loadCartItems(); // 다시 로드
+          
+          // 장바구니 개수 업데이트
+          if (typeof window.updateCartCount === 'function') {
+            window.updateCartCount();
+          }
         }
       }
     });
