@@ -29,16 +29,19 @@ html {
   font-size: 10px;
 }
 
-/* 모바일 모드시 가로스크롤 안생기게 셋팅 */
-html,
+/* 전체 공통 */
 body {
+  /* fixed 상단영역만큼 상단패딩셋팅 */
+  padding-top: 10rem;
+  /* 모바일 모드시 가로스크롤 안생기게 셋팅 */
   overflow-x: hidden;
+}
+/* body.on일때 상단영역 */
+body.on {
+  overflow: hidden;
 }
 
 /* 1. 상단영역 */
-body {
-  padding-top: 10rem;
-}
 /* 겉박스 */
 #top-area {
   position: fixed;
@@ -102,15 +105,17 @@ h1.logo img {
 .gnb-mob span + span {
   margin-top: 11px;
 }
-.gnb-mob.on span:nth-child(1) {
+
+/* x버튼으로 변경은 body에 .on넣기 */
+body.on .gnb-mob span:nth-child(1) {
   translate: 0 15px;
   rotate: 45deg;
 }
-.gnb-mob.on span:nth-child(2) {
+body.on .gnb-mob span:nth-child(2) {
   translate: 17px 0;
   width: 0;
 }
-.gnb-mob.on span:nth-child(3) {
+body.on .gnb-mob span:nth-child(3) {
   translate: 0 -15px;
   rotate: -45deg;
 }

@@ -21,6 +21,15 @@ myFn
     </ul>
   `;
 
+// 2. 햄버거 메뉴 클릭시 전체 메뉴 보이기/숨기기 ////
+const hamBtn = myFn.qs(".gnb-mob");
+
+hamBtn.addEventListener("click", () => {
+  // body에 on 클래스 넣기/빼기
+  myFn.qs("body").classList.toggle("on");  
+}); ///// click /////
+
+
 // 3. 캐릭터 영역 데이터 연결하여 출력태그 만들기 ////
 myFn.qs(".cat-list").innerHTML = `
     <ul>

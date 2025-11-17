@@ -38,8 +38,8 @@
     /* 글자크기 변경 */
     font-size: 4vh;
   }
-  /* 보이기 클래스는 show */
-  .gnb.on.show {
+  /* 보이기 클래스는 body에 .on넣기 */
+  body.on .gnb.on {
     left: 0;
     opacity: 1;
     border-top: 1px solid #ccc;
