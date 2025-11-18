@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>360도 Canvas 회전 뷰어 DEMO</title>
+  <style>
+    body { background: #222; color: #fff; display: flex; flex-direction: column; align-items: center; height: 100vh; margin: 0; }
+    #wrap { background: #fff; padding: 24px 30px 14px; border-radius: 16px; box-shadow:0 8px 24px #0004; margin-top: 48px;}
+    h2 { text-align: center; color: #111; margin-bottom: 16px;}
+    #viewer { position:relative; }
+    #canvas360 { background: #444; display: block; border-radius: 8px;}
+    #frames { text-align:center; margin-top:8px; color:#666; font-size:15px; letter-spacing:2px;}
+  </style>
+</head>
+<body>
+<div id="wrap">
+  <h2>360° Canvas 회전 뷰어</h2>
+  <div id="viewer">
+    <canvas id="canvas360" width="224" height="480"></canvas>
+  </div>
+  <div id="frames"></div>
+</div>
+<script>
+const src = "./Maggie_Simpson.png"; // 이미지 경로로 대체
+const frameCount = 9; // 프레임 수 (이미지 내 인물 수 또는 각도 컷 수)
+const canvas = document.getElementById('canvas360');
+const ctx = canvas.getContext('2d');
+const framesInfo = document.getElementById('frames');
+let img, frameW, frameH, frame = 0;
+let dragging = false, lastX = null;
+
+// 1. 이미지 로드
+img = new Image();
+img.src = src;
+img.onload = function () {
+  frameW = img.width / frameCount;
+  frameH = img.height;
+  canvas.width = frameW;
+  canvas.height = frameH;
+  showFrame(0);
+  framesInfo.textContent = `◀ 드래그: 회전 | 현재 프레임: ${frame+1} / ${frameCount}`;
+};
+
+function showFrame(idx) {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.drawImage(img, idx*frameW, 0, frameW, frameH, 0,0,frameW,frameH);
+  framesInfo.textContent = `◀ 드래그: 회전 | 현재 프레임: ${idx+1} / ${frameCount}`;
+}
+
+canvas.addEventListener('mousedown', e => {
+  dragging = true;
+  lastX = e.clientX;
+});
+canvas.addEventListener('mouseup', e => dragging = false);
+canvas.addEventListener('mouseleave', e => dragging = false);
+canvas.addEventListener('mousemove', e => {
+  if (!dragging) return;
+  const dx = e.clientX - lastX;
+  if (Math.abs(dx) > 12) {
+    if (dx > 0) { frame = (frame + 1) % frameCount; }
+    else { frame = (frame - 1 + frameCount) % frameCount; }
+    lastX = e.clientX;
+    showFrame(frame);
+  }
+});
+canvas.addEventListener('touchstart', e => {
+  dragging = true;
+  lastX = e.touches[0].clientX;
+});
+canvas.addEventListener('touchend', e => dragging = false);
+canvas.addEventListener('touchmove', e => {
+  if (!dragging) return;
+  const dx = e.touches[0].clientX - lastX;
+  if (Math.abs(dx) > 10) {
+    if (dx > 0) { frame = (frame + 1) % frameCount; }
+    else { frame = (frame - 1 + frameCount) % frameCount; }
+    lastX = e.touches[0].clientX;
+    showFrame(frame);
+  }
+  e.preventDefault();
+});
+</script>
+</body>
+</html>
