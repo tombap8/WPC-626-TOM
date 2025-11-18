@@ -7,7 +7,7 @@ export default function () {
   }; ////////////// click //////////////
 
   // [2] GNB 메뉴 링크셋팅 하기
-  document.querySelectorAll(".gnb-menu a").forEach((el) => {
+  document.querySelectorAll(".gnb-menu a, .gnb a").forEach((el) => {
     el.addEventListener("click", function (e) {
       e.preventDefault();
       // 카테고리 페이지에 보낼값
