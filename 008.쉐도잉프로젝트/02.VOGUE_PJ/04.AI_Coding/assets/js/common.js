@@ -4,6 +4,9 @@
 // html요소 로드후 실행할 JS 불러오기
 import goToPage from "./func/linksys.js";
 
+// 헤더 전체 메뉴 기능 JS 불러오기
+import initTotalMenu from "./func/total_menu.js";
+
 // 스크롤 헤더 토글 JS 불러오기
 import scrollHeaderToggle from "./func/scroll_header_toggle.js";
 
@@ -28,6 +31,9 @@ $(document).ready(function() {
 
       // 장바구니 기능 초기화
       initCartFunctions();
+
+      // 전체 메뉴 기능 초기화
+      initTotalMenu();
 
     }
   });
