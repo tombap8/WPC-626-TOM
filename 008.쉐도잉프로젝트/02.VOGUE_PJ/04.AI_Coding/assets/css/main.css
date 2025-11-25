@@ -75,15 +75,18 @@
   opacity: 0.86;
 }
 .hero-text {
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  left: 0;
   z-index: 2;
-  background: rgba(0, 0, 0, 0.4);
+  background-image: linear-gradient(to bottom, transparent, #00000082);
   color: #fff;
   width: 100%;
-  padding: 34px 38px;
+  padding: 5% 0;
   box-sizing: border-box;
   text-align: left;
   font-family: "Pretendard", "sans-serif";
+  text-align: center;
 }
 .hero-text p {
   font-size: 19px;
@@ -98,8 +101,11 @@
 .swiper-button-prev {
   color: #fff;
   --swiper-navigation-size: 38px;
-  background: rgba(0, 0, 0, 0.25);
-  border-radius: 50%;
+  border-radius: 50%;  
+}
+.swiper-button-next:after, 
+.swiper-rtl .swiper-button-prev:after {
+  text-shadow: 0 0 5px #00000081;
 }
 .swiper-pagination {
   bottom: 14px !important;

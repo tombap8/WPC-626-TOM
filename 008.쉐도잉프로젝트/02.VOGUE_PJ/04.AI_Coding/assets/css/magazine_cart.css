@@ -280,9 +280,9 @@
 }
 
 @media (max-width: 640px) {
-  body {
+  /* body {
     padding: 10px;
-  }
+  } */
 
   .cart-item {
     flex-direction: column;
